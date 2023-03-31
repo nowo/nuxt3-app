@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "postinstall": "nuxi prepare",
     "generate": "nuxi generate",
-    "start:generate": "npx serve .output/public"
+    "start:generate": "npx serve .output/public",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.3",

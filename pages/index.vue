@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const online = useOnline()
+const name=ref("张三")
 </script>
 
 <template>
@@ -16,7 +17,7 @@ const online = useOnline()
       <template #fallback>
         <div op50 italic>
           <span animate-pulse>Loading...</span>
-
+            <div class='a'>{{name}}</div>
           
         </div>
       </template>
