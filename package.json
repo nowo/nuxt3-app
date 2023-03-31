@@ -10,7 +10,9 @@
     "postinstall": "nuxi prepare",
     "generate": "nuxi generate",
     "start:generate": "npx serve .output/public",
-    "commit": "git-cz"
+    
+    "commit": "git-cz",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.3",
@@ -43,14 +45,13 @@
   },
   "lint-staged": {
     "*.vue": [
-      "eslint . --fix",
-      "stylelint --fix"
+      "eslint --fix"
     ],
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ],
     "*.{htm,html,css,sss,less,scss,sass}": [
-      "stylelint --fix"
+        "eslint . --fix"
     ]
   }
 }
