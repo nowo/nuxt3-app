@@ -50,4 +50,24 @@ export default defineNuxtConfig({
     },
   },
   pwa,
+  vite: {
+    server: {
+      proxy: {
+        '/apis': {
+          target: 'http://xxxxxxxx',
+          rewrite: path => path.replace(/^\/apis/, ''),
+        },
+      },
+    },
+  },
+  runtimeConfig: {
+    // 仅在服务端serve可以访问
+    appKey: 'abcd',
+    // public里的在服务端serve,客户端client皆可访问
+    public: {
+      baseUrl: process.env.VITE_BASE_URL || '/',
+      apiBase: process.env.VITE_API_BASE || '',
+      otherUrl: process.env.OTHER_URL || 'default_other_url',
+    },
+  },
 })

@@ -17,12 +17,25 @@ const name = ref('张三')
       <template #fallback>
         <div op50 italic>
           <span animate-pulse>Loading...</span>
-          <div class="a">
-            {{ name }}
-          </div>
         </div>
       </template>
     </Suspense>
-    <InputEntry />
+    <InputEntry /><div class="a">
+      {{ name }}
+      <span>-123456</span>
+    </div>
   </div>
 </template>
+
+<style  lang="scss">
+.a{
+    color: #f00;
+
+    font-size: 36px;
+
+    span{
+        color: #ef0;
+    }
+
+}
+</style>
