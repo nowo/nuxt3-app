@@ -11,8 +11,8 @@
     "generate": "nuxi generate",
     "start:generate": "npx serve .output/public",
     
-    "commit": "git-cz",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.3",
