@@ -6,11 +6,11 @@
     "dev": "nuxi dev",
     "dev:pwa": "VITE_PLUGIN_PWA=true nuxi dev",
     "start": "node .output/server/index.mjs",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "postinstall": "nuxi prepare",
     "generate": "nuxi generate",
     "start:generate": "npx serve .output/public",
-    
+
     "prepare": "husky install",
     "commit": "git-cz"
   },

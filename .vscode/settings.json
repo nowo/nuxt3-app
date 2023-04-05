@@ -6,8 +6,8 @@
   "files.associations": {
     "*.css": "postcss"
   },
-"editor.formatOnSave": false,
-"cSpell.words": [
+  "editor.formatOnSave": false,
+  "cSpell.words": [
     "antfu",
     "breakline",
     "iconify",
@@ -18,5 +18,5 @@
     "stylelint",
     "unocss",
     "vueuse"
-]
+  ]
 }

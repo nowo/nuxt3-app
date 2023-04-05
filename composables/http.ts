@@ -30,14 +30,15 @@ export const useHttp = <T = any>(url: string, data?: RequestDataType, opt?: ReqO
 
   // 设置请求参数
   if (data) {
-    if (typeof data == 'function' && typeof data() == 'object')
+    if (typeof data == 'function' && typeof data() == 'object') {
       options.body = data()
-    if (typeof data == 'object')
-      options.body = data
+    }
+    if (typeof data == 'object') options.body = data
   }
 
-  if (!options.baseURL)
+  if (!options.baseURL) {
     options.baseURL = runtimeConfig.public.apiBase || ''
+  }
 
   // 发送请求出错
   options.onRequestError = () => {

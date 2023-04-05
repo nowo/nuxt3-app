@@ -34,19 +34,16 @@ export const formatTime = (num: number | string | Date = new Date().getTime(), f
 
   if (types(num) === 'number') {
     // 处理时间戳，js一般获取的时间戳是13位，PHP一般是10位,根据实际情况做判断处理
-    if (num.toString().length === 10)
+    if (num.toString().length === 10) {
       date = new Date((num as number) * 1000)
-
-    else
+    } else {
       date = new Date(num)
-  }
-  else if (types(num) === 'string') {
+    }
+  } else if (types(num) === 'string') {
     date = new Date(num)
-  }
-  else if (types(num) === 'date') {
+  } else if (types(num) === 'date') {
     date = num as Date
-  }
-  else {
+  } else {
     return ''
   }
 
