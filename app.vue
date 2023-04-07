@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import { appName } from '~/constants'
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+import { appName } from '~/config/constant'
+
+const locale = ref(zhCn)
+
+// let a = -1
+// if (a > 0){ a++}
+
+// console.log('a :>> ', a);
 
 useHead({
   title: appName,
@@ -7,21 +15,26 @@ useHead({
 </script>
 
 <template>
-  <VitePwaManifest />
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <el-config-provider :locale="locale">
+    <VitePwaManifest />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </el-config-provider>
 </template>
 
-<style>
-html, body , #__nuxt{
+<style lang="scss">
+html,
+body,
+#__nuxt {
   height: 100vh;
   margin: 0;
   padding: 0;
+  // background: $bgColor;
 }
 
 html.dark {
-  background: #222;
+  background: #333;
   color: white;
 }
 </style>

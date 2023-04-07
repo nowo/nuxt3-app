@@ -3,25 +3,25 @@ import { CommonApi } from '~~/api/common'
 
 const { data } = await useFetch('/api/pageview')
 
-const { data: a } = await useFetch('http://127.0.0.1:7001/api/v1/news/list', {
-  method: 'post',
-//   baseURL: 'http://127.0.0.1:7001',
-})
+// const { data: a } = await useFetch('http://127.0.0.1:7001/api/v1/news/list', {
+//   method: 'post',
+// //   baseURL: 'http://127.0.0.1:7001',
+// })
 // console.log('a :>> ', a)
 
 const defData = reactive({
   page: 1,
 })
 
-const { data: b } = useHttp('/api/v1/news/list', () => {
-  return 1
-}, {
-  method: 'post',
-  baseURL: 'http://127.0.0.1:7001',
-})
+// const { data: b } = useHttp('/api/v1/news/list', () => {
+//   return 1
+// }, {
+//   method: 'post',
+//   baseURL: 'http://127.0.0.1:7001',
+// })
 
 // console.log('b :>> ', b)
-const { data: s } = CommonApi.getList({ page: defData.page })
+const { data: s } = CommonApi.getList()
 // console.log('s :>> ', s.value?.data.total)
 
 const time = useTimeAgo(() => data.value?.startAt || 0)

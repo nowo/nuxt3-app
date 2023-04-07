@@ -1,22 +1,24 @@
 <script setup lang="ts">
+// import { HomeMain } from '~~/.nuxt/components';
+
 const online = useOnline()
 const name = ref('张三')
-const text = ref()
-if (name.value === '1123') {
-  text.value = 100
-}
+
+definePageMeta({
+  layout: 'home',
+})
 </script>
 
 <template>
-  <div>
-    <Logos mb-6 />
+  <div class="index-box">
     <Suspense>
       <ClientOnly>
-        <PageView v-if="online" />
-
+        <!-- <PageView v-if="online" />
         <div v-else text-gray:80>
           You're offline
-        </div>
+        </div> -->
+        <!-- <HomeBanner /> -->
+        <HomeMain />
       </ClientOnly>
       <template #fallback>
         <div op50 italic>
@@ -24,22 +26,17 @@ if (name.value === '1123') {
         </div>
       </template>
     </Suspense>
-    <InputEntry /><div class="a">
+    <!-- <InputEntry />
+    <div class="a">
       {{ name }}
       <span>-123456</span>
-    </div>
+    </div> -->
   </div>
 </template>
 
-<style  lang="scss">
-.a{
-    color: #f00;
-
-    font-size: 36px;
-
-    span{
-        color: #ef0;
-    }
-
+<style  lang="scss" scoped>
+.index-box{
+  padding-top: 40px;
+  background-color: #f3f3f3;
 }
 </style>

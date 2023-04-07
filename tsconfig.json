@@ -1,6 +1,10 @@
 {
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "types": [
+      "@vue/compiler-dom",
+      "element-plus/global"
+    ]
   }
 }

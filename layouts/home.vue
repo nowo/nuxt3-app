@@ -1,9 +1,20 @@
+<script lang="ts" setup>
+import BaseFooter from './components/BaseFooter.vue'
+import BaseHeader from './components/BaseHeader.vue'
+// import BaseMenu from './components/BaseMenu.vue'
+import BaseTop from './components/BaseTop.vue'
+</script>
+
 <template>
-  <main class="py-20 px-10 text-center">
+  <main>
+    <BaseTop />
+    <BaseHeader />
+    <!-- <BaseMenu /> -->
     <slot />
-    <Footer />
-    <div class="mt-5 mx-auto text-center opacity-25 text-sm">
+
+    <div class=" mx-auto text-center opacity-25 text-sm">
       [Home Layout]
     </div>
+    <BaseFooter />
   </main>
 </template>

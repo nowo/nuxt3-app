@@ -1,5 +1,5 @@
 import { pwa } from './config/pwa'
-import { appDescription } from './constants/index'
+import { appDescription } from './config/constant'
 
 export default defineNuxtConfig({
   modules: [
@@ -9,7 +9,9 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/devtools',
+    '@element-plus/nuxt',
   ],
+
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
     // but missing on offline, disabling extraction it until fixed
@@ -18,6 +20,7 @@ export default defineNuxtConfig({
   },
   css: [
     '@unocss/reset/tailwind.css',
+    '~/assets/scss/app.scss',
   ],
   colorMode: {
     classSuffix: '',
@@ -51,6 +54,15 @@ export default defineNuxtConfig({
   },
   pwa,
   vite: {
+
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/scss/default.scss" as *;', // 注意文件路径要配成自己的
+        },
+      },
+    },
+
     server: {
       proxy: {
         '/apis': {

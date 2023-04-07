@@ -3,20 +3,27 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
   "files.associations": {
     "*.css": "postcss"
   },
-  "editor.formatOnSave": false,
   "cSpell.words": [
+    "alipay",
     "antfu",
+    "Attributify",
     "breakline",
     "iconify",
     "nuxi",
     "nuxt",
     "nuxtjs",
     "pinia",
+    "pnpm",
     "stylelint",
+    "swiper",
+    "Uno",
     "unocss",
+    "Vite",
     "vueuse"
   ]
 }

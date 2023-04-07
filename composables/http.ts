@@ -36,14 +36,12 @@ export const useHttp = <T = any>(url: string, data?: RequestDataType, opt?: ReqO
     if (typeof data == 'object') {
       options.body = data
     }
-
-    if (typeof data == 'object') options.body = data
   }
 
   if (!options.baseURL) {
     options.baseURL = runtimeConfig.public.apiBase || ''
   }
-
+  // console.log('options.baseURL :>> ', options.baseURL);
   // 发送请求出错
   options.onRequestError = () => {
     console.error('请求出错，请重试！')

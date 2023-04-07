@@ -8,6 +8,7 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
+// import presetRemToPx from '@unocss/preset-rem-to-px'
 
 export default defineConfig({
   shortcuts: [
@@ -22,12 +23,13 @@ export default defineConfig({
     }),
     presetTypography(),
     presetWebFonts({
-    //   fonts: {
-    //     sans: 'DM Sans',
-    //     serif: 'DM Serif Display',
-    //     mono: 'DM Mono',
-    //   },
+      // fonts: {
+      //   sans: 'DM Sans',
+      //   serif: 'DM Serif Display',
+      //   mono: 'DM Mono',
+      // },
     }),
+    // presetRemToPx(),
   ],
   transformers: [
     transformerDirectives(),
