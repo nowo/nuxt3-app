@@ -36,6 +36,8 @@ export const useHttp = <T = any>(url: string, data?: RequestDataType, opt?: ReqO
     if (typeof data == 'object') {
       options.body = data
     }
+
+    if (typeof data == 'object') options.body = data
   }
 
   if (!options.baseURL) {
