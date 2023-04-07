@@ -6,5 +6,28 @@
     //   "error",
     //   4
     // ]
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "error",
+          "warn"
+        ]
+      }
+    ],
+    "curly": [
+      "error",
+      "multi-line",
+      "consistent"
+    ],
+    "brace-style": "off",
+    "@typescript-eslint/brace-style": [
+      "error",
+      "1tbs"
+      // {
+      //   "allowSingleLine": true
+      // }
+    ],
+    "antfu/if-newline": "off" // 允许if(a==1) return 1  这种单行的格式
   }
 }

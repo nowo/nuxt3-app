@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const online = useOnline()
 const name = ref('张三')
+const text = ref()
+if (name.value === '1123') {
+  text.value = 100
+}
 </script>
 
 <template>
