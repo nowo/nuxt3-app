@@ -1,4 +1,4 @@
-import { pwa } from './config/pwa'
+// import { pwa } from './config/pwa'
 import { appDescription } from './config/constant'
 
 export default defineNuxtConfig({
@@ -52,7 +52,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  pwa,
+  // pwa,
   vite: {
 
     css: {
