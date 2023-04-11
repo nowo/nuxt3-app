@@ -16,7 +16,8 @@
   "dependencies": {
     "@iconify-json/ep": "^1.1.10",
     "element-plus": "^2.3.2",
-    "swiper": "^9.2.0"
+    "swiper": "^9.2.0",
+    "ws": "^8.13.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.3",
