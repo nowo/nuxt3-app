@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 definePageMeta({
   layout: 'home',
+  validate: async (route) => {
+    // const nuxtApp = useNuxtApp()
+    return /^\d+$/.test(route.params.id)
+  }
 })
 
 function generateAlphabets(n: number) {
