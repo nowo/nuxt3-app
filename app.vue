@@ -2,6 +2,10 @@
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import { appName } from '~/config/constant'
 
+import '~/assets/scss/default.scss'
+import '@unocss/reset/tailwind.css'
+import '~/assets/scss/app.scss'
+
 const locale = ref(zhCn)
 
 // let a = -1

@@ -18,10 +18,10 @@ export default defineNuxtConfig({
     payloadExtraction: false,
     inlineSSRStyles: false,
   },
-  css: [
-    '@unocss/reset/tailwind.css',
-    '~/assets/scss/app.scss',
-  ],
+  // css: [
+  //   '@unocss/reset/tailwind.css',
+  //   '~/assets/scss/app.scss',
+  // ],
   colorMode: {
     classSuffix: '',
   },
@@ -55,13 +55,13 @@ export default defineNuxtConfig({
   // pwa,
   vite: {
 
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "~/assets/scss/default.scss" as *;', // 注意文件路径要配成自己的
-        },
-      },
-    },
+    // css: {
+    //   preprocessorOptions: {
+    //     scss: {
+    //       additionalData: '@use "~/assets/scss/default.scss" as *;', // 注意文件路径要配成自己的
+    //     },
+    //   },
+    // },
 
     server: {
       proxy: {
