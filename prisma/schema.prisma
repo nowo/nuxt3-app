@@ -1,0 +1,170 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model classify {
+  id         Int      @id @default(autoincrement())
+  name       String?  @db.VarChar(50)
+  parent_id  Int?     @default(0)
+  type       Int
+  sort       Int?     @default(0)
+  created_at DateTime @db.DateTime(0)
+  updated_at DateTime @db.DateTime(0)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model company {
+  id                                     Int      @id @default(autoincrement())
+  name                                   String?  @db.VarChar(80)
+  name_en                                String?  @db.VarChar(120)
+  tel                                    String?  @db.VarChar(50)
+  address                                String?  @db.VarChar(255)
+  address_en                             String?  @db.VarChar(255)
+  wx_code                                String?  @db.VarChar(1000)
+  shop_code                              String?  @db.VarChar(1000)
+  qq                                     String?  @db.VarChar(20)
+  email                                  String?  @db.VarChar(50)
+  profile                                String?  @db.VarChar(1000)
+  profile_en                             String?  @db.VarChar(1000)
+  corporate_culture                      String?  @db.VarChar(1000)
+  corporate_culture_en                   String?  @db.VarChar(1000)
+  corporate_culture_image                String?  @db.VarChar(1000)
+  description                            String?  @db.VarChar(1000)
+  description_en                         String?  @db.VarChar(1000)
+  establish_date                         String?  @db.VarChar(50)
+  service_province                       String?  @db.VarChar(50)
+  service_office                         String?  @db.VarChar(50)
+  seo_keyword                            String?  @db.VarChar(200)
+  seo_description                        String?  @db.VarChar(255)
+  logo                                   String?  @db.VarChar(1000)
+  logo_mobile                            String?  @db.VarChar(1000)
+  worth                                  String?  @db.VarChar(255)
+  worth_en                               String?  @db.VarChar(255)
+  service_pre_sales_technical_team_tel   String?  @db.VarChar(30)
+  service_after_sales_technical_team_tel String?  @db.VarChar(30)
+  record                                 String?  @db.VarChar(100)
+  honor                                  String?  @db.VarChar(1000)
+  created_at                             DateTime @db.DateTime(0)
+  updated_at                             DateTime @db.DateTime(0)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model file {
+  id         Int      @id @default(autoincrement())
+  name       String?  @db.VarChar(50)
+  url        String?  @db.VarChar(1000)
+  type       Int
+  content    String?  @db.Text
+  sort       Int?     @default(0)
+  created_at DateTime @db.DateTime(0)
+  updated_at DateTime @db.DateTime(0)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model goods {
+  id              Int      @id @default(autoincrement())
+  title           String?  @db.VarChar(150)
+  title_en        String?  @db.VarChar(150)
+  description     String?  @db.VarChar(255)
+  description_en  String?  @db.VarChar(255)
+  content         String?  @db.Text
+  content_en      String?  @db.Text
+  classify_id     Int?     @default(0)
+  video_url       String?  @db.VarChar(1000)
+  image_url       String?  @db.VarChar(1000)
+  seo_keyword     String?  @db.VarChar(150)
+  seo_description String?  @db.VarChar(150)
+  home_recommend  Int?     @default(2)
+  sort            Int?     @default(0)
+  created_at      DateTime @db.DateTime(0)
+  updated_at      DateTime @db.DateTime(0)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model goods_image {
+  id         Int      @id @default(autoincrement())
+  goods_id   Int
+  url        String?  @db.VarChar(1000)
+  sort       Int?     @default(0)
+  created_at DateTime @db.DateTime(0)
+  updated_at DateTime @db.DateTime(0)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model home_image {
+  id             Int      @id @default(autoincrement())
+  title          String?  @db.VarChar(100)
+  title_en       String?  @db.VarChar(100)
+  description    String?  @db.VarChar(255)
+  description_en String?  @db.VarChar(255)
+  url            String?  @db.VarChar(1000)
+  image_url      String?  @db.VarChar(1000)
+  screen         Int
+  type           Int
+  created_at     DateTime @db.DateTime(0)
+  updated_at     DateTime @db.DateTime(0)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model menu {
+  id         Int      @id @default(autoincrement())
+  parent_id  Int?     @default(0)
+  title      String?  @db.VarChar(80)
+  title_en   String?  @db.VarChar(80)
+  href       String?  @db.VarChar(255)
+  sort       Int?     @default(0)
+  updated_at DateTime @db.DateTime(0)
+  created_at DateTime @db.DateTime(0)
+  is_show    Int?     @default(1)
+  img        String?  @db.VarChar(1000)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model news {
+  id             Int      @id @default(autoincrement())
+  title          String?  @db.VarChar(80)
+  title_en       String?  @db.VarChar(80)
+  description    String?  @db.VarChar(255)
+  description_en String?  @db.VarChar(255)
+  content        String?  @db.Text
+  content_en     String?  @db.Text
+  img            String?  @db.VarChar(255)
+  type           Int?
+  home_recommend Int?     @default(2)
+  updated_at     DateTime @db.DateTime(0)
+  created_at     DateTime @db.DateTime(0)
+  sort           Int?     @default(0)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model User {
+  id         Int      @id @default(autoincrement())
+  username   String?  @db.VarChar(30)
+  account    String?  @db.VarChar(50)
+  password   String?  @db.VarChar(255)
+  avatar     String?  @db.VarChar(255)
+  status     Int?     @default(1)
+  created_at DateTime @db.DateTime(0)
+  updated_at DateTime @db.DateTime(0)
+
+  @@map("user")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model video {
+  id              Int      @id @default(autoincrement())
+  video_url       String?  @db.VarChar(1000)
+  video_image_url String?  @db.VarChar(1000)
+  belong_id       Int
+  home_recommend  Int?     @default(2)
+  sort            Int?     @default(0)
+  created_at      DateTime @db.DateTime(0)
+  updated_at      DateTime @db.DateTime(0)
+  title           String?  @db.VarChar(80)
+}
