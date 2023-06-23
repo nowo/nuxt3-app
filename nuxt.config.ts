@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     // but missing on offline, disabling extraction it until fixed
     payloadExtraction: false,
     inlineSSRStyles: false,
+    typedPages: true,
   },
   // css: [
   //   '@unocss/reset/tailwind.css',
