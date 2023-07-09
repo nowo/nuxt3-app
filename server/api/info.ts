@@ -23,4 +23,25 @@ export default defineEventHandler(async (event) => {
   console.log(res)
   return { code: 200, data: res }
   // return prisma.example.findMany()
+
+  // 查询用户姓"张"，1页显示20条
+  const page = 1
+  const pageSize = 20
+  const keyword = '张'
+  const firstQueryResults = await event.context.prisma.user.findMany({
+    skip: pageSize * (page - 1) || 0,
+    take: pageSize,
+    where: {
+      username: {
+        contains: keyword, // 包含
+      },
+    },
+    orderBy: {
+      id: 'asc', // 按id正序排序
+    },
+    select: { // 只返回指定的字段
+      username: true,
+      account: true,
+    },
+  })
 })

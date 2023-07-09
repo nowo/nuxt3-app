@@ -11,11 +11,13 @@
     "generate": "nuxi generate",
     "start:generate": "npx serve .output/public",
     "prepare": "husky install",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "release": "release-it"
   },
   "dependencies": {
     "@prisma/client": "^4.15.0",
     "element-plus": "^2.3.6",
+    "release-it": "^16.1.0",
     "swiper": "^9.4.1",
     "ws": "^8.13.0"
   },
