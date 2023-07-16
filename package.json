@@ -15,6 +15,8 @@
     "release": "release-it"
   },
   "dependencies": {
+    "@auth/core": "^0.9.0",
+    "@hebilicious/authjs-nuxt": "^0.1.5",
     "@prisma/client": "^4.15.0",
     "element-plus": "^2.3.6",
     "release-it": "^16.1.0",
