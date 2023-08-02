@@ -1,16 +1,16 @@
+<template>
+    <el-image v-bind="$attrs">
+        <template #error>
+            <div class="image-slot">
+                <i class="i-ep-picture" />
+            </div>
+        </template>
+    </el-image>
+</template>
+
 <script lang="ts" setup>
 
 </script>
-
-<template>
-  <el-image v-bind="$attrs">
-    <template #error>
-      <div class="image-slot">
-        <i class="i-ep-picture" />
-      </div>
-    </template>
-  </el-image>
-</template>
 
 <style lang="scss" scoped>
 .image-slot {

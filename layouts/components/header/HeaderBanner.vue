@@ -1,4 +1,27 @@
 <!-- 轮播图 -->
+<template>
+    <Swiper class="swp-banner" :slides-per-view="1" :centered-slides="true" :pagination="{ hideOnClick: false }">
+        <SwiperSlide>
+            <img class="im" src="~/assets/images/banner.png" alt="">
+        </SwiperSlide>
+        <SwiperSlide>
+            <img class="im" src="~/assets/images/banner.png" alt="">
+        </SwiperSlide>
+        <SwiperSlide>
+            <img class="im" src="pwa-512x512.png" alt="">
+        </SwiperSlide>
+        <SwiperSlide>
+            <img class="im" src="~/assets/images/banner.png" alt="">
+        </SwiperSlide>
+        <SwiperSlide>
+            <img class="im" src="pwa-512x512.png" alt="">
+        </SwiperSlide>
+        <SwiperSlide>
+            <img class="im" src="~/assets/images/banner.png" alt="">
+        </SwiperSlide>
+    </Swiper>
+</template>
+
 <script lang="ts" setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
@@ -41,29 +64,6 @@ import 'swiper/css'
 //   initSwiper()
 // })
 </script>
-
-<template>
-  <Swiper class="swp-banner" :slides-per-view="1" :centered-slides="true" :pagination="{ hideOnClick: false }">
-    <SwiperSlide>
-      <img class="im" src="~/assets/images/banner.png" alt="">
-    </SwiperSlide>
-    <SwiperSlide>
-      <img class="im" src="~/assets/images/banner.png" alt="">
-    </SwiperSlide>
-    <SwiperSlide>
-      <img class="im" src="pwa-512x512.png" alt="">
-    </SwiperSlide>
-    <SwiperSlide>
-      <img class="im" src="~/assets/images/banner.png" alt="">
-    </SwiperSlide>
-    <SwiperSlide>
-      <img class="im" src="pwa-512x512.png" alt="">
-    </SwiperSlide>
-    <SwiperSlide>
-      <img class="im" src="~/assets/images/banner.png" alt="">
-    </SwiperSlide>
-  </Swiper>
-</template>
 
 <style lang="scss" scoped>
 .swp-banner {

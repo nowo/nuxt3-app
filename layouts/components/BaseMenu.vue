@@ -1,40 +1,40 @@
+<template>
+    <div class="menu-box">
+        <div class="container">
+            <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect">
+                <el-menu-item index="1">
+                    工游记首页
+                </el-menu-item>
+                <el-menu-item index="2" @click="goPage('/goods/list')">
+                    品牌导航
+                </el-menu-item>
+                <el-menu-item index="3" @click="goPage('/goods/detail')">
+                    行家精选
+                </el-menu-item>
+                <el-menu-item index="4">
+                    清仓特卖
+                </el-menu-item>
+                <el-menu-item index="15">
+                    低价好货
+                </el-menu-item>
+                <el-menu-item index="6">
+                    内容资讯
+                </el-menu-item>
+            </el-menu>
+        </div>
+    </div>
+</template>
+
 <script lang="ts" setup>
 const activeIndex = ref('1')
 
 const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+    console.warn(key, keyPath)
 }
 const goPage = (url: string) => {
-  navigateTo(url)
+    navigateTo(url)
 }
 </script>
-
-<template>
-  <div class="menu-box">
-    <div class="container">
-      <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect">
-        <el-menu-item index="1">
-          工游记首页
-        </el-menu-item>
-        <el-menu-item index="2" @click="goPage('/goods/list')">
-          品牌导航
-        </el-menu-item>
-        <el-menu-item index="3" @click="goPage('/goods/detail')">
-          行家精选
-        </el-menu-item>
-        <el-menu-item index="4">
-          清仓特卖
-        </el-menu-item>
-        <el-menu-item index="15">
-          低价好货
-        </el-menu-item>
-        <el-menu-item index="6">
-          内容资讯
-        </el-menu-item>
-      </el-menu>
-    </div>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .menu-box {

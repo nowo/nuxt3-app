@@ -1,41 +1,42 @@
+<template>
+    <div class="nav-banner" :class="{ index: isIndex }">
+        <div class="nav">
+            <div class="flex container">
+                <div class="left-box">
+                    <HeaderClassify />
+                </div>
+                <HeaderMenu />
+            </div>
+        </div>
+        <div v-if="isIndex" class="banner">
+            <div class="h520px flex container">
+                <div class="left-box">
+                    <!-- 占位 -->
+                </div>
+                <div class="swp">
+                    <HeaderBanner />
+                </div>
+                <div class="right">
+                    <HeaderUser />
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
 <script lang="ts" setup>
 import HeaderClassify from './HeaderClassify.vue'
 import HeaderMenu from './HeaderMenu.vue'
 import HeaderBanner from './HeaderBanner.vue'
 import HeaderUser from './HeaderUser.vue'
+
 const route = useRoute()
 
 // 判断是否为首页，显示首页模块头部内容
 const isIndex = computed(() => {
-  return route.path === '/'
+    return route.path === '/'
 })
 </script>
-
-<template>
-  <div class="nav-banner" :class="{ index: isIndex }">
-    <div class="nav">
-      <div class="container flex">
-        <div class="left-box">
-          <HeaderClassify />
-        </div>
-        <HeaderMenu />
-      </div>
-    </div>
-    <div v-if="isIndex" class="banner">
-      <div class="container flex h520px">
-        <div class="left-box">
-          <!-- 占位 -->
-        </div>
-        <div class="swp">
-          <HeaderBanner />
-        </div>
-        <div class="right">
-          <HeaderUser />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .nav-banner {

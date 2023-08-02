@@ -24,16 +24,16 @@ router.use('/sign', defineEventHandler(async (event) => {
   const param = method === 'GET' ? query : body
 
   const user = await event.context.prisma.user.findUnique({
-    where: {
-      account: param.account,
-    },
+      where: {
+          account: param.account,
+      },
   })
   const session = await getServerSession(event, authOptions)
   console.log('session :>> ', session)
   if (!user) {
-    return {
-      msg: '用户不存在',
-    }
+      return {
+          msg: '用户不存在',
+      }
   }
 
   return 1

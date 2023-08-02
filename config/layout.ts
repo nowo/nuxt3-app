@@ -2,14 +2,14 @@
 export const mainWidth = 1200
 
 export const layoutConfig = {
-  mainWidth: '1200px',
+    mainWidth: '1200px',
 
 }
 
 export const bannerWid = {
-  left: '230px', // 商品分类宽度
-  banner: '720px', // banner宽度
-  right: '250px', // banner右侧个人信息宽度
+    left: '230px', // 商品分类宽度
+    banner: '720px', // banner宽度
+    right: '250px', // banner右侧个人信息宽度
 }
 
 /**
@@ -18,6 +18,6 @@ export const bannerWid = {
  * @returns
  */
 export const setWidth = (val?: number | string) => {
-  if (!val) return ''
-  return Number.isNaN(Number(val)) ? val : `${val}px`
+    if (!val) return ''
+    return Number.isNaN(Number(val)) ? val : `${val}px`
 }

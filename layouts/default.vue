@@ -1,15 +1,15 @@
+<template>
+    <main class="px-10 py-20 text-center">
+        <el-button>我是 ElButton</el-button>
+        <slot />
+        <Footer />
+        <div class="mx-auto mt-5 text-center text-sm opacity-25">
+            [Default Layout]
+            <BaseFooter />
+        </div>
+    </main>
+</template>
+
 <script setup lang="ts">
 import BaseFooter from './components/BaseFooter.vue'
 </script>
-
-<template>
-  <main class="py-20 px-10 text-center">
-    <el-button>我是 ElButton</el-button>
-    <slot />
-    <Footer />
-    <div class="mt-5 mx-auto text-center opacity-25 text-sm">
-      [Default Layout]
-      <BaseFooter />
-    </div>
-  </main>
-</template>

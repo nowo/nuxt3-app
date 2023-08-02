@@ -1,37 +1,24 @@
-<script setup lang="ts">
-const ruleForm = reactive({
-  phone: '',
-  password: '',
-})
-
-if (ruleForm.phone) {
-  ruleForm.password = '123.43'
-} else {
-  ruleForm.password = '11'
-}
-</script>
-
 <template>
-  <div class="content">
-    <div class="login">
-      <div class="title">
-        登录
-      </div>
-      <el-form ref="ruleFormRef" label-width="40px" :model="ruleForm" style="max-width: 330px" size="large">
-        <el-form-item prop="phone" :rules="[{ required: true, message: '请输入您的手机号/邮箱/账号' }]">
-          <el-input v-model="ruleForm.phone" placeholder="请输入手机号/邮箱/账号" />
-        </el-form-item>
-        <el-form-item prop="password" :rules="[{ required: true, message: '请输入您的密码' }]">
-          <el-input v-model="ruleForm.password" placeholder="请输入密码" />
-        </el-form-item>
-        <el-form-item>
-          <el-button class="w300px">
-            <i class="i-ep-plus" />
-            登录
-          </el-button>
-        </el-form-item>
-      </el-form>
-      <!-- <div style="margin:0 40px;">
+    <div class="content">
+        <div class="login">
+            <div class="title">
+                登录
+            </div>
+            <el-form label-width="40px" :model="ruleForm" style="max-width: 330px" size="large">
+                <el-form-item prop="phone" :rules="[{ required: true, message: '请输入您的手机号/邮箱/账号' }]">
+                    <el-input v-model="ruleForm.phone" placeholder="请输入手机号/邮箱/账号" />
+                </el-form-item>
+                <el-form-item prop="password" :rules="[{ required: true, message: '请输入您的密码' }]">
+                    <el-input v-model="ruleForm.password" placeholder="请输入密码" />
+                </el-form-item>
+                <el-form-item>
+                    <el-button class="w300px">
+                        <i class="i-ep-plus" />
+                        登录
+                    </el-button>
+                </el-form-item>
+            </el-form>
+            <!-- <div style="margin:0 40px;">
                           <NuxtLink to="/Fpassword" style="float: left;">
                             忘记密码?
                           </NuxtLink>
@@ -39,9 +26,22 @@ if (ruleForm.phone) {
                             立即注册>
                           </NuxtLink>
                         </div> -->
+        </div>
     </div>
-  </div>
 </template>
+
+<script setup lang="ts">
+const ruleForm = reactive({
+    phone: '',
+    password: '',
+})
+
+if (ruleForm.phone) {
+    ruleForm.password = '123.43'
+} else {
+    ruleForm.password = '11'
+}
+</script>
 
 <style scoped>
 body {

@@ -9,12 +9,12 @@
 ```
 - 方式二：nuxt.config.ts里配置
 ```ts
-    // nuxt.config.ts
-    export default defineNuxtConfig({
-        devServer: {
-            port: 3001,
-        },
-    })
+// nuxt.config.ts
+export default defineNuxtConfig({
+    devServer: {
+        port: 3001,
+    },
+})
 ```
 - 方式三：运行项目时的命令设置端口号
 ```json

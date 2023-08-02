@@ -1,116 +1,116 @@
-<script lang="ts" setup>
-const tableActive = ref('1')
-</script>
-
 <template>
-  <div class="">
-    <div class="container">
-      <div class="goods-best">
-        <div class="goods-best-tle">
-          <div class="lt">
-            新品优选<sub>明星产品，趋势热销</sub>
-          </div>
-          <NuxtLink>
-            <el-button link>
-              更多
-              <i class="i-ep-arrow-right" />
-            </el-button>
-          </NuxtLink>
-        </div>
-        <ul class="goods-best-list">
-          <li v-for="(o, index) in 5" :key="o">
-            <NuxtLink class="link">
-              <el-image class="w150px h150px" src="~/assets/images/goods1.png">
-                <template #error>
-                  <div class="image-err">
-                    <i class="i-ep-picture" />
-                  </div>
-                </template>
-              </el-image>
-              <h3>工游记 一键测量仪{{ index }}</h3>
-              <div class="price">
-                <span>惊爆价</span>
-                <em>￥200.5</em>
-              </div>
-              <el-button text bg type="danger">
-                大热卖推荐
-              </el-button>
-            </NuxtLink>
-          </li>
-        </ul>
-      </div>
-      <div class="floor-box">
-        <div class="floor-item">
-          <div class="left">
-            <h3 class="tle">
-              测量仪器
-            </h3>
-            <ul class="class-list">
-              <li>
-                <el-button round>
-                  工业检测
-                </el-button>
-              </li>
-              <li>
-                <el-button round>
-                  工业检测
-                </el-button>
-              </li>
-              <li>
-                <el-button round>
-                  工业检测
-                </el-button>
-              </li>
-            </ul>
-            <img class="absolute top-0 left-0 w99% h100% object-cover -z-1" src="~/assets/images/floor1.png" alt="">
-          </div>
-          <div class="right">
-            <el-tabs v-model="tableActive" class="tabs-box">
-              <el-tab-pane label="断路器" name="1">
-                <ul class="goods-list">
-                  <li v-for="item in 10" :key="item">
-                    <NuxtLink class="link">
-                      <div class="im-box">
-                        <img src="~/assets/images/goods1.png" alt="">
-                      </div>
-                      <!-- <el-image class="w150px h150px" src="~/assets/images/goods1.png">
+    <div class="">
+        <div class="container">
+            <div class="goods-best">
+                <div class="goods-best-tle">
+                    <div class="lt">
+                        新品优选<sub>明星产品，趋势热销</sub>
+                    </div>
+                    <NuxtLink>
+                        <el-button link>
+                            更多
+                            <i class="i-ep-arrow-right" />
+                        </el-button>
+                    </NuxtLink>
+                </div>
+                <ul class="goods-best-list">
+                    <li v-for="(o, index) in 5" :key="o">
+                        <NuxtLink class="link">
+                            <el-image class="h150px w150px" src="~/assets/images/goods1.png">
+                                <template #error>
+                                    <div class="image-err">
+                                        <i class="i-ep-picture" />
+                                    </div>
+                                </template>
+                            </el-image>
+                            <h3>工游记 一键测量仪{{ index }}</h3>
+                            <div class="price">
+                                <span>惊爆价</span>
+                                <em>￥200.5</em>
+                            </div>
+                            <el-button text bg type="danger">
+                                大热卖推荐
+                            </el-button>
+                        </NuxtLink>
+                    </li>
+                </ul>
+            </div>
+            <div class="floor-box">
+                <div class="floor-item">
+                    <div class="left">
+                        <h3 class="tle">
+                            测量仪器
+                        </h3>
+                        <ul class="class-list">
+                            <li>
+                                <el-button round>
+                                    工业检测
+                                </el-button>
+                            </li>
+                            <li>
+                                <el-button round>
+                                    工业检测
+                                </el-button>
+                            </li>
+                            <li>
+                                <el-button round>
+                                    工业检测
+                                </el-button>
+                            </li>
+                        </ul>
+                        <img class="absolute left-0 top-0 h100% w99% object-cover -z-1" src="~/assets/images/floor1.png" alt="">
+                    </div>
+                    <div class="right">
+                        <el-tabs v-model="tableActive" class="tabs-box">
+                            <el-tab-pane label="断路器" name="1">
+                                <ul class="goods-list">
+                                    <li v-for="item in 10" :key="item">
+                                        <NuxtLink class="link">
+                                            <div class="im-box">
+                                                <img src="~/assets/images/goods1.png" alt="">
+                                            </div>
+                                            <!-- <el-image class="w150px h150px" src="~/assets/images/goods1.png">
                         <template #error>
                           <div class="image-err">
                                         <i class="i-ep-picture" />
                                       </div>
                                     </template>
                                   </el-image> -->
-                      <h3>工游记 一键测量仪</h3>
-                      <div class="price">
-                        <span>惊爆价</span>
-                        <em>￥200.5</em>
-                      </div>
-                      <el-button text bg type="danger">
-                        大热卖推荐
-                      </el-button>
-                    </NuxtLink>
-                  </li>
-                </ul>
-              </el-tab-pane>
-              <el-tab-pane label="继电器" name="2">
-                Config
-              </el-tab-pane>
-              <el-tab-pane label="断路器" name="3">
-                Role
-              </el-tab-pane>
-              <el-tab-pane label="断路器" name="4">
-                Task
-              </el-tab-pane>
-            </el-tabs>
-          </div>
-          <div class="brand-list">
-            <img class="h80px" src="pwa-192x192.png" alt="">
-          </div>
+                                            <h3>工游记 一键测量仪</h3>
+                                            <div class="price">
+                                                <span>惊爆价</span>
+                                                <em>￥200.5</em>
+                                            </div>
+                                            <el-button text bg type="danger">
+                                                大热卖推荐
+                                            </el-button>
+                                        </NuxtLink>
+                                    </li>
+                                </ul>
+                            </el-tab-pane>
+                            <el-tab-pane label="继电器" name="2">
+                                Config
+                            </el-tab-pane>
+                            <el-tab-pane label="断路器" name="3">
+                                Role
+                            </el-tab-pane>
+                            <el-tab-pane label="断路器" name="4">
+                                Task
+                            </el-tab-pane>
+                        </el-tabs>
+                    </div>
+                    <div class="brand-list">
+                        <img class="h80px" src="pwa-192x192.png" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
+
+<script lang="ts" setup>
+const tableActive = ref('1')
+</script>
 
 <style lang="scss" scoped>
 .goods-best {

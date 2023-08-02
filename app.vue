@@ -1,3 +1,12 @@
+<template>
+    <el-config-provider :locale="locale">
+        <VitePwaManifest />
+        <NuxtLayout>
+            <NuxtPage />
+        </NuxtLayout>
+    </el-config-provider>
+</template>
+
 <script setup lang="ts">
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import { appName } from '~/config/constant'
@@ -14,18 +23,9 @@ const locale = ref(zhCn)
 // console.log('a :>> ', a);
 
 useHead({
-  title: appName,
+    title: appName,
 })
 </script>
-
-<template>
-  <el-config-provider :locale="locale">
-    <VitePwaManifest />
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </el-config-provider>
-</template>
 
 <style lang="scss">
 html,

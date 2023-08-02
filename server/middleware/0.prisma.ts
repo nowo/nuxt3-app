@@ -9,8 +9,8 @@ declare module 'h3' {
 }
 
 export default eventHandler((event) => {
-  if (!prisma) {
-    prisma = new PrismaClient()
-  }
-  event.context.prisma = prisma
+    if (!prisma) {
+        prisma = new PrismaClient()
+    }
+    event.context.prisma = prisma
 })
