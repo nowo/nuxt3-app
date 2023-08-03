@@ -19,8 +19,8 @@ export default defineNuxtConfig({
         '@panva/hkdf': resolve(__dirname, 'node_modules/@panva/hkdf/dist/web/index.js'),
     },
     experimental: {
-    // when using generate, payload js assets included in sw precache manifest
-    // but missing on offline, disabling extraction it until fixed
+        // when using generate, payload js assets included in sw precache manifest
+        // but missing on offline, disabling extraction it until fixed
         payloadExtraction: false,
         inlineSSRStyles: false,
         typedPages: true,
@@ -80,7 +80,7 @@ export default defineNuxtConfig({
         },
     },
     runtimeConfig: {
-    // 仅在服务端serve可以访问
+        // 仅在服务端serve可以访问
         appKey: 'abcd',
         authJs: {
             secret: process.env.NUXT_AUTH_SECRET, // You can generate one with `openssl rand -base64 32`
@@ -90,6 +90,8 @@ export default defineNuxtConfig({
             baseUrl: process.env.VITE_BASE_URL || '/',
             apiBase: process.env.VITE_API_BASE || '',
             otherUrl: process.env.OTHER_URL || 'default_other_url',
+
+            secret: process.env.NUXT_AUTH_SECRET, // You can generate one with `openssl rand -base64 32`
 
             authJs: {
                 // baseUrl: process.env.NUXT_NEXTAUTH_URL, // The base URL is used for the Origin Check in prod only

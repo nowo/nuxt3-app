@@ -14,29 +14,32 @@ const router = createRouter()
  * 获取底部导航
  */
 router.use('/sign', defineEventHandler(async (event) => {
-  interface LoginDataType {
-    account: string
-    password: string
-  }
-  const method = getMethod(event)
-  const query = getQuery(event) as unknown as LoginDataType
-  const body = await readBody<LoginDataType>(event)
-  const param = method === 'GET' ? query : body
+    interface LoginDataType {
+        account: string
+        password: string
+    }
+    const method = getMethod(event)
+    const query = getQuery(event) as unknown as LoginDataType
+    const body = await readBody<LoginDataType>(event)
+    const param = method === 'GET' ? query : body
 
-  const user = await event.context.prisma.user.findUnique({
-      where: {
-          account: param.account,
-      },
-  })
-  const session = await getServerSession(event, authOptions)
-  console.log('session :>> ', session)
-  if (!user) {
-      return {
-          msg: '用户不存在',
-      }
-  }
+    if (!param.account) return { msg: '请输入登录账号' }
+    if (!param.password) return { msg: '请输入登录密码' }
 
-  return 1
+    const user = await event.context.prisma.user.findUnique({
+        where: {
+            account: param.account,
+        },
+    })
+    const session = await getServerSession(event, authOptions)
+    console.log('session :>> ', session)
+    if (!user) {
+        return {
+            msg: '用户不存在',
+        }
+    }
+
+    return { session }
 }))
 
 export default useBase('/api/login', router.handler)
