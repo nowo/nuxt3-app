@@ -165,17 +165,23 @@ const onLogin = async () => {
 }
 
 const testLogin = async () => {
-    const res = await signIn('credentials', {
-        callbackUrl: '/',
-        redirect: false,
-        username: ruleForm.username,
-        password: ruleForm.password,
-    })
+    console.log(session)
+    try {
+        const res = await signIn('credentials', {
+            callbackUrl: '/',
+            redirect: false,
+            username: ruleForm.username,
+            password: ruleForm.password,
+        })
+        console.log(res)
+        location.reload()
+    } catch (e) {
+        console.log(e)
+    }
+
     // console.log('error, url :>> ', error, url);
     setTimeout(() => {
         console.log(session, cookies)
-
-        console.log(res)
     }, 1000)
     // await wait(5000)
 }

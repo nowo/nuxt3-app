@@ -12,6 +12,7 @@ export default defineNuxtConfig({
         '@nuxt/devtools',
         '@element-plus/nuxt',
         '@hebilicious/authjs-nuxt',
+        '@nuxtjs/i18n',
     ],
     alias: {
         'cookie': resolve(__dirname, 'node_modules/cookie'),
@@ -61,7 +62,8 @@ export default defineNuxtConfig({
     },
     // pwa,
     vite: {
-
+        plugins: [
+        ],
         // css: {
         //   preprocessorOptions: {
         //     scss: {
@@ -98,5 +100,9 @@ export default defineNuxtConfig({
                 verifyClientOnEveryRequest: true, // whether to hit the /auth/session endpoint on every client request
             },
         },
+    },
+
+    i18n: {
+        vueI18n: './i18n.config.ts', // if you are using custom path, default
     },
 })

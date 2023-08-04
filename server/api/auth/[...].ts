@@ -1,7 +1,10 @@
 // import GithubProvider from '@auth/core/providers/github'
 import type { AuthConfig } from '@auth/core/types'
 import Credentials from '@auth/core/providers/credentials'
+import { PrismaClient } from '@prisma/client'
 import { NuxtAuthHandler } from '#auth'
+
+const prisma = new PrismaClient()
 
 // The #auth virtual import comes from this module. You can use it on the client
 // and server side, however not every export is universal. For example do not
@@ -43,6 +46,8 @@ export const authOptions: AuthConfig = {
                 // that is false/null if the credentials are invalid.
                 // NOTE: THE BELOW LOGIC IS NOT SAFE OR PROPER FOR AUTHENTICATION!
 
+                console.log(prisma.user)
+
                 const user = {
                     id: '1',
                     name: 'J Smith',
@@ -62,18 +67,27 @@ export const authOptions: AuthConfig = {
                     )
 
                     // If you return null then an error will be displayed advising the user to check their details.
-                    throw createError({
-                        statusMessage: '账户密码错误',
-                        statusCode: 302,
-                    })
+                    return null
 
                     // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+                    // throw createError({
+                    //     statusMessage: '账户密码错误',
+                    //     statusCode: 302,
+                    // })
                 }
             },
+
         }),
+
     ],
     pages: {
         signIn: '/login',
+    },
+    callbacks: {
+        async signIn({ user, account, profile, email, credentials }) {
+            console.log({ user, account, profile, email, credentials })
+            return true
+        },
     },
 }
 
