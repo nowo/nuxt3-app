@@ -103,6 +103,32 @@ export default defineNuxtConfig({
     },
 
     i18n: {
-        vueI18n: './i18n.config.ts', // if you are using custom path, default
+        locales: [
+            {
+                code: 'en',
+                name: 'English',
+                file: 'en-US.json',
+            },
+            {
+                code: 'zh',
+                name: '简体中文',
+                file: 'zh-CN.json',
+            },
+            // {
+            //   code: 'fr',
+            //   file: 'fr-FR.ts'
+            // }
+        ],
+        lazy: true,
+        langDir: 'lang',
+        defaultLocale: 'zh', // default locale of your project for Nuxt pages and routings
+        // strategy: 'prefix_except_default',
+        detectBrowserLanguage: {
+            useCookie: true,
+            cookieKey: 'i18n_redirected',
+            redirectOn: 'root', // recommended
+            alwaysRedirect: true,
+            // fallbackLocale: 'zh',
+        },
     },
 })

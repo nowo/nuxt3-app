@@ -1,7 +1,7 @@
 <template>
     <div>
-        <form>
-            <select v-model="locale">
+        <!-- <form>
+            <select v-model="locale" @change="setLocale(locale)">
                 <option value="zh">
                     简体中文
                 </option>
@@ -10,8 +10,18 @@
                 </option>
             </select>
             <p>{{ $t('welcome') }}</p>
-        </form>
-        <p>{{ $t('welcome') }}</p>
+        </form> -->
+        <p>
+            {{ $t('welcome') }}，{{ $t('hello', { name: $t('welcome') }) }}
+        </p>
+
+        <h3>
+            <NuxtLink v-for="item in availableLocales" :key="item.code" :to="switchLocalePath(item.code)">
+                {{
+                    item.name
+                }}
+            </NuxtLink>
+        </h3>
         <div>
             <NuxtLink :to="localePath('/')">
                 简体中文
@@ -28,9 +38,16 @@
 </template>
 
 <script lang="ts" setup>
+import type { LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
+
 const switchLocalePath = useSwitchLocalePath()
-const { locale } = useI18n()
+const { locale, locales, setLocale } = useI18n()
 const localePath = useLocalePath()
+
+const availableLocales = computed(() => {
+    console.log(locales.value)
+    return (locales.value as LocaleObject[]).filter(i => i.code !== locale.value)
+})
 
 const runtimeConfig = useRuntimeConfig()
 const onTest = () => {
@@ -38,7 +55,10 @@ const onTest = () => {
 
     setSignRule(runtimeConfig.public.secret, _t.toString())
 
+    console.log(useRouter().getRoutes())
+
     console.log(locale)
+    console.log(locales)
 }
 </script>
 

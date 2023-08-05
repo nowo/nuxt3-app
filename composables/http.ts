@@ -1,6 +1,6 @@
-// export const useHttp = () => {
-//   return useState('foo', () => 'bar')
-// }
+import { defu } from 'defu'
+import type { NitroFetchRequest } from 'nitropack'
+import type { UseFetchOptions } from '#app'
 
 // import type { UseFetchOptions } from '#app'
 
@@ -75,3 +75,32 @@ export const useHttp = <T = any>(url: string, data?: RequestDataType, opt?: ReqO
 }
 
 // const { data: users, pending, refresh, error } = await http<{ name: string }>('/a')
+
+export function useCustomFetch<T>(url: NitroFetchRequest, options: UseFetchOptions<T> = {}) {
+    const userAuth = useCookie('token')
+    const config = useRuntimeConfig()
+
+    const defaults: UseFetchOptions<T> = {
+        baseURL: config.public.apiBase ?? 'https://api.nuxtjs.dev',
+        // cache request
+        key: url as string,
+
+        // set user token if connected
+        headers: userAuth.value
+            ? { Authorization: `Bearer ${userAuth.value}` }
+            : {},
+
+        onResponse(_ctx) {
+            // _ctx.response._data = new myBusinessResponse(_ctx.response._data)
+        },
+
+        onResponseError(_ctx) {
+            // throw new myBusinessError()
+        },
+    }
+
+    // for nice deep defaults, please use unjs/defu
+    const params = defu(options, defaults)
+
+    return useFetch(url, params)
+}
