@@ -1,22 +1,22 @@
 <!-- 商品分类 -->
+<template>
+    <div class="goods-class">
+        <div class="goods-class-tle">
+            <i class="i-carbon-list" />
+            商品分类
+        </div>
+        <ul class="goods-class-list">
+            <li>a</li>
+        </ul>
+        <div class="goods-class-child">
+            1
+        </div>
+    </div>
+</template>
+
 <script lang="ts" setup>
 
 </script>
-
-<template>
-  <div class="goods-class">
-    <div class="goods-class-tle">
-      <i class="i-carbon-list" />
-      商品分类
-    </div>
-    <ul class="goods-class-list">
-      <li>a</li>
-    </ul>
-    <div class="goods-class-child">
-      1
-    </div>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .goods-class {

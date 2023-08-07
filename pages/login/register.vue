@@ -1,10 +1,10 @@
+<template>
+    注册1
+</template>
+
 <script setup lang="ts">
 
 </script>
-
-<template>
-  注册1
-</template>
 
 <style scoped>
 

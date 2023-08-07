@@ -1,29 +1,29 @@
 {
-  "prettier.enable": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "editor.formatOnSave": true,
-  "editor.tabSize": 2,
-  "files.associations": {
-    "*.css": "postcss"
-  },
-  "cSpell.words": [
-    "alipay",
-    "antfu",
-    "Attributify",
-    "breakline",
-    "iconify",
-    "nuxi",
-    "nuxt",
-    "nuxtjs",
-    "pinia",
-    "pnpm",
-    "stylelint",
-    "swiper",
-    "Uno",
-    "unocss",
-    "Vite",
-    "vueuse"
-  ]
+    "prettier.enable": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "files.associations": {
+        "*.css": "postcss"
+    },
+    "cSpell.words": [
+        "alipay",
+        "antfu",
+        "Attributify",
+        "breakline",
+        "iconify",
+        "nuxi",
+        "nuxt",
+        "nuxtjs",
+        "pinia",
+        "pnpm",
+        "stylelint",
+        "swiper",
+        "Uno",
+        "unocss",
+        "Vite",
+        "vueuse"
+    ]
 }

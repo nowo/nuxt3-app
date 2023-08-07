@@ -1,78 +1,82 @@
 {
-  "private": true,
-  "packageManager": "pnpm@7.29.3",
-  "scripts": {
-    "build": "nuxi build",
-    "dev": "nuxi dev",
-    "dev:pwa": "VITE_PLUGIN_PWA=true nuxi dev",
-    "start": "node .output/server/index.mjs",
-    "lint": "eslint . --fix",
-    "postinstall": "nuxi prepare",
-    "generate": "nuxi generate",
-    "start:generate": "npx serve .output/public",
-    "prepare": "husky install",
-    "commit": "git-cz",
-    "release": "release-it"
-  },
-  "dependencies": {
-    "@auth/core": "^0.9.0",
-    "@hebilicious/authjs-nuxt": "^0.1.10",
-    "@prisma/client": "^4.16.2",
-    "element-plus": "^2.3.8",
-    "release-it": "^16.1.3",
-    "swiper": "^9.4.1",
-    "ws": "^8.13.0"
-  },
-  "devDependencies": {
-    "@antfu/eslint-config": "^0.39.8",
-    "@element-plus/nuxt": "^1.0.5",
-    "@iconify-json/carbon": "^1.1.18",
-    "@iconify-json/ep": "^1.1.11",
-    "@iconify-json/twemoji": "^1.1.11",
-    "@nuxt/devtools": "^0.6.7",
-    "@nuxtjs/color-mode": "^3.3.0",
-    "@pinia/nuxt": "^0.4.11",
-    "@types/ws": "^8.5.5",
-    "@unocss/nuxt": "^0.53.6",
-    "@unocss/preset-rem-to-px": "^0.53.6",
-    "@vite-pwa/nuxt": "^0.1.0",
-    "@vueuse/nuxt": "^10.2.1",
-    "commitizen": "^4.3.0",
-    "cz-git": "^1.7.0",
-    "eslint": "^8.45.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "nuxt": "^3.6.5",
-    "pinia": "^2.1.4",
-    "prisma": "^4.16.2",
-    "sass": "^1.64.1",
-    "typescript": "^5.1.6"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-git"
+    "version": "0.0.1",
+    "private": true,
+    "packageManager": "pnpm@7.29.3",
+    "scripts": {
+        "build": "nuxi build",
+        "dev": "nuxi dev",
+        "dev:pwa": "VITE_PLUGIN_PWA=true nuxi dev",
+        "start": "node .output/server/index.mjs",
+        "lint": "eslint . --fix",
+        "postinstall": "nuxi prepare",
+        "generate": "nuxi generate",
+        "start:generate": "npx serve .output/public",
+        "prepare": "husky install",
+        "commit": "git-cz",
+        "release": "release-it"
+    },
+    "dependencies": {
+        "@auth/core": "^0.9.0",
+        "@hebilicious/authjs-nuxt": "^0.1.10",
+        "@prisma/client": "^4.16.2",
+        "crypto-js": "^4.1.1",
+        "element-plus": "^2.3.8",
+        "release-it": "^16.1.3",
+        "swiper": "^9.4.1",
+        "ws": "^8.13.0"
+    },
+    "devDependencies": {
+        "@antfu/eslint-config": "^0.39.8",
+        "@element-plus/nuxt": "^1.0.5",
+        "@iconify-json/carbon": "^1.1.18",
+        "@iconify-json/ep": "^1.1.11",
+        "@iconify-json/twemoji": "^1.1.11",
+        "@nuxt/devtools": "^0.6.7",
+        "@nuxtjs/color-mode": "^3.3.0",
+        "@nuxtjs/i18n": "8.0.0-rc.2",
+        "@pinia/nuxt": "^0.4.11",
+        "@types/crypto-js": "^4.1.1",
+        "@types/ws": "^8.5.5",
+        "@unocss/eslint-config": "^0.54.1",
+        "@unocss/nuxt": "^0.53.6",
+        "@unocss/preset-rem-to-px": "^0.53.6",
+        "@vite-pwa/nuxt": "^0.1.0",
+        "@vueuse/nuxt": "^10.3.0",
+        "commitizen": "^4.3.0",
+        "cz-git": "^1.7.0",
+        "eslint": "^8.46.0",
+        "husky": "^8.0.3",
+        "lint-staged": "^13.2.3",
+        "nuxt": "^3.6.5",
+        "pinia": "^2.1.6",
+        "prisma": "^4.16.2",
+        "sass": "^1.64.2",
+        "typescript": "^5.1.6"
+    },
+    "config": {
+        "commitizen": {
+            "path": "node_modules/cz-git"
+        }
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged0": {
+        "*.vue": [
+            "eslint --fix"
+        ],
+        "*.{htm,html,css,sss,less,scss,sass}": [
+            "eslint --fix"
+        ]
+    },
+    "lint-staged": {
+        "*.vue": [
+            "eslint --fix"
+        ],
+        "*.{js,jsx,ts,tsx}": [
+            "eslint --fix"
+        ]
     }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged0": {
-    "*.vue": [
-      "eslint --fix"
-    ],
-    "*.{htm,html,css,sss,less,scss,sass}": [
-      "eslint --fix"
-    ]
-  },
-  "lint-staged": {
-    "*.vue": [
-      "eslint --fix"
-    ],
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ]
-  },
-  "version": "0.0.1"
 }

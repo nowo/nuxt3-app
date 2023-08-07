@@ -1,82 +1,82 @@
 <!-- 商品分类 -->
+<template>
+    <div class="goods-class-tle">
+        <i class="i-carbon-list" />
+        <span class="ml8px">商品分类</span>
+        <ul class="goods-class-child">
+            <li>
+                <NuxtLink to="/" @mouseenter="showGoodsPane()">
+                    <i class="i-ep-service" />
+                    <span>商品分类</span>
+                </NuxtLink>
+                <div class="goods-class-pane">
+                    <el-form-item label="硬度计">
+                        <NuxtLink to="/">
+                            <i class="i-ep-service" />
+                            <span>商品分类</span>
+                        </NuxtLink>
+                        <NuxtLink to="/">
+                            <i class="i-ep-service" />
+                            <span>商品分类</span>
+                        </NuxtLink>
+                        <NuxtLink to="/">
+                            <i class="i-ep-service" />
+                            <span>商品分类</span>
+                        </NuxtLink>
+                    </el-form-item>
+                </div>
+            </li>
+            <li>
+                <NuxtLink to="/">
+                    <i class="i-ep-service" />
+                    <span>商品分类</span>
+                </NuxtLink>
+                <div class="goods-class-pane top-0">
+                    112
+                </div>
+            </li>
+            <li>
+                <NuxtLink to="/">
+                    <i class="i-ep-service" />
+                    <span>商品分类</span>
+                </NuxtLink>
+                <div class="goods-class-pane">
+                    <el-form-item label="硬度计">
+                        <NuxtLink to="/">
+                            <i class="i-ep-service" />
+                            <span>商品分类</span>
+                        </NuxtLink>
+                        <NuxtLink to="/">
+                            <i class="i-ep-service" />
+                            <span>商品分类</span>
+                        </NuxtLink>
+                        <NuxtLink to="/">
+                            <i class="i-ep-service" />
+                            <span>商品分类</span>
+                        </NuxtLink>
+                    </el-form-item>
+                </div>
+            </li>
+            <li>
+                <NuxtLink to="/">
+                    <i class="i-ep-service" />
+                    <span>商品分类</span>
+                </NuxtLink>
+            </li>
+        </ul>
+    </div>
+</template>
+
 <script lang="ts" setup>
 const defData = reactive({
-  active: -1,
-  show: false,
+    active: -1,
+    show: false,
 })
 
 const showGoodsPane = () => {
 
 }
 </script>
-
-<template>
-  <div class="goods-class-tle">
-    <i class="i-carbon-list" />
-    <span class="ml8px">商品分类</span>
-    <ul class="goods-class-child">
-      <li>
-        <NuxtLink to="/" @mouseenter="showGoodsPane()">
-          <i class="i-ep-service" />
-          <span>商品分类</span>
-        </NuxtLink>
-        <div class="goods-class-pane">
-          <el-form-item label="硬度计">
-            <NuxtLink to="/">
-              <i class="i-ep-service" />
-              <span>商品分类</span>
-            </NuxtLink>
-            <NuxtLink to="/">
-              <i class="i-ep-service" />
-              <span>商品分类</span>
-            </NuxtLink>
-            <NuxtLink to="/">
-              <i class="i-ep-service" />
-              <span>商品分类</span>
-            </NuxtLink>
-          </el-form-item>
-        </div>
-      </li>
-      <li>
-        <NuxtLink to="/">
-          <i class="i-ep-service" />
-          <span>商品分类</span>
-        </NuxtLink>
-        <div class="goods-class-pane top-0">
-          112
-        </div>
-      </li>
-      <li>
-        <NuxtLink to="/">
-          <i class="i-ep-service" />
-          <span>商品分类</span>
-        </NuxtLink>
-        <div class="goods-class-pane">
-          <el-form-item label="硬度计">
-            <NuxtLink to="/">
-              <i class="i-ep-service" />
-              <span>商品分类</span>
-            </NuxtLink>
-            <NuxtLink to="/">
-              <i class="i-ep-service" />
-              <span>商品分类</span>
-            </NuxtLink>
-            <NuxtLink to="/">
-              <i class="i-ep-service" />
-              <span>商品分类</span>
-            </NuxtLink>
-          </el-form-item>
-        </div>
-      </li>
-      <li>
-        <NuxtLink to="/">
-          <i class="i-ep-service" />
-          <span>商品分类</span>
-        </NuxtLink>
-      </li>
-    </ul>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .goods-class-tle {
