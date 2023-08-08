@@ -1,10 +1,7 @@
 // import GithubProvider from '@auth/core/providers/github'
 import type { AuthConfig } from '@auth/core/types'
 import Credentials from '@auth/core/providers/credentials'
-import { PrismaClient } from '@prisma/client'
 import { NuxtAuthHandler } from '#auth'
-
-const prisma = new PrismaClient()
 
 // The #auth virtual import comes from this module. You can use it on the client
 // and server side, however not every export is universal. For example do not
@@ -28,7 +25,7 @@ export const authOptions: AuthConfig = {
             // e.g. domain, username, password, 2FA token, etc.
             // You can pass any HTML attribute to the <input> tag through the object.
             credentials: {
-                username: {
+                account: {
                     label: 'Username',
                     type: 'text',
                     placeholder: '(hint: jsmith)',
@@ -39,14 +36,12 @@ export const authOptions: AuthConfig = {
                     placeholder: '(hint: hunter2)',
                 },
             },
-            authorize(credentials: any) {
+            async authorize(credentials: Partial<Record<'account' | 'password', unknown>>) {
                 console.log('credentials', credentials)
                 // You need to provide your own logic here that takes the credentials
                 // submitted and returns either a object representing a user or value
                 // that is false/null if the credentials are invalid.
                 // NOTE: THE BELOW LOGIC IS NOT SAFE OR PROPER FOR AUTHENTICATION!
-
-                console.log(prisma.user)
 
                 const user = {
                     id: '1',
@@ -54,9 +49,20 @@ export const authOptions: AuthConfig = {
                     username: 'admin',
                     password: 'admin',
                 }
+                const time = Date.now().toString()
+                const sign = setSignRule(runtimeConfig.public.secret, time)
+                const res = await $fetch('/api/login/sign', {
+                    method: 'POST',
+                    body: credentials,
+                    headers: {
+                        'x-sign': `${sign}-${time}`,
+                    },
+                })
+
+                console.log(res)
 
                 if (
-                    credentials?.username === user.username
+                    credentials?.account === user.username
                     && credentials?.password === user.password
                 ) {
                     // Any object returned will be saved in `user` property of the JWT
