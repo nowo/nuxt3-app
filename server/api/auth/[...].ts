@@ -2,6 +2,7 @@
 import type { AuthConfig } from '@auth/core/types'
 import Credentials from '@auth/core/providers/credentials'
 import { NuxtAuthHandler } from '#auth'
+import { useServerFetch } from '~/server/utils/request'
 
 // The #auth virtual import comes from this module. You can use it on the client
 // and server side, however not every export is universal. For example do not
@@ -49,14 +50,19 @@ export const authOptions: AuthConfig = {
                     username: 'admin',
                     password: 'admin',
                 }
-                const time = Date.now().toString()
-                const sign = setSignRule(runtimeConfig.public.secret, time)
-                const res = await $fetch('/api/login/sign', {
+                // const time = Date.now().toString()
+                // const sign = setSignRule(runtimeConfig.public.secret, time)
+                // const res = await $fetch('/api/login/sign', {
+                //     method: 'POST',
+                //     body: credentials,
+                //     headers: {
+                //         'x-sign': `${sign}-${time}`,
+                //     },
+                // })
+
+                const res = await useServerFetch('/api/login/sign', {
                     method: 'POST',
                     body: credentials,
-                    headers: {
-                        'x-sign': `${sign}-${time}`,
-                    },
                 })
 
                 console.log(res)
