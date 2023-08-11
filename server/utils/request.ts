@@ -3,9 +3,30 @@ import { defu } from 'defu'
 import type { NitroFetchRequest } from 'nitropack'
 import Crypto from 'crypto-js'
 
+// import { $fetch, FetchOptions } from 'ofetch'
+
 const { MD5 } = Crypto
 
 // import type { FetchOptions } from '#app'
+
+/**
+ * 密码设置
+ */
+
+/**
+ * 用户密码设置加密，加密规则：md5加密两次
+ * @param password 用户明文密码
+ * @returns
+ * @example
+ * ```javascript
+ * setEncryptPassword('123456')    // 0eb948223412170b50de9bb356d39e2b
+ * ```
+ */
+export const setEncryptPassword = (password: string) => {
+    const s = MD5(password).toString()
+    const s2 = MD5(s).toString()
+    return s2
+}
 
 /**
  * 签名加密 加密规则： 密钥+拼接字符串进行MD5加密
@@ -26,20 +47,6 @@ export const setSignRule = (secret: string, str: string) => {
     const s1 = MD5(key1).toString()
 
     return s1
-}
-
-/**
- * 获取接口参数方法，整合get、post请求类型统一获取参数
- * @param event defineEventHandler方法里的event参数
- * @returns
- */
-export const getEventParams = async <T = any>(event: H3Event) => {
-    const method = getMethod(event)
-    const query = getQuery(event) as unknown as T
-    const body = await readBody<T>(event)
-    const param = method === 'GET' ? query : body
-
-    return param
 }
 
 /**
@@ -64,12 +71,29 @@ export const useVerifySign = async (event: H3Event) => {
 
     const sign = arr[0]
     const time = arr[1]
-    const signs = setSignRule(sign, time)
-    if (signs === signTimestamp) {
+
+    const config = useRuntimeConfig()
+    const signs = setSignRule(config.public.secret, time)
+
+    if (signs === sign) {
         return { sign, time }
     } else {
         return undefined
     }
+}
+
+/**
+ * 获取接口参数方法，整合get、post请求类型统一获取参数
+ * @param event defineEventHandler方法里的event参数
+ * @returns
+ */
+export const getEventParams = async <T = any>(event: H3Event) => {
+    const method = getMethod(event)
+    const query = getQuery(event) as unknown as T
+    const body = await readBody<T>(event)
+    const param = method === 'GET' ? query : body
+
+    return param
 }
 
 type $FetchType = typeof $fetch
@@ -81,7 +105,6 @@ export type ReqOptions = Parameters<$FetchType>[1]
  * @returns
  */
 export function useServerFetch<T = any>(url: NitroFetchRequest, options: ReqOptions = {}) {
-    // const userAuth = useCookie('token')
     const config = useRuntimeConfig()
 
     const time = Date.now().toString()

@@ -1,5 +1,6 @@
 import { createRouter, defineEventHandler, useBase } from 'h3'
 import { authOptions } from '../auth/[...]'
+import { loginSign } from '~/server/controller/login'
 import { getServerSession } from '#auth'
 import { getEventParams, useVerifySign } from '~/server/utils/request'
 
@@ -14,7 +15,7 @@ const router = createRouter()
 /**
  * 获取底部导航
  */
-router.use('/sign', defineEventHandler(async (event) => {
+router.use('/sign_test', defineEventHandler(async (event) => {
     interface LoginDataType {
         account: string
         password: string
@@ -50,5 +51,8 @@ router.use('/sign', defineEventHandler(async (event) => {
 
     return { session }
 }))
+
+// 登录接口
+router.use('/sign', loginSign())
 
 export default useBase('/api/login', router.handler)

@@ -44,35 +44,20 @@ export const authOptions: AuthConfig = {
                 // that is false/null if the credentials are invalid.
                 // NOTE: THE BELOW LOGIC IS NOT SAFE OR PROPER FOR AUTHENTICATION!
 
-                const user = {
-                    id: '1',
-                    name: 'J Smith',
-                    username: 'admin',
-                    password: 'admin',
-                }
-                // const time = Date.now().toString()
-                // const sign = setSignRule(runtimeConfig.public.secret, time)
-                // const res = await $fetch('/api/login/sign', {
-                //     method: 'POST',
-                //     body: credentials,
-                //     headers: {
-                //         'x-sign': `${sign}-${time}`,
-                //     },
-                // })
-
-                const res = await useServerFetch('/api/login/sign', {
+                const res = await useServerFetch<{ msg: string; code?: 200; data: any }>('/api/login/sign', {
                     method: 'POST',
                     body: credentials,
                 })
 
-                console.log(res)
+                console.log('res', res)
 
-                if (
-                    credentials?.account === user.username
-                    && credentials?.password === user.password
-                ) {
+                if (res.code === 200) {
+                    console.log('user---', res.data)
+                    const user = res.data
                     // Any object returned will be saved in `user` property of the JWT
-                    return user
+
+                    // return user
+                    return { id: user.id, username: user.username }
                 } else {
                     console.error(
                         'Warning: Malicious login attempt registered, bad credentials provided',
@@ -95,12 +80,12 @@ export const authOptions: AuthConfig = {
     pages: {
         signIn: '/login',
     },
-    callbacks: {
-        async signIn({ user, account, profile, email, credentials }) {
-            console.log({ user, account, profile, email, credentials })
-            return true
-        },
-    },
+    // callbacks: {
+    //     async signIn({ user, account, profile, email, credentials }) {
+    //         console.log({ user, account, profile, email, credentials })
+    //         return true
+    //     },
+    // },
 }
 
 export default NuxtAuthHandler(authOptions, runtimeConfig)

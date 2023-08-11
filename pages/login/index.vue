@@ -168,9 +168,9 @@ const testLogin = async () => {
     console.log(session)
     try {
         const res = await signIn('credentials', {
-            callbackUrl: '/',
-            redirect: false,
-            username: ruleForm.username,
+            // callbackUrl: '/',
+            // redirect: false,
+            account: ruleForm.username,
             password: ruleForm.password,
         })
         console.log(res)
