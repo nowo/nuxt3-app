@@ -5,6 +5,7 @@ import { setEncryptPassword } from '~/server/utils/request'
  * 登录
  */
 export const loginSign = () => defineEventHandler(async (event) => {
+    console.log('1111', event.context.params)
     interface LoginDataType {
         account: string
         password: string
