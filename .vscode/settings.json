@@ -27,5 +27,9 @@
         "unocss",
         "Vite",
         "vueuse"
-    ]
+    ],
+    "i18n-ally.localesPaths": [
+        "lang"
+    ],
+    "i18n-ally.sourceLanguage": "ZH-CN"
 }

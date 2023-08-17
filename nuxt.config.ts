@@ -111,14 +111,14 @@ export default defineNuxtConfig({
     i18n: {
         locales: [
             {
-                code: 'en',
+                code: 'EN-US',
                 name: 'English',
-                file: 'en-US.json',
+                file: 'EN-US.json',
             },
             {
-                code: 'zh',
+                code: 'ZH-CN',
                 name: '简体中文',
-                file: 'zh-CN.json',
+                file: 'ZH-CN.json',
             },
             // {
             //   code: 'fr',
@@ -127,7 +127,7 @@ export default defineNuxtConfig({
         ],
         lazy: true,
         langDir: 'lang',
-        defaultLocale: 'zh', // default locale of your project for Nuxt pages and routings
+        defaultLocale: 'ZH-CN', // default locale of your project for Nuxt pages and routings
         // strategy: 'prefix_except_default',
         detectBrowserLanguage: {
             useCookie: true,
