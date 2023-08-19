@@ -15,9 +15,9 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
     ],
     alias: {
-        cookie: resolve(__dirname, 'node_modules/cookie'),
-        // 'jose': resolve(__dirname, 'node_modules/jose/dist/browser/index.js'),
-        // '@panva/hkdf': resolve(__dirname, 'node_modules/@panva/hkdf/dist/web/index.js'),
+        'cookie': resolve(__dirname, 'node_modules/cookie'),
+        'jose': resolve(__dirname, 'node_modules/jose/dist/browser/index.js'),
+        '@panva/hkdf': resolve(__dirname, 'node_modules/@panva/hkdf/dist/web/index.js'),
     },
     experimental: {
         // when using generate, payload js assets included in sw precache manifest
@@ -48,6 +48,16 @@ export default defineNuxtConfig({
         // experimental: {
         //     // https://nitro.unjs.io/guide/utils#experimental-composition-api
         //     asyncContext: true, // 设置defineEventHandler不用传递event -> defineEventHandler(()=>{}) 2.6版本以上才生效
+        // },
+        // storage: {
+        //     // redis: {
+        //     //     driver: 'redis',
+        //     //     /* redis connector options */
+        //     // },
+        //     db: {
+        //         driver: 'fs',
+        //         base: './.data/db',
+        //     },
         // },
 
     },
@@ -109,16 +119,17 @@ export default defineNuxtConfig({
     },
 
     i18n: {
+        // locale: 'cn',
         locales: [
             {
-                code: 'EN-US',
+                code: 'en',
                 name: 'English',
-                file: 'EN-US.json',
+                file: 'en.json',
             },
             {
-                code: 'ZH-CN',
+                code: 'cn',
                 name: '简体中文',
-                file: 'ZH-CN.json',
+                file: 'cn.json',
             },
             // {
             //   code: 'fr',
@@ -127,7 +138,7 @@ export default defineNuxtConfig({
         ],
         lazy: true,
         langDir: 'lang',
-        defaultLocale: 'ZH-CN', // default locale of your project for Nuxt pages and routings
+        defaultLocale: 'cn', // default locale of your project for Nuxt pages and routings
         // strategy: 'prefix_except_default',
         detectBrowserLanguage: {
             useCookie: true,
@@ -136,5 +147,11 @@ export default defineNuxtConfig({
             alwaysRedirect: true,
             // fallbackLocale: 'zh',
         },
+        // customRoutes: 'page',
+        // pages: {
+        //     login: {
+        //         en: false,
+        //     },
+        // },
     },
 })
