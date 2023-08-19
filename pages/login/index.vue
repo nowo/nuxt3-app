@@ -15,9 +15,9 @@
                 <h2>#status:</h2>#
                 <pre>{{ status }}</pre>
                 <h2>#session?.user</h2>#
-                <pre>{{ session?.user }}</pre>
+                <pre>{{ data }}</pre>
                 <h2>#cookies</h2>#
-                <pre>{{ cookies }}</pre>
+                <!-- <pre>{{ cookies }}</pre> -->
             </div>
         </div>
 
@@ -142,7 +142,8 @@ const signInSuccess = () => {
     // NextLoading.start()
 }
 
-const { signIn, signOut, session, status, cookies } = useAuth()
+// const { signIn, signOut, session, status, cookies } = useAuth()
+const { status, data, lastRefreshedAt, getCsrfToken, getProviders, getSession, signIn, signOut } = useAuth()
 // 登录
 const onLogin = async () => {
     if (state.loading.signIn) return
@@ -165,24 +166,25 @@ const onLogin = async () => {
 }
 
 const testLogin = async () => {
-    console.log(session)
+    // console.log(session)
     try {
         const res = await signIn('credentials', {
             // callbackUrl: '/',
-            // redirect: false,
+            redirect: false,
             account: ruleForm.username,
             password: ruleForm.password,
         })
         console.log(res)
-        location.reload()
+
+        // location.reload()
     } catch (e) {
         console.log(e)
     }
 
     // console.log('error, url :>> ', error, url);
-    setTimeout(() => {
-        console.log(session, cookies)
-    }, 1000)
+    // setTimeout(() => {
+    //     console.log(session, cookies)
+    // }, 1000)
     // await wait(5000)
 }
 

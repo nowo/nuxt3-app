@@ -134,3 +134,19 @@ export function useServerFetch<T = any>(url: NitroFetchRequest, options: ReqOpti
 
     return $fetch<T>(url, params)
 }
+
+/**
+ * waitUtil方法
+ * @param ms 需要等待的时间，毫秒级
+ * @returns
+ * @example
+ * ```js
+ * // 等待1秒后，再往后面运行
+ * await wait(1000)
+ * ```
+ */
+export const wait = (ms: number) => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms)
+    })
+}
