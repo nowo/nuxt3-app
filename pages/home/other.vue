@@ -22,7 +22,7 @@
                 }}
             </NuxtLink>
         </h3>
-        <div>
+        <!-- <div>
             <NuxtLink :to="localePath('/')">
                 简体中文
             </NuxtLink>
@@ -30,7 +30,7 @@
             <NuxtLink :to="localePath('index', 'en')">
                 English
             </NuxtLink>
-        </div>
+        </div> -->
         <el-button @click="onTest">
             md5加密
         </el-button>

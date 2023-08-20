@@ -12,18 +12,26 @@
         "alipay",
         "antfu",
         "Attributify",
+        "authjs",
         "breakline",
+        "defu",
         "iconify",
         "nuxi",
         "nuxt",
         "nuxtjs",
         "pinia",
         "pnpm",
+        "sidebase",
         "stylelint",
         "swiper",
+        "unjs",
         "Uno",
         "unocss",
         "Vite",
         "vueuse"
-    ]
+    ],
+    "i18n-ally.localesPaths": [
+        "lang"
+    ],
+    "i18n-ally.sourceLanguage": "cn"
 }

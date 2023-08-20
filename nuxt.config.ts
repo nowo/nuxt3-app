@@ -1,23 +1,22 @@
 // import { pwa } from './config/pwa'
-import { resolve } from 'node:path'
 import { appDescription } from './config/constant'
 
 export default defineNuxtConfig({
     modules: [
-        '@vueuse/nuxt',
-        '@unocss/nuxt',
-        '@pinia/nuxt',
         '@nuxtjs/color-mode',
-        '@vite-pwa/nuxt',
         '@nuxt/devtools',
+        '@unocss/nuxt',
+        '@vueuse/nuxt',
+        '@vite-pwa/nuxt',
         '@element-plus/nuxt',
-        '@hebilicious/authjs-nuxt',
         '@nuxtjs/i18n',
+        '@pinia/nuxt',
+        '@sidebase/nuxt-auth',
     ],
-    alias: {
-        'cookie': resolve(__dirname, 'node_modules/cookie'),
-        'jose': resolve(__dirname, 'node_modules/jose/dist/browser/index.js'),
-        '@panva/hkdf': resolve(__dirname, 'node_modules/@panva/hkdf/dist/web/index.js'),
+    auth: {
+        provider: {
+            type: 'authjs',
+        },
     },
     experimental: {
         // when using generate, payload js assets included in sw precache manifest
@@ -44,6 +43,22 @@ export default defineNuxtConfig({
             // routes: ['/'],
             // ignore: ['/hi'],
         },
+
+        // experimental: {
+        //     // https://nitro.unjs.io/guide/utils#experimental-composition-api
+        //     asyncContext: true, // 设置defineEventHandler不用传递event -> defineEventHandler(()=>{}) 2.6版本以上才生效
+        // },
+        // storage: {
+        //     // redis: {
+        //     //     driver: 'redis',
+        //     //     /* redis connector options */
+        //     // },
+        //     db: {
+        //         driver: 'fs',
+        //         base: './.data/db',
+        //     },
+        // },
+
     },
     app: {
         head: {
@@ -103,16 +118,17 @@ export default defineNuxtConfig({
     },
 
     i18n: {
+        // locale: 'cn',
         locales: [
             {
                 code: 'en',
                 name: 'English',
-                file: 'en-US.json',
+                file: 'en.json',
             },
             {
-                code: 'zh',
+                code: 'cn',
                 name: '简体中文',
-                file: 'zh-CN.json',
+                file: 'cn.json',
             },
             // {
             //   code: 'fr',
@@ -121,14 +137,20 @@ export default defineNuxtConfig({
         ],
         lazy: true,
         langDir: 'lang',
-        defaultLocale: 'zh', // default locale of your project for Nuxt pages and routings
+        defaultLocale: 'cn', // default locale of your project for Nuxt pages and routings
         // strategy: 'prefix_except_default',
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: 'i18n_redirected',
             redirectOn: 'root', // recommended
-            alwaysRedirect: true,
+            // alwaysRedirect: true,
             // fallbackLocale: 'zh',
         },
+        // customRoutes: 'page',
+        // pages: {
+        //     login: {
+        //         en: false,
+        //     },
+        // },
     },
 })

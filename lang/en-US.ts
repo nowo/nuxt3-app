@@ -1,5 +1,0 @@
-export default {
-
-    welcome: 'Welcome',
-
-}
