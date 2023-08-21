@@ -59,13 +59,13 @@ export const authOptions: AuthOptions = {
                 if (res.code === 200) {
                     console.log('user---', res.data)
                     const user = res.data
-                    await useStorage().setItem('db:foo', user)
+                    // await useStorage().setItem('db:foo', user)
 
                     // Any object returned will be saved in `user` property of the JWT
 
-                    // return user
+                    return user
                     // return { id: user.id, username: user.username }
-                    return { id: 1, name: 'user.username' }
+                    // return { id: 1, name: 'user.username' }
                 } else {
                     console.error(
                         'Warning: Malicious login attempt registered, bad credentials provided',

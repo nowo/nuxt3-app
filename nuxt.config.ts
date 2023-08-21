@@ -121,15 +121,16 @@ export default defineNuxtConfig({
         // locale: 'cn',
         locales: [
             {
-                code: 'en',
-                name: 'English',
-                file: 'en.json',
-            },
-            {
                 code: 'cn',
                 name: '简体中文',
                 file: 'cn.json',
             },
+            {
+                code: 'en',
+                name: 'English',
+                file: 'en.json',
+            },
+
             // {
             //   code: 'fr',
             //   file: 'fr-FR.ts'
