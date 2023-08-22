@@ -8,22 +8,22 @@
                 <swiper-container class="swp-banner" :slides-per-view="1" :centered-slides="true"
                     :pagination="{ hideOnClick: false }">
                     <swiper-slide>
-                        <img src="pwa-512x512.png" alt="">
+                        <img src="~/assets/images/banner.png" alt="">
                     </swiper-slide>
                     <swiper-slide>
-                        <img src="pwa-192x192.png" alt="">
+                        <img src="~/assets/images/banner.png" alt="">
                     </swiper-slide>
                     <swiper-slide>
-                        <img src="pwa-512x512.png" alt="">
+                        <img src="~/assets/images/goods1.png" alt="">
                     </swiper-slide>
                     <swiper-slide>
-                        <img src="pwa-192x192.png" alt="">
+                        <img src="~/assets/images/goods1.png" alt="">
                     </swiper-slide>
                     <swiper-slide>
-                        <img src="pwa-512x512.png" alt="">
+                        <img src="~/assets/images/banner.png" alt="">
                     </swiper-slide>
                     <swiper-slide>
-                        <img src="pwa-192x192.png" alt="">
+                        <img src="~/assets/images/goods1.png" alt="">
                     </swiper-slide>
                 </swiper-container>
             </div>

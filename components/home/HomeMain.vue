@@ -100,7 +100,7 @@
                         </el-tabs>
                     </div>
                     <div class="brand-list">
-                        <img class="h80px" src="pwa-192x192.png" alt="">
+                        <img class="h80px" src="~/assets/images/goods1.png" alt="">
                     </div>
                 </div>
             </div>

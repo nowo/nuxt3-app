@@ -8,13 +8,13 @@
             <img class="im" src="~/assets/images/banner.png" alt="">
         </SwiperSlide>
         <SwiperSlide>
-            <img class="im" src="pwa-512x512.png" alt="">
+            <img class="im" src="~/assets/images/goods1.png" alt="">
         </SwiperSlide>
         <SwiperSlide>
             <img class="im" src="~/assets/images/banner.png" alt="">
         </SwiperSlide>
         <SwiperSlide>
-            <img class="im" src="pwa-512x512.png" alt="">
+            <img class="im" src="~/assets/images/goods1.png" alt="">
         </SwiperSlide>
         <SwiperSlide>
             <img class="im" src="~/assets/images/banner.png" alt="">
