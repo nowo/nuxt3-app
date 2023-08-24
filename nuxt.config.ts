@@ -25,10 +25,10 @@ export default defineNuxtConfig({
         inlineSSRStyles: false,
         typedPages: true,
     },
-    // css: [
-    //   '@unocss/reset/tailwind.css',
-    //   '~/assets/scss/app.scss',
-    // ],
+    css: [
+        '@unocss/reset/tailwind.css',
+        '~/assets/scss/app.scss',
+    ],
     colorMode: {
         classSuffix: '',
     },
@@ -80,11 +80,11 @@ export default defineNuxtConfig({
         plugins: [
         ],
         // css: {
-        //   preprocessorOptions: {
-        //     scss: {
-        //       additionalData: '@use "~/assets/scss/default.scss" as *;', // 注意文件路径要配成自己的
+        //     preprocessorOptions: {
+        //         scss: {
+        //             additionalData: '@use "~/assets/scss/default.scss" as *;', // 注意文件路径要配成自己的
+        //         },
         //     },
-        //   },
         // },
 
         server: {
