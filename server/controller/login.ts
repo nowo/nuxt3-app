@@ -1,10 +1,10 @@
-import { defineEventHandler } from 'h3'
+import type { H3Event } from 'h3'
 import { setEncryptPassword } from '~/server/utils/request'
 
 /**
  * 登录
  */
-export const loginSign = () => defineEventHandler(async (event) => {
+export const loginSign = async (event: H3Event) => {
     console.log('1111', event.context.params)
     interface LoginDataType {
         account: string
@@ -41,12 +41,12 @@ export const loginSign = () => defineEventHandler(async (event) => {
     } else {
         return { msg: '密码错误' }
     }
-})
+}
 
 /**
  * 注册
  */
-export const register = () => defineEventHandler(async (event) => {
+export const register = async (event: H3Event) => {
     interface LoginDataType {
         account: string
         password: string
@@ -84,4 +84,4 @@ export const register = () => defineEventHandler(async (event) => {
     } else {
         return { code: 200, data: user }
     }
-})
+}
