@@ -89,11 +89,33 @@ export const useVerifySign = async (event: H3Event) => {
  */
 export const getEventParams = async <T = any>(event: H3Event) => {
     const method = getMethod(event)
-    const query = getQuery(event) as unknown as T
-    const body = await readBody<T>(event)
-    const param = method === 'GET' ? query : body
 
-    return param
+    const contentType = getHeader(event, 'content-type')
+
+    // let param: any = {}
+    let param: any = {}
+
+    // 判断是否为formData类型的参数
+    if (contentType?.includes('multipart/form-data')) {
+        const formData = (await readMultipartFormData(event)) || []
+        formData.forEach((item) => {
+            if (item.type) {
+                param[item.name!] = item
+            } else {
+                param[item.name!] = Buffer.from(item.data).toString() // eslint-disable-line n/prefer-global/buffer
+            }
+        })
+    } else if (method === 'GET') {
+        param = getQuery(event) as unknown as T
+    } else {
+        param = await readBody<T>(event)
+    }
+
+    // const query = getQuery(event) as unknown as T
+    // const body = await readBody<T>(event)
+    // const param = method === 'GET' ? query : body
+
+    return param as T
 }
 
 type $FetchType = typeof $fetch
