@@ -20,7 +20,7 @@ async function handleImageUpload() {
         console.log(files.value)
         if (files.value) {
             Array.from(files.value).forEach((file, index) => {
-                fd.append(index, file)
+                fd.append('img', file)
             })
         }
 
