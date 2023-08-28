@@ -4,21 +4,38 @@
         <div class="fixed left-0 top-0">
             <div>
                 <a href="/api/auth/signin" class="buttonPrimary">Native Link Sign in</a>
+                |
                 <button class="btn" @click="testLogin">
                     JS Sign In
                 </button>
-                <button class="btn" @click="signOut()">
+                |
+                <!-- <button class="btn" @click="signOut()">
                     Sign Out
+                </button>
+                |
+                <button class="btn" @click="getSession()">
+                    getSession
+                </button>
+                |
+                <button class="btn" @click="getCsrfToken()">
+                    getCsrfToken
+                </button> -->
+
+                |
+                <button class="btn" @click="getUserInfo()">
+                    getUserInfo
                 </button>
             </div>
             <div>
-                <h2>#status:</h2>#
+                <!-- <h2>#status:</h2>#
                 <pre>{{ status }}</pre>
                 <h2>#session?.user</h2>#
                 <pre>{{ data }}</pre>
-                <h2>#cookies</h2>#
+                <h2>#cookies</h2># -->
                 <!-- <pre>{{ cookies }}</pre> -->
             </div>
+
+            <!-- <pre class="b-1px">{{ getSession() }}</pre> -->
         </div>
 
         <el-form ref="formRef" :model="ruleForm" :rules="rules" size="large" class="login-content-form"
@@ -143,7 +160,7 @@ const signInSuccess = () => {
 }
 
 // const { signIn, signOut, session, status, cookies } = useAuth()
-const { status, data, lastRefreshedAt, getCsrfToken, getProviders, getSession, signIn, signOut } = useAuth()
+// const { status, data, lastRefreshedAt, getCsrfToken, getProviders, getSession, signIn, signOut } = useAuth()
 // 登录
 const onLogin = async () => {
     if (state.loading.signIn) return
@@ -167,25 +184,36 @@ const onLogin = async () => {
 
 const testLogin = async () => {
     // console.log(session)
-    try {
-        const res = await signIn('credentials', {
-            // callbackUrl: '/',
-            redirect: false,
-            account: ruleForm.username,
-            password: ruleForm.password,
-        })
-        console.log(res)
+    // try {
+    //     const res = await signIn('credentials', {
+    //         // callbackUrl: '/',
+    //         redirect: false,
+    //         account: ruleForm.username,
+    //         password: ruleForm.password,
+    //     })
+    //     console.log(res)
 
-        // location.reload()
-    } catch (e) {
-        console.log(e)
-    }
+    //     // location.reload()
+    // } catch (e) {
+    //     console.log(e)
+    // }
 
     // console.log('error, url :>> ', error, url);
     // setTimeout(() => {
     //     console.log(session, cookies)
     // }, 1000)
     // await wait(5000)
+}
+
+const getUserInfo = async () => {
+    const res = await useFetch('/api/login/sign', {
+        method: 'POST',
+        body: {
+            account: ruleForm.username,
+            password: ruleForm.password,
+        },
+    })
+    console.log('🚀 ~ file: index.vue:205 ~ getUserInfo ~ res:', res)
 }
 
 onBeforeMount(() => {

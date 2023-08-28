@@ -1,22 +1,43 @@
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+    provider = "mysql"
+    url      = env("DATABASE_URL")
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model User {
-  id        Int      @id @default(autoincrement())
-  username  String?  @db.VarChar(30)
-  account   String?  @unique @db.VarChar(50) // 账号，唯一
-  password  String?  @db.VarChar(255)
-  avatar    String?  @db.VarChar(255)
-  status    Int?     @default(1)
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+    id        Int      @id @default(autoincrement())
+    username  String?  @db.VarChar(30)
+    account   String?  @unique @db.VarChar(50) // 账号，唯一
+    password  String?  @db.VarChar(255)
+    avatar    String?  @db.VarChar(255)
+    status    Int?     @default(1)
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
 
-  @@map("user")
+    @@map("user")
+}
+
+model Company {
+    id              Int     @id @default(autoincrement())
+    company         String  @db.VarChar(100) // 网站名称
+    address         String? @db.VarChar(200)
+    logo            String?  @db.VarChar(255) // 网站logo
+    logo2           String? @db.VarChar(255) // 网站logo
+    qr_code         String? @db.VarChar(255) // 二维码
+    phone           String? @db.VarChar(20) // 联系电话
+    email           String? @db.VarChar(50) // 电子邮箱
+    // seo_title       String? @db.VarChar(255) // 标题
+    seo_keyword     String? @db.VarChar(100) // 关键词
+    seo_description String? @db.VarChar(200) // 描述
+    filing_code     String? @db.VarChar(100) // 备案号
+    copyright       String? @db.VarChar(200) // 版权
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("company")
 }

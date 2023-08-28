@@ -4,6 +4,7 @@ import type { MultiPartData } from 'h3'
 import { createRouter, defineEventHandler, useBase } from 'h3'
 
 // import { authOptions } from '../auth/[...]'
+import { createToken } from '../../utils/token'
 import { loginSign } from '~/server/controller/login'
 
 // import { getServerSession } from '#auth'
@@ -112,6 +113,23 @@ router.use('/sign_test', defineEventHandler(async (event) => {
 }))
 
 // 登录接口
-router.use('/sign', defineEventHandler(event => loginSign(event)))
+router.use('/sign', defineEventHandler(async (event) => {
+    const res = await loginSign(event)
+    if (res.data) {
+        const token = createToken(res.data)
+        return {
+            code: 200,
+            data: {
+                id: res.data.id,
+                username: res.data!.username,
+                account: res.data!.account,
+                token,
+            },
+        }
+    } else {
+        return res
+    }
+    // return res
+}))
 
 export default useBase('/api/login', router.handler)

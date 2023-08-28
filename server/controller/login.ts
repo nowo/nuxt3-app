@@ -15,9 +15,9 @@ export const loginSign = async (event: H3Event) => {
     // const body = await readBody<LoginDataType>(event)
     // const param = method === 'GET' ? query : body
 
-    // 接口校验
-    const authSign = await useVerifySign(event)
-    if (!authSign) return { msg: '签名错误' }
+    // // 接口校验
+    // const authSign = await useVerifySign(event)
+    // if (!authSign) return ResponseMessage.sign
 
     // 获取参数
     const param = await getEventParams<LoginDataType>(event)
@@ -58,8 +58,8 @@ export const register = async (event: H3Event) => {
     // const param = method === 'GET' ? query : body
 
     // 接口校验
-    const authSign = await useVerifySign(event)
-    if (!authSign) return { msg: '签名错误' }
+    // const authSign = await useVerifySign(event)
+    // if (!authSign) return { msg: '签名错误' }
 
     // 获取参数
     const param = await getEventParams<LoginDataType>(event)

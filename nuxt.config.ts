@@ -11,13 +11,7 @@ export default defineNuxtConfig({
         '@element-plus/nuxt',
         '@nuxtjs/i18n',
         '@pinia/nuxt',
-        '@sidebase/nuxt-auth',
     ],
-    auth: {
-        provider: {
-            type: 'authjs',
-        },
-    },
     experimental: {
         // when using generate, payload js assets included in sw precache manifest
         // but missing on offline, disabling extraction it until fixed

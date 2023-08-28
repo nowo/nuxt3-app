@@ -6,9 +6,21 @@ import { PrismaClient } from '@prisma/client'
 
 
 declare module 'h3' {
-  interface H3EventContext {
-    prisma: PrismaClient
-  }
+    interface H3EventContext {
+        prisma: PrismaClient
+        user?: UserOptionItem
+    }
 }
 
-export {}
+declare module "@next-auth/core" {
+    interface Session {
+        user?: User,
+        token?: string
+    }
+    interface User {
+        id: number;
+        username: string
+    }
+}
+
+export { }

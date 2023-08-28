@@ -18,7 +18,7 @@ import '~/assets/scss/default.scss'
 
 const locale = ref(zhCn)
 
-console.log(useRouter().getRoutes())
+if (process.client) console.log(useRouter().getRoutes())
 
 // let a = -1
 // if (a > 0){ a++}

@@ -2,6 +2,7 @@ import type { H3Event } from 'h3'
 import { defu } from 'defu'
 import type { NitroFetchRequest } from 'nitropack'
 import Crypto from 'crypto-js'
+import { verifyToken } from './token'
 
 // import { $fetch, FetchOptions } from 'ofetch'
 
@@ -80,6 +81,19 @@ export const useVerifySign = async (event: H3Event) => {
     } else {
         return undefined
     }
+}
+
+/**
+ * token验证，用户登陆验证
+ * @param event defineEventHandler方法里的event参数
+ * @returns
+ */
+export const useVerifyToken = (event: H3Event) => {
+    const headers = getHeaders(event)
+    // 获取请求头里的token
+    const token = headers['x-token']
+    if (!token) return false
+    return verifyToken(token)
 }
 
 /**

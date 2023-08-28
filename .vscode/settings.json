@@ -21,6 +21,7 @@
         "nuxtjs",
         "pinia",
         "pnpm",
+        "pnpx",
         "sidebase",
         "stylelint",
         "swiper",
