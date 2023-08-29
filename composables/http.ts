@@ -80,15 +80,22 @@ export function useCustomFetch<T>(url: NitroFetchRequest, options: UseFetchOptio
     const userAuth = useCookie('token')
     const config = useRuntimeConfig()
 
+    const time = Date.now().toString()
+    const sign = setSignRule(config.public.secret, time)
+
     const defaults: UseFetchOptions<T> = {
-        baseURL: config.public.apiBase ?? 'https://api.nuxtjs.dev',
+        // baseURL: config.public.apiBase ?? 'https://api.nuxtjs.dev',
         // cache request
         key: url as string,
 
         // set user token if connected
-        headers: userAuth.value
-            ? { Authorization: `Bearer ${userAuth.value}` }
-            : {},
+        // headers: userAuth.value
+        //     ? { Authorization: `Bearer ${userAuth.value}` }
+        //     : {},
+
+        headers: {
+            'x-sign': `${sign}-${time}`,
+        },
 
         onResponse(_ctx) {
             // _ctx.response._data = new myBusinessResponse(_ctx.response._data)

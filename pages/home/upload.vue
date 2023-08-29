@@ -20,13 +20,13 @@ async function handleImageUpload() {
         console.log(files.value)
         if (files.value) {
             Array.from(files.value).forEach((file, index) => {
-                fd.append('img', file)
+                fd.append('files', file)
             })
         }
 
         fd.append('username', username.value)
         // console.log(fd)
-        const { data } = await $fetch('/api/login/sign_test', {
+        const { data } = await useCustomFetch('/api/common/upload', {
             // params: fd,
             method: 'POST',
             body: fd,

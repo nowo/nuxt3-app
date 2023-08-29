@@ -33,11 +33,32 @@ model Company {
     // seo_title       String? @db.VarChar(255) // 标题
     seo_keyword     String? @db.VarChar(100) // 关键词
     seo_description String? @db.VarChar(200) // 描述
-    filing_code     String? @db.VarChar(100) // 备案号
+    filing     String? @db.VarChar(100) // 备案号
     copyright       String? @db.VarChar(200) // 版权
 
     createdAt DateTime @default(now()) @map("created_at")
     updatedAt DateTime @updatedAt @map("updated_at")
 
     @@map("company")
+}
+
+model System {
+    id              Int     @id @default(autoincrement())
+    title       String? @db.VarChar(100) // 标题
+    // company         String  @db.VarChar(100) // 网站名称
+    address         String? @db.VarChar(200)    // 网站地址
+    logo            String?  @db.VarChar(255) // 网站logo
+    logo2           String? @db.VarChar(255) // 网站logo
+    qrCode         String? @db.VarChar(255)  @map("qr_code") // 二维码
+    phone           String? @db.VarChar(20) // 联系电话
+    email           String? @db.VarChar(50) // 电子邮箱
+    keyword     String? @db.VarChar(100) // 关键词
+    description String? @db.VarChar(200) // 描述
+    filing     String? @db.VarChar(100) // 备案号
+    copyright       String? @db.VarChar(200) // 版权
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("system")
 }

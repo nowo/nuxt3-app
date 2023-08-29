@@ -35,7 +35,7 @@ import BaseHeader from './components/BaseHeader.vue'
 // import BaseMenu from './components/BaseMenu.vue'
 import BaseTop from './components/BaseTop.vue'
 
-console.log(useI18n())
+if (process.client) console.log(useI18n())
 
 const { locale, locales, localeProperties, setLocale } = useI18n()
 const switchLocalePath = useSwitchLocalePath()

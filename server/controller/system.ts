@@ -4,7 +4,7 @@ import { ResponseMessage } from '~/config/message'
 /**
  * 获取公司信息
  */
-export const getCompanyInfo = async (event: H3Event) => {
+export const getSystemInfo = async (event: H3Event) => {
     // // 接口校验
     // const authSign = await useVerifySign(event)
     // if (!authSign) return ResponseMessage.sign
@@ -16,15 +16,15 @@ export const getCompanyInfo = async (event: H3Event) => {
     // console.log('param-----', param)
 
     const [res1, res2] = await Promise.all([
-        event.context.prisma.company.findUnique({ where: { id: 1 } }),
-        event.context.prisma.company.findUnique({ where: { id: 2 } }),
+        event.context.prisma.system.findUnique({ where: { id: 1 } }),
+        event.context.prisma.system.findUnique({ where: { id: 2 } }),
     ])
     if (res1 && res2) {
         return {
             code: 200,
             data: {
                 ...res1,
-                company_en: res2.company,
+                title_en: res2.title,
                 address_en: res2.address,
                 filing_en: res2.filing,
                 copyright_en: res2.copyright,
@@ -38,7 +38,7 @@ export const getCompanyInfo = async (event: H3Event) => {
 /**
  * 修改公司信息
  */
-export const setCompanyInfo = async (event: H3Event) => {
+export const setSystemInfo = async (event: H3Event) => {
     // // 接口校验
     // const authSign = await useVerifySign(event)
     // if (!authSign) return ResponseMessage.sign
@@ -46,29 +46,29 @@ export const setCompanyInfo = async (event: H3Event) => {
     if (!event.context.user) return ResponseMessage.token
 
     // 获取参数
-    const param = await getEventParams<ICompanyEditParams>(event)
+    const param = await getEventParams<ISystemEditParams>(event)
     console.log('param-----', param)
 
     const [res1, res2] = await Promise.all([
-        event.context.prisma.company.update({
+        event.context.prisma.system.update({
             data: {
-                company: param.company,
+                title: param.title,
                 address: param.address,
                 logo: param.logo,
                 logo2: param.logo2,
-                qr_code: param.qr_code,
+                qrCode: param.qr_code,
                 phone: param.phone,
                 email: param.email,
-                seo_keyword: param.seo_keyword,
-                seo_description: param.seo_description,
+                keyword: param.seo_keyword,
+                description: param.seo_description,
                 filing: param.filing,
                 copyright: param.copyright,
             },
             where: { id: 1 },
         }),
-        event.context.prisma.company.update({
+        event.context.prisma.system.update({
             data: {
-                company: param.company_en,
+                title: param.title_en,
                 address: param.address_en,
                 // logo: param.logo,
                 // logo2: param.logo2,
