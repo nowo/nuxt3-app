@@ -99,13 +99,22 @@ export const setPasswordUpdate = async (event: H3Event) => {
 
     if (param.password?.trim() === param.newPassword?.trim()) return { msg: '新密码不能与原密码相同' }
 
+    // 查询原密码是否正确
+    const admin = await event.context.prisma.admin.findUnique({
+        where: {
+            id: event.context.user.id,
+            password: setEncryptPassword(param.password.trim()),
+        },
+    })
+    if (!admin) return { msg: '原密码错误' }
+
+    // 修改密码
     const user = await event.context.prisma.admin.update({
         data: {
             password: setEncryptPassword(param.newPassword.trim()),
         },
         where: {
             id: event.context.user.id,
-            password: setEncryptPassword(param.password.trim()),
         },
     })
 
