@@ -8,17 +8,18 @@ datasource db {
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
-model User {
+// 管理员表
+model Admin {
     id        Int      @id @default(autoincrement())
-    username  String?  @db.VarChar(30)
     account   String?  @unique @db.VarChar(50) // 账号，唯一
+    username  String?  @db.VarChar(30)
     password  String?  @db.VarChar(255)
     avatar    String?  @db.VarChar(255)
     status    Int?     @default(1)
     createdAt DateTime @default(now()) @map("created_at")
     updatedAt DateTime @updatedAt @map("updated_at")
 
-    @@map("user")
+    @@map("admin")
 }
 
 // 公司介绍
