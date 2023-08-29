@@ -102,7 +102,7 @@ export const useVerifyToken = (event: H3Event) => {
  * @returns
  */
 export const getEventParams = async <T = any>(event: H3Event) => {
-    const method = getMethod(event)
+    const method = event.method
 
     const contentType = getHeader(event, 'content-type')
 

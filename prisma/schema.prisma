@@ -21,11 +21,12 @@ model User {
     @@map("user")
 }
 
+// 公司介绍
 model Company {
     id              Int     @id @default(autoincrement())
     company         String  @db.VarChar(100) // 网站名称
     address         String? @db.VarChar(200)
-    logo            String?  @db.VarChar(255) // 网站logo
+    logo            String? @db.VarChar(255) // 网站logo
     logo2           String? @db.VarChar(255) // 网站logo
     qr_code         String? @db.VarChar(255) // 二维码
     phone           String? @db.VarChar(20) // 联系电话
@@ -33,7 +34,7 @@ model Company {
     // seo_title       String? @db.VarChar(255) // 标题
     seo_keyword     String? @db.VarChar(100) // 关键词
     seo_description String? @db.VarChar(200) // 描述
-    filing     String? @db.VarChar(100) // 备案号
+    filing          String? @db.VarChar(100) // 备案号
     copyright       String? @db.VarChar(200) // 版权
 
     createdAt DateTime @default(now()) @map("created_at")
@@ -42,23 +43,41 @@ model Company {
     @@map("company")
 }
 
+// 系统信息
 model System {
-    id              Int     @id @default(autoincrement())
+    id          Int     @id @default(autoincrement())
     title       String? @db.VarChar(100) // 标题
     // company         String  @db.VarChar(100) // 网站名称
-    address         String? @db.VarChar(200)    // 网站地址
-    logo            String?  @db.VarChar(255) // 网站logo
-    logo2           String? @db.VarChar(255) // 网站logo
-    qrCode         String? @db.VarChar(255)  @map("qr_code") // 二维码
-    phone           String? @db.VarChar(20) // 联系电话
-    email           String? @db.VarChar(50) // 电子邮箱
+    address     String? @db.VarChar(200) // 网站地址
+    logo        String? @db.VarChar(255) // 网站logo
+    logo2       String? @db.VarChar(255) // 网站logo
+    qrCode      String? @map("qr_code") @db.VarChar(255) // 二维码
+    phone       String? @db.VarChar(20) // 联系电话
+    email       String? @db.VarChar(50) // 电子邮箱
     keyword     String? @db.VarChar(100) // 关键词
     description String? @db.VarChar(200) // 描述
-    filing     String? @db.VarChar(100) // 备案号
-    copyright       String? @db.VarChar(200) // 版权
+    filing      String? @db.VarChar(100) // 备案号
+    copyright   String? @db.VarChar(200) // 版权
 
     createdAt DateTime @default(now()) @map("created_at")
     updatedAt DateTime @updatedAt @map("updated_at")
 
     @@map("system")
+}
+
+// 菜单表
+model Menu {
+    id       Int     @id @default(autoincrement())
+    p_id     Int?    @default(0) // 父级ID
+    name     String  @db.VarChar(50) // 菜单名称
+    icon     String? @db.VarChar(50) // 菜单图标
+    url      String? @db.VarChar(200) // 菜单链接
+    sort     Int?    @default(0) // 排序
+    title    String? @db.VarChar(100) // 菜单名称
+    title_en String? @db.VarChar(100) // 菜单名称(英文)
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("menu")
 }
