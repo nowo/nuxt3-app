@@ -8,7 +8,6 @@ import { setEncryptPassword } from '~/server/utils/request'
 export const setLoginSign = async (event: H3Event) => {
     // 获取参数
     const param = await getEventParams<AdminLoginDataType>(event)
-    // console.log('param-----', param)
 
     if (!param?.account) return { msg: '请输入登录账号' }
     if (!param.password) return { msg: '请输入登录密码' }
@@ -61,7 +60,7 @@ export const setRegister = async (event: H3Event) => {
 
     // 获取参数
     const param = await getEventParams<LoginDataType>(event)
-    console.log('param-----', param)
+    // console.log('param-----', param)
 
     if (!param?.username) return { msg: '请输入用户名' }
 
@@ -122,6 +121,18 @@ export const setPasswordUpdate = async (event: H3Event) => {
     return { code: 200, msg: '修改成功' }
 }
 
+/**
+ * 登录用户信息
+ */
+export const getLoginInfo = async (event: H3Event) => {
+    // 接口校验(是否登录)
+    if (!event.context.user) return ResponseMessage.token
+
+    const { password, createdAt, updatedAt, ...user } = event.context.user // eslint-disable-line unused-imports/no-unused-vars
+
+    return { code: 200, data: user }
+}
+
 // 、、、/////////////////////////
 
 /**
@@ -133,7 +144,6 @@ export const getAdminList = async (event: H3Event) => {
 
     // 获取参数
     const param = await getEventParams<AdminFindParam>(event)
-    // console.log('param-----', param)
 
     const where: any = {}
 
@@ -202,7 +212,7 @@ export const setAdminCreate = async (event: H3Event) => {
 
     // 获取参数
     const param = await getEventParams<AdminCreateParam>(event)
-    // console.log('param-----', param)
+
     if (!param?.account) return { msg: '请输入登录账号' }
     if (!param?.username) return { msg: '请输入用户名称' }
     if (!param?.password) return { msg: '请输入登录密码' }
@@ -231,7 +241,6 @@ export const setAdminUpdate = async (event: H3Event) => {
 
     // 获取参数
     const param = await getEventParams<{ id: number } & AdminCreateParam>(event)
-    // console.log('param-----', param)
 
     if (!param?.id) return { msg: '缺少参数id' }
 
@@ -262,7 +271,6 @@ export const setAdminDelete = async (event: H3Event) => {
 
     // 获取参数
     const param = await getEventParams<{ id: number } & AdminCreateParam>(event)
-    // console.log('param-----', param)
 
     if (!param?.id) return { msg: '缺少参数id' }
 

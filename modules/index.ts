@@ -6,7 +6,7 @@ export default defineNuxtModule((options, nuxt) => {
     })
     nuxt.hook('ready', () => {
         const nitro = useNitro()
-        console.log(nitro)
+        // console.log(nitro)
         nitro.hooks.hook('prerender:routes', () => {
             // console.log(nitro.scannedHandlers)
             console.log('🚀 ~ file: index.ts:12 ~ nitro.hooks.hook ~ nitro.scannedHandlers:', nitro.scannedHandlers)

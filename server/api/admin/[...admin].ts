@@ -1,5 +1,5 @@
 import { createRouter, defineEventHandler, useBase } from 'h3'
-import { getAdminList, setAdminCreate, setAdminDelete, setAdminUpdate, setLoginSign, setPasswordUpdate, setRegister } from '~/server/controller/admin'
+import { getAdminList, getLoginInfo, setAdminCreate, setAdminDelete, setAdminUpdate, setLoginSign, setPasswordUpdate, setRegister } from '~/server/controller/admin'
 import { createToken } from '~/server/utils/token'
 
 const router = createRouter()
@@ -39,14 +39,15 @@ router.use('/delete', defineEventHandler(async (event) => {
  */
 router.use('/login', defineEventHandler(async (event) => {
     const res = await setLoginSign(event)
-    if (res.data) {
-        const token = createToken(res.data)
+    const user = res.data
+    if (user) {
+        const token = createToken(user)
         return {
             code: 200,
             data: {
-                id: res.data.id,
-                username: res.data!.username,
-                account: res.data!.account,
+                id: user.id,
+                // username: user!.username,
+                // account: user!.account,
                 token,
             },
         }
@@ -67,6 +68,13 @@ router.use('/signup', defineEventHandler(async (event) => {
  */
 router.use('/edit_password', defineEventHandler(async (event) => {
     return setPasswordUpdate(event)
+}))
+
+/**
+ * 获取登录用户信息
+ */
+router.use('/info', defineEventHandler(async (event) => {
+    return getLoginInfo(event)
 }))
 
 export default useBase('/api/admin', router.handler)

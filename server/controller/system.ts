@@ -47,7 +47,7 @@ export const setSystemInfo = async (event: H3Event) => {
 
     // 获取参数
     const param = await getEventParams<ISystemEditParams>(event)
-    console.log('param-----', param)
+    // console.log('param-----', param)
 
     if (!param?.title) return { msg: '公司名称不能为空' }
 

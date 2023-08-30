@@ -10,7 +10,6 @@ export const getMenuList = async (event: H3Event) => {
 
     // 获取参数
     const param = await getEventParams<MenuFindParam>(event)
-    console.log('param-----', param)
 
     const where: any = {
         p_id: 0,
