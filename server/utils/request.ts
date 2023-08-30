@@ -63,7 +63,7 @@ export const useVerifySign = async (event: H3Event) => {
     if (!signTimestamp) {
         // 请求头没有x-sign时，获取params或body里的sign参数
         const signParams = await getEventParams<{ sign: string }>(event)
-        if (!signParams.sign) return undefined
+        if (!signParams?.sign) return undefined
 
         signTimestamp = signParams.sign
     }
@@ -129,7 +129,7 @@ export const getEventParams = async <T = any>(event: H3Event) => {
     // const body = await readBody<T>(event)
     // const param = method === 'GET' ? query : body
 
-    return param as T
+    return param as T | undefined
 }
 
 type $FetchType = typeof $fetch

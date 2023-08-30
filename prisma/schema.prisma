@@ -79,5 +79,19 @@ model Menu {
     createdAt DateTime @default(now()) @map("created_at")
     updatedAt DateTime @updatedAt @map("updated_at")
 
+    parentMenu Menu?  @relation("menu_p_id", fields: [p_id], references: [id])
+    children  Menu[] @relation("menu_p_id")
+
     @@map("menu")
 }
+
+// model Category {
+//     id                 Int  @id @default(autoincrement())
+//     parent_category_id Int?
+//     [...more fields...]
+
+//     parentCategory Category?  @relation("categoriesTocategories_parent_category_id", fields: [parent_category_id], references: [id])
+//     childCategory  Category[] @relation("categoriesTocategories_parent_category_id")
+
+//     @@map("categories")
+// }

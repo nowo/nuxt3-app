@@ -49,6 +49,8 @@ export const setSystemInfo = async (event: H3Event) => {
     const param = await getEventParams<ISystemEditParams>(event)
     console.log('param-----', param)
 
+    if (!param?.title) return { msg: '公司名称不能为空' }
+
     const [res1, res2] = await Promise.all([
         event.context.prisma.system.update({
             data: {

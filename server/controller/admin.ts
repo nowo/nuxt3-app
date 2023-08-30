@@ -10,7 +10,7 @@ export const setLoginSign = async (event: H3Event) => {
     const param = await getEventParams<AdminLoginDataType>(event)
     // console.log('param-----', param)
 
-    if (!param.account) return { msg: '请输入登录账号' }
+    if (!param?.account) return { msg: '请输入登录账号' }
     if (!param.password) return { msg: '请输入登录密码' }
 
     const user = await event.context.prisma.admin.findUnique({
@@ -63,7 +63,7 @@ export const setRegister = async (event: H3Event) => {
     const param = await getEventParams<LoginDataType>(event)
     console.log('param-----', param)
 
-    if (!param.username) return { msg: '请输入用户名' }
+    if (!param?.username) return { msg: '请输入用户名' }
 
     if (!param.account) return { msg: '请输入登录账号' }
     if (!param.password) return { msg: '请输入登录密码' }
@@ -94,7 +94,7 @@ export const setPasswordUpdate = async (event: H3Event) => {
     // 获取参数
     const param = await getEventParams<AdminPasswordParam>(event)
 
-    if (!param.password) return { msg: '请输入原密码' }
+    if (!param?.password) return { msg: '请输入原密码' }
     if (!param.newPassword) return { msg: '请输入新密码' }
 
     if (param.password?.trim() === param.newPassword?.trim()) return { msg: '新密码不能与原密码相同' }
@@ -137,18 +137,18 @@ export const getAdminList = async (event: H3Event) => {
 
     const where: any = {}
 
-    if (param.account) {
+    if (param?.account) {
         where.account = {
             contains: param.account, // 包含
         }
     }
-    if (param.username) {
+    if (param?.username) {
         where.username = {
             contains: param.username, // 包含
         }
     }
 
-    if (typeof param.status === 'number') {
+    if (typeof param?.status === 'number') {
         where.status = param.status
     }
 
@@ -157,7 +157,7 @@ export const getAdminList = async (event: H3Event) => {
     let pageSize: number | undefined
     let pageSkip: number | undefined
 
-    if (param.isPage) {
+    if (param?.isPage) {
         page = param.page || 1
         pageSize = param.pageSize || 20
         pageSkip = pageSize * (page - 1) || 0
@@ -203,6 +203,9 @@ export const setAdminCreate = async (event: H3Event) => {
     // 获取参数
     const param = await getEventParams<AdminCreateParam>(event)
     // console.log('param-----', param)
+    if (!param?.account) return { msg: '请输入登录账号' }
+    if (!param?.username) return { msg: '请输入用户名称' }
+    if (!param?.password) return { msg: '请输入登录密码' }
 
     const user = await event.context.prisma.admin.create({
         data: {
@@ -230,7 +233,7 @@ export const setAdminUpdate = async (event: H3Event) => {
     const param = await getEventParams<{ id: number } & AdminCreateParam>(event)
     // console.log('param-----', param)
 
-    if (!param.id) return { msg: '缺少参数id' }
+    if (!param?.id) return { msg: '缺少参数id' }
 
     const user = await event.context.prisma.admin.update({
         data: {
@@ -261,7 +264,7 @@ export const setAdminDelete = async (event: H3Event) => {
     const param = await getEventParams<{ id: number } & AdminCreateParam>(event)
     // console.log('param-----', param)
 
-    if (!param.id) return { msg: '缺少参数id' }
+    if (!param?.id) return { msg: '缺少参数id' }
 
     const user = await event.context.prisma.admin.delete({
         where: {

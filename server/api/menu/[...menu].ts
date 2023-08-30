@@ -1,5 +1,6 @@
 import { createRouter, defineEventHandler, useBase } from 'h3'
-import { getAdminList, setAdminCreate, setAdminDelete, setAdminUpdate } from '~/server/controller/admin'
+import { setAdminCreate, setAdminDelete, setAdminUpdate } from '~/server/controller/admin'
+import { getMenuList } from '~/server/controller/menu'
 
 const router = createRouter()
 
@@ -7,7 +8,7 @@ const router = createRouter()
  * 获取菜单列表
  */
 router.use('/get_list', defineEventHandler(async (event) => {
-    return getAdminList(event)
+    return getMenuList(event)
 }))
 
 /**

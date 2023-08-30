@@ -34,7 +34,7 @@ router.use('/sign_test', defineEventHandler(async (event) => {
 
     const dat = await getEventParams<{ username: string; img: MultiPartData }>(event)
     console.log('🚀 ~ file: [...slug].ts:33 ~ router.use ~ dat:', dat)
-    if (dat.img) {
+    if (dat?.img) {
         const ext = extname(dat.img.filename!) // .png
         console.log(ext)
         const url = await createFile(ext, dat.img.data)

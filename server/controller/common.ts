@@ -4,7 +4,7 @@ import type { H3Event, MultiPartData } from 'h3'
 export const uploadFile = async (event: H3Event) => {
     const dat = await getEventParams<{ file: MultiPartData }>(event)
 
-    if (dat.file && dat.file.filename) {
+    if (dat?.file && dat.file.filename) {
         const ext = extname(dat.file.filename) // .png
 
         const url = await createFile(ext, dat.file.data, true)

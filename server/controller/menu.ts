@@ -10,11 +10,13 @@ export const getMenuList = async (event: H3Event) => {
 
     // 获取参数
     const param = await getEventParams<MenuFindParam>(event)
-    // console.log('param-----', param)
+    console.log('param-----', param)
 
-    const where: any = {}
+    const where: any = {
+        p_id: 0,
+    }
 
-    if (param.title) {
+    if (param?.title) {
         where.title = {
             contains: param.title, // 包含
         }
@@ -25,7 +27,7 @@ export const getMenuList = async (event: H3Event) => {
     let pageSize: number | undefined
     let pageSkip: number | undefined
 
-    if (param.isPage) {
+    if (param?.isPage) {
         page = param.page || 1
         pageSize = param.pageSize || 20
         pageSkip = pageSize * (page - 1) || 0
@@ -38,6 +40,9 @@ export const getMenuList = async (event: H3Event) => {
             where,
             orderBy: {
                 sort: 'asc', // 按id正序排序
+            },
+            include: {
+                childMenu: true,
             },
             // select: { // 只返回指定的字段
             //     username: true,
@@ -71,7 +76,7 @@ export const setMenuCreate = async (event: H3Event) => {
     // 获取参数
     const param = await getEventParams<MenuCreateParam>(event)
     // console.log('param-----', param)
-    if (!param.title) return { msg: '菜单名称不能为空' }
+    if (!param?.title) return { msg: '菜单名称不能为空' }
     if (!param.url) return { msg: '链接地址不能为空' }
 
     const res = await event.context.prisma.menu.create({
@@ -96,7 +101,7 @@ export const setMenuUpdate = async (event: H3Event) => {
     const param = await getEventParams<MenuCreateParamEdit>(event)
     // console.log('param-----', param)
 
-    if (!param.id) return { msg: '缺少参数id' }
+    if (!param?.id) return { msg: '缺少参数id' }
     if (!param.title) return { msg: '菜单名称不能为空' }
     if (!param.url) return { msg: '链接地址不能为空' }
 
@@ -125,7 +130,7 @@ export const setMenuDelete = async (event: H3Event) => {
     const param = await getEventParams<{ id: number }>(event)
     // console.log('param-----', param)
 
-    if (!param.id) return { msg: '缺少参数id' }
+    if (!param?.id) return { msg: '缺少参数id' }
 
     const res = await event.context.prisma.menu.delete({
         where: {
