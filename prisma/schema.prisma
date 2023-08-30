@@ -70,7 +70,6 @@ model System {
 model Menu {
     id       Int     @id @default(autoincrement())
     p_id     Int?    @default(0) // 父级ID
-    name     String  @db.VarChar(50) // 菜单名称
     icon     String? @db.VarChar(50) // 菜单图标
     url      String? @db.VarChar(200) // 菜单链接
     sort     Int?    @default(0) // 排序
