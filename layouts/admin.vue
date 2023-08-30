@@ -1,7 +1,7 @@
 <template>
-    <LayoutAdmin>
+    <div>
         <slot />
-    </LayoutAdmin>
+    </div>
 </template>
 
 <script setup lang="ts">
