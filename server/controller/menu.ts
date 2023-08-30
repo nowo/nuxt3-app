@@ -42,7 +42,7 @@ export const getMenuList = async (event: H3Event) => {
                 sort: 'asc', // 按id正序排序
             },
             include: {
-                childMenu: true,
+                children: true,
             },
             // select: { // 只返回指定的字段
             //     username: true,

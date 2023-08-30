@@ -1,6 +1,5 @@
 import { createRouter, defineEventHandler, useBase } from 'h3'
-import { setAdminCreate, setAdminDelete, setAdminUpdate } from '~/server/controller/admin'
-import { getMenuList } from '~/server/controller/menu'
+import { getMenuList, setMenuCreate, setMenuDelete, setMenuUpdate } from '~/server/controller/menu'
 
 const router = createRouter()
 
@@ -15,21 +14,21 @@ router.use('/get_list', defineEventHandler(async (event) => {
  * 添加菜单
  */
 router.use('/add', defineEventHandler(async (event) => {
-    return setAdminCreate(event)
+    return setMenuCreate(event)
 }))
 
 /**
  * 修改菜单
  */
 router.use('/edit', defineEventHandler(async (event) => {
-    return setAdminUpdate(event)
+    return setMenuUpdate(event)
 }))
 
 /**
  * 删除菜单
  */
 router.use('/delete', defineEventHandler(async (event) => {
-    return setAdminDelete(event)
+    return setMenuDelete(event)
 }))
 
 export default useBase('/api/menu', router.handler)
