@@ -1,7 +1,11 @@
 import type { H3Event } from 'h3'
 import { ResponseMessage } from '~/config/message'
 
-// banner
+// news
+type FindListQueryParam = {
+    type: number
+    title: string
+} & ListPage
 
 /**
  * 列表查询
@@ -13,10 +17,14 @@ export const getList = async (event: H3Event) => {
     if (!event.context.user) return ResponseMessage.token
 
     // 获取参数
-    const param = await getEventParams<ListPage>(event)
+    const param = await getEventParams<FindListQueryParam>(event)
 
+    if (!param?.type) return { msg: '请传递类型' }
     const where: any = {
-
+        type: param.type,
+        title: {
+            contains: param?.title, // 包含
+        },
     }
 
     // 查询菜单姓"张"，1页显示20条
@@ -70,10 +78,10 @@ export const insert = async (event: H3Event) => {
     // 获取参数
     const param = await getEventParams<BannerCreateParam>(event)
     // console.log('param-----', param)
-    if (!param?.img) return { msg: '图片不能为空' }
+    if (!param?.title) return { msg: '标题不能为空' }
 
     const res = await event.context.prisma.news.create({
-        data: param,
+        data: { ...param },
     })
 
     if (res) {
@@ -97,7 +105,7 @@ export const update = async (event: H3Event) => {
     // console.log('param-----', param)
 
     if (!param?.id) return { msg: '缺少参数id' }
-    if (!param?.img) return { msg: '图片不能为空' }
+    if (!param?.title) return { msg: '标题不能为空' }
 
     const res = await event.context.prisma.news.update({
         data: param,

@@ -101,9 +101,9 @@ model News {
 
     img String? @db.VarChar(255) // 封面图片
 
-    sort      Int?     @default(0) // 排序
+    sort   Int?     @default(0) // 排序
     isHide Boolean? @default(false) // 是否首页显示
-    type      Int?     @default(0) // 类型 0:普通新闻 1:推荐新闻 2:热门新闻
+    type   Int?     @default(0) // 类型 0:普通新闻 1:推荐新闻 2:热门新闻
 
     createdAt DateTime @default(now()) @map("created_at")
     updatedAt DateTime @updatedAt @map("updated_at")
@@ -115,19 +115,38 @@ model News {
 model Link {
     id Int @id @default(autoincrement())
 
-    title String? @db.VarChar(100) // 标题名称
+    title    String? @db.VarChar(100) // 标题名称
     title_en String? @db.VarChar(100) // 标题名称(英文)
-    img   String? @db.VarChar(255) // 封面图片
-    href  String? @db.VarChar(255) // 链接地址
+    img      String? @db.VarChar(255) // 封面图片
+    href     String? @db.VarChar(255) // 链接地址
 
-    sort Int? @default(0) // 排序
-    type Int? @default(1) // 类型 1:轮播图 2:友情链接
-    isHide Boolean @default(false)  // 是否隐藏
+    sort   Int?    @default(0) // 排序
+    type   Int?    @default(1) // 类型 1:轮播图 2:友情链接
+    isHide Boolean @default(false) // 是否隐藏
 
     createdAt DateTime @default(now()) @map("created_at")
     updatedAt DateTime @updatedAt @map("updated_at")
 
     @@map("link")
+}
+
+// 其他内容介绍
+model Other {
+    id Int @id @default(autoincrement())
+
+    title    String? @db.VarChar(100) // 标题名称
+    title_en String? @db.VarChar(100) // 标题名称(英文)
+    img      String? @db.VarChar(255) // 封面图片
+
+    content    String? @db.Text // 内容
+    content_en String? @db.Text // 内容英文
+
+    type Int @unique @default(0) // 类型 0:其他内容 1:关于我们 2:联系我们 3:加入我们 4:常见问题
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("other")
 }
 
 // model Category {
