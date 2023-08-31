@@ -1,24 +1,22 @@
 import type { H3Event } from 'h3'
 import { ResponseMessage } from '~/config/message'
 
+// banner
+
 /**
- * 获取菜单列表
+ * 列表查询
+ * @param event
+ * @returns
  */
-export const getMenuList = async (event: H3Event) => {
+export const getList = async (event: H3Event) => {
     // 接口校验(是否登录)
     if (!event.context.user) return ResponseMessage.token
 
     // 获取参数
-    const param = await getEventParams<MenuFindParam>(event)
+    const param = await getEventParams<ListPage>(event)
 
     const where: any = {
-        p_id: 0,
-    }
 
-    if (param?.title) {
-        where.title = {
-            contains: param.title, // 包含
-        }
     }
 
     // 查询菜单姓"张"，1页显示20条
@@ -33,52 +31,48 @@ export const getMenuList = async (event: H3Event) => {
     }
 
     const [res1, res2] = await Promise.all([
-        event.context.prisma.menu.findMany({
+        event.context.prisma.news.findMany({
             skip: pageSkip,
             take: pageSize,
             where,
             orderBy: {
                 sort: 'asc', // 按id正序排序
             },
-            include: {
-                children: true,
-            },
+            // include: {
+            //     children: true,
+            // },
             // select: { // 只返回指定的字段
             //     username: true,
             //     account: true,
             // },
         }),
-        event.context.prisma.menu.count({
+        event.context.prisma.news.count({
             where,
         }),
     ])
-    const list = res1.map((item) => {
-        return {
-            ...item,
-            password: '',
-        }
-    })
+
     if (res1) {
-        return { code: 200, data: { list, total: res2 } }
+        return { code: 200, data: { list: res1, total: res2 } }
     } else {
         return { code: 400, message: '查询失败' }
     }
 }
 
 /**
- * 创建菜单
+ * 新增
+ * @param event
+ * @returns
  */
-export const setMenuCreate = async (event: H3Event) => {
+export const insert = async (event: H3Event) => {
     // 接口校验(是否登录)
     if (!event.context.user) return ResponseMessage.token
 
     // 获取参数
-    const param = await getEventParams<MenuCreateParam>(event)
+    const param = await getEventParams<BannerCreateParam>(event)
     // console.log('param-----', param)
-    if (!param?.title) return { msg: '菜单名称不能为空' }
-    if (!param.href) return { msg: '链接地址不能为空' }
+    if (!param?.img) return { msg: '图片不能为空' }
 
-    const res = await event.context.prisma.menu.create({
+    const res = await event.context.prisma.news.create({
         data: param,
     })
 
@@ -90,21 +84,22 @@ export const setMenuCreate = async (event: H3Event) => {
 }
 
 /**
- * 修改菜单
+ * 修改
+ * @param event
+ * @returns
  */
-export const setMenuUpdate = async (event: H3Event) => {
+export const update = async (event: H3Event) => {
     // 接口校验(是否登录)
     if (!event.context.user) return ResponseMessage.token
 
     // 获取参数
-    const param = await getEventParams<MenuCreateParamEdit>(event)
+    const param = await getEventParams<BannerCreateParamEdit>(event)
     // console.log('param-----', param)
 
     if (!param?.id) return { msg: '缺少参数id' }
-    if (!param.title) return { msg: '菜单名称不能为空' }
-    if (!param.href) return { msg: '链接地址不能为空' }
+    if (!param?.img) return { msg: '图片不能为空' }
 
-    const res = await event.context.prisma.menu.update({
+    const res = await event.context.prisma.news.update({
         data: param,
         where: {
             id: param.id,
@@ -119,9 +114,11 @@ export const setMenuUpdate = async (event: H3Event) => {
 }
 
 /**
- * 删除菜单
+ * 删除
+ * @param event
+ * @returns
  */
-export const setMenuDelete = async (event: H3Event) => {
+export const del = async (event: H3Event) => {
     // 接口校验(是否登录)
     if (!event.context.user) return ResponseMessage.token
 
@@ -131,7 +128,7 @@ export const setMenuDelete = async (event: H3Event) => {
 
     if (!param?.id) return { msg: '缺少参数id' }
 
-    const res = await event.context.prisma.menu.delete({
+    const res = await event.context.prisma.news.delete({
         where: {
             id: param.id,
         },

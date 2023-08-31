@@ -71,7 +71,7 @@ model Menu {
     id       Int     @id @default(autoincrement())
     p_id     Int?    @default(0) // 父级ID
     icon     String? @db.VarChar(50) // 菜单图标
-    url      String? @db.VarChar(200) // 菜单链接
+    href     String? @db.VarChar(200) // 菜单链接
     sort     Int?    @default(0) // 排序
     title    String? @db.VarChar(100) // 菜单名称
     title_en String? @db.VarChar(100) // 菜单名称(英文)
@@ -80,9 +80,54 @@ model Menu {
     updatedAt DateTime @updatedAt @map("updated_at")
 
     parentMenu Menu?  @relation("menu_p_id", fields: [p_id], references: [id])
-    children  Menu[] @relation("menu_p_id")
+    children   Menu[] @relation("menu_p_id")
 
     @@map("menu")
+}
+
+// 新闻表
+model News {
+    id Int @id @default(autoincrement())
+
+    title    String? @db.VarChar(100) // 标题名称
+    title_en String? @db.VarChar(100) // 标题名称(英文)
+
+    author      String? @db.VarChar(100) // 作者
+    describe    String? @db.VarChar(200) // 描述
+    describe_en String? @db.VarChar(200) // 描述英文
+
+    content    String? @db.Text // 内容
+    content_en String? @db.Text // 内容英文
+
+    img String? @db.VarChar(255) // 封面图片
+
+    sort      Int?     @default(0) // 排序
+    isHide Boolean? @default(false) // 是否首页显示
+    type      Int?     @default(0) // 类型 0:普通新闻 1:推荐新闻 2:热门新闻
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("news")
+}
+
+// 友情链接，轮播图
+model Link {
+    id Int @id @default(autoincrement())
+
+    title String? @db.VarChar(100) // 标题名称
+    title_en String? @db.VarChar(100) // 标题名称(英文)
+    img   String? @db.VarChar(255) // 封面图片
+    href  String? @db.VarChar(255) // 链接地址
+
+    sort Int? @default(0) // 排序
+    type Int? @default(1) // 类型 1:轮播图 2:友情链接
+    isHide Boolean @default(false)  // 是否隐藏
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("link")
 }
 
 // model Category {
