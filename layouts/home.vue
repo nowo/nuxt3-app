@@ -1,5 +1,6 @@
 <template>
     <main>
+        <LayoutHomeHeader />
         <el-dropdown>
             <span class="color-primary flex items-center">
                 {{ localeProperties.name }}
@@ -15,25 +16,26 @@
             </template>
         </el-dropdown>
 
-        <BaseTop />
-        <BaseHeader />
+        <!-- <BaseTop />
+        <BaseHeader /> -->
         <!-- <BaseMenu /> -->
-        <slot />
+        <!-- <slot /> -->
 
         <div class="mx-auto text-center text-sm opacity-25">
             [Home Layout]
         </div>
-        <BaseFooter />
+        <!-- <BaseFooter /> -->
     </main>
 </template>
 
 <script lang="ts" setup>
 import type { LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
-import BaseFooter from './components/BaseFooter.vue'
-import BaseHeader from './components/BaseHeader.vue'
 
-// import BaseMenu from './components/BaseMenu.vue'
-import BaseTop from './components/BaseTop.vue'
+// import BaseFooter from './components/BaseFooter.vue'
+// import BaseHeader from './components/BaseHeader.vue'
+
+// // import BaseMenu from './components/BaseMenu.vue'
+// import BaseTop from './components/BaseTop.vue'
 
 if (process.client) console.log(useI18n())
 
@@ -46,7 +48,7 @@ const switchLocalePath = useSwitchLocalePath()
 // })
 
 //
-const changeLanguage = (code: string) => {
+const changeLanguage = async (code: string) => {
     const n = switchLocalePath(code)
     console.log(n)
     navigateTo(n)

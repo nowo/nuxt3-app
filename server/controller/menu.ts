@@ -52,14 +52,9 @@ export const getMenuList = async (event: H3Event) => {
             where,
         }),
     ])
-    const list = res1.map((item) => {
-        return {
-            ...item,
-            password: '',
-        }
-    })
+
     if (res1) {
-        return { code: 200, data: { list, total: res2 } }
+        return { code: 200, data: { list: res1, total: res2 } }
     } else {
         return { code: 400, message: '查询失败' }
     }
