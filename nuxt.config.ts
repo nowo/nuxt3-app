@@ -11,6 +11,7 @@ export default defineNuxtConfig({
         '@element-plus/nuxt',
         '@nuxtjs/i18n',
         '@pinia/nuxt',
+        'nuxt-swiper',
     ],
     experimental: {
         // when using generate, payload js assets included in sw precache manifest

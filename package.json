@@ -21,8 +21,8 @@
         "crypto-js": "^4.1.1",
         "element-plus": "^2.3.12",
         "jsonwebtoken": "^9.0.2",
+        "nuxt-swiper": "^1.2.2",
         "release-it": "^16.1.5",
-        "swiper": "^9.4.1",
         "ws": "^8.13.0"
     },
     "devDependencies": {

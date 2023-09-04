@@ -57,3 +57,35 @@ export const getMenuList = async (event: H3Event) => {
 
     return res
 }
+
+/**
+ * 获取轮播图
+ */
+export const getBannerList = async (event: H3Event) => {
+    // 接口校验
+    // if (!event.context.user) return ResponseMessage.token
+
+    // const lang = useCookie<'cn' | 'en'>('i18n_redirected')
+    // console.log('🚀 ~ file: page.ts:38 ~ getMenuList ~ lang:', lang)
+
+    const where: any = {
+        type: 1,
+        isHide: false,
+    }
+
+    const res = await event.context.prisma.link.findMany({
+        where,
+        orderBy: {
+            sort: 'asc', // 按id正序排序
+        },
+        // include: {
+        //     children: true,
+        // },
+        // select: { // 只返回指定的字段
+        //     username: true,
+        //     account: true,
+        // },
+    })
+
+    return res
+}

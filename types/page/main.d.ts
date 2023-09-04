@@ -34,3 +34,19 @@ declare interface IMenuListResponse {
     createdAt: Date;
     updatedAt: Date;
 }
+
+// 轮播图
+declare interface ISlideListResponse {
+
+    "id": 1,
+    "title": "全套清洁度检测设备 全套清洁度检测设备",
+    "title_en": "全套清洁度检测设备 全套清洁度检测设备",
+    "img": "http://localhost:9008/upload/2023/8/31/1693443650057pnzugw.jpg",
+    "href": "/",
+    "sort": 0,
+    "type": 1,
+    "isHide": false,
+    "createdAt": "2023-08-31T01:00:55.219Z",
+    "updatedAt": "2023-08-31T01:00:55.219Z"
+
+}

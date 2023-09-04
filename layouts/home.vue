@@ -1,6 +1,7 @@
 <template>
     <main>
         <LayoutHomeHeader />
+        <LayoutHomeBanner />
         <el-dropdown>
             <span class="color-primary flex items-center">
                 {{ localeProperties.name }}
