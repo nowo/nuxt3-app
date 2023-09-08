@@ -6,9 +6,11 @@ interface MenuCreateParamEdit {
 }
 
 /**
- * 获取菜单列表
+ * 获取关于我们、联系我们的内容
  */
 export const getInfo = async (event: H3Event) => {
+    const a = getRequestURL(event)
+    console.log('🚀 ~ file: other.ts:13 ~ getInfo ~ a:', a)
     // 接口校验(是否登录)
     if (!event.context.user) return ResponseMessage.token
 
@@ -26,7 +28,7 @@ export const getInfo = async (event: H3Event) => {
 }
 
 /**
- * 修改菜单
+ * 修改
  */
 export const update = async (event: H3Event) => {
     // 接口校验(是否登录)

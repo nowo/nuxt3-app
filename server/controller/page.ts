@@ -68,8 +68,11 @@ export const getBannerList = async (event: H3Event) => {
     // const lang = useCookie<'cn' | 'en'>('i18n_redirected')
     // console.log('🚀 ~ file: page.ts:38 ~ getMenuList ~ lang:', lang)
 
+    // 获取参数
+    const param = await getEventParams<{ type: number } & ListPage>(event)
+
     const where: any = {
-        type: 1,
+        type: param?.type ? Number(param?.type) : 1,
         isHide: false,
     }
 

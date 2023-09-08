@@ -26,6 +26,7 @@
             [Home Layout]
         </div>
         <!-- <BaseFooter /> -->
+        <LayoutHomeFooter />
     </main>
 </template>
 

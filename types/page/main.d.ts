@@ -6,6 +6,7 @@ declare interface ISystemInfoResponse {
     "address": "广东省东莞市虎门镇太安路虎门段41号泰明商业大厦2栋",
     "logo": string,
     "logo2": string,
+    qq:string,
     "qrCode": "",
     "phone": "189-2553-8915",
     "email": "",
