@@ -1,18 +1,16 @@
 import type { H3Event } from 'h3'
 import { ResponseMessage } from '~/config/message'
 
-interface MenuCreateParamEdit {
-    title: string
-}
-
 /**
  * 获取关于我们、联系我们的内容
  */
 export const getInfo = async (event: H3Event) => {
-    const a = getRequestURL(event)
-    console.log('🚀 ~ file: other.ts:13 ~ getInfo ~ a:', a)
-    // 接口校验(是否登录)
-    if (!event.context.user) return ResponseMessage.token
+    const url = getRequestURL(event)
+    // /api/page**的接口，跳过登录校验
+    if (!url.pathname.includes('/api/page')) {
+        // 接口校验(是否登录)
+        if (!event.context.user) return ResponseMessage.token
+    }
 
     // 获取参数
     const param = await getEventParams<{ type: number }>(event)
