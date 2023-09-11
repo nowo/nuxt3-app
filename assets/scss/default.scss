@@ -66,3 +66,11 @@ $bgColor: #fff;
     padding: 0 10px;
     margin: 0 auto;
 }
+
+.co-main-color {
+    color: var(--co-main-color);
+}
+
+.co-main-bg-color {
+    background-color: var(--co-main-color);
+}
