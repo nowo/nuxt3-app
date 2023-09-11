@@ -109,3 +109,74 @@ export const getAboutInfo = async (event: H3Event) => {
     })
     return res
 }
+
+/**
+ * 获取商品
+ */
+export const getGoodsList = async (event: H3Event) => {
+    // TODO: 商品
+    // 获取参数
+    const param = await getEventParams<{ type: number }>(event)
+
+    if (!param?.type) return { msg: '不存在记录' }
+
+    const res = await event.context.prisma.other.findUnique({
+        where: {
+            type: Number(param.type),
+        },
+    })
+    return res
+}
+
+/**
+ * 获取新闻详情
+ */
+export const getNewsInfo = async (event: H3Event) => {
+    // 获取参数
+    const param = await getEventParams<{ id: number }>(event)
+
+    if (!param?.id) return null
+
+    const res = await event.context.prisma.news.findUnique({
+        where: {
+            id: Number(param.id),
+        },
+    })
+
+    if (!res) return null
+    // 取得上一条、下一条记录
+    const [res1, res2] = await Promise.all([
+        event.context.prisma.news.findMany({ // lte 小于等于，使用倒序
+            where: {
+                createdAt: {
+                    lte: res.createdAt,
+                },
+                id: {
+                    not: res.id,
+                },
+            },
+            orderBy: {
+                createdAt: 'desc', // 倒序排序
+            },
+        }),
+        event.context.prisma.news.findMany({ // gte 大于等于，使用正序
+            where: {
+                createdAt: {
+                    gt: res.createdAt,
+                },
+                id: {
+                    not: res.id,
+                },
+            },
+            orderBy: {
+                createdAt: 'asc', // 升序排序
+            },
+        }),
+    ])
+
+    return {
+        data: res,
+        prevNews: res1[0],
+        nextNews: res2[0],
+    }
+}

@@ -3,5 +3,10 @@
     "welcome": "Welcome",
     "serverPhone":"Service hotline",
     "addressName":"Address",
-    "contactName":"Contact us"
+    "contactName":"Contact us",
+    "time":"Release time",
+    "author":"Author",
+    "none": "none",
+    "next": "Next",
+    "prev":"Prev"
 }

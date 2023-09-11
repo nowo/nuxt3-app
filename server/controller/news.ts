@@ -13,8 +13,12 @@ type FindListQueryParam = {
  * @returns
  */
 export const getList = async (event: H3Event) => {
-    // 接口校验(是否登录)
-    if (!event.context.user) return ResponseMessage.token
+    const url = getRequestURL(event)
+    // /api/page**的接口，跳过登录校验
+    if (!url.pathname.includes('/api/page')) {
+        // 接口校验(是否登录)
+        if (!event.context.user) return ResponseMessage.token
+    }
 
     // 获取参数
     const param = await getEventParams<FindListQueryParam>(event)

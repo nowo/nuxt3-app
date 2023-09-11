@@ -1,3 +1,15 @@
+.co-image {
+    position: relative;
+
+    .el-image__inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
 // el-image图片组件错误时样式
 .co-image-error {
     width: 100%;
