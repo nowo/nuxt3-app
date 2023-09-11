@@ -9,6 +9,7 @@
 
 <script setup lang="ts">
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+import en from 'element-plus/dist/locale/en.mjs'
 import { appName } from '~/config/constant'
 
 import '~/assets/scss/default.scss'
@@ -16,7 +17,13 @@ import '~/assets/scss/default.scss'
 // import '@unocss/reset/tailwind.css'
 // import '~/assets/scss/app.scss'
 
-const locale = ref(zhCn)
+// const locale = ref(zhCn)
+
+const { locale: lo } = useI18n()
+
+const locale = computed(() => {
+    return lo.value === 'en' ? en : zhCn
+})
 
 if (process.client) console.log(useRouter().getRoutes())
 

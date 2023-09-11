@@ -44,7 +44,9 @@ export const useMenuState = () => {
 
     // 当前页菜单内容
     const activeMenu = computed<IMenuListResponse | undefined>(() => {
-        return menuList.value.find(item => item.href === route.path || `/en${item.href}` === route.path)
+        // [id].vue 的问价，不能直接拿route.path来进行比较
+        const path = route.matched[0].path.split('/:')[0]
+        return menuList.value.find(item => item.href === path || `/en${item.href}` === path)
     })
 
     return {

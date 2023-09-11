@@ -1,14 +1,14 @@
 // @use 'sass:map';
-$bgColor: #fff;
-// @forward "element-plus/theme-chalk/src/common/var.scss" with ($colors: ("primary": ("base": #d7231e),
-//     "success": ("base": #04ae8b),
-//     "warning": ("base": #FF771C),
-//     "danger": ("base": #ff3030),
-//     "error": ("base": #ff3030),
-//     "info": ("base": #9e9e9e),
-//   ));
+// $bgColor: #fff;
+@forward "element-plus/theme-chalk/src/common/var.scss" with ($colors: ("primary": ("base": #47ccad),
+    // "success": ("base": #04ae8b),
+    // "warning": ("base": #FF771C),
+    // "danger": ("base": #ff3030),
+    // "error": ("base": #ff3030),
+    // "info": ("base": #9e9e9e),
+  ));
 
-// @use "element-plus/theme-chalk/src/index.scss" as *;
+@use "element-plus/theme-chalk/src/index.scss" as *;
 
 
 * {
