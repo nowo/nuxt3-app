@@ -23,9 +23,7 @@
                     </div>
                     <div class="side-item mt20px">
                         <h3 class="co-main-bg-color px15px py10px text-14px font-bold c-white">
-                            <ClientOnly>
-                                {{ $lang(activeMenu?.title, activeMenu?.title_en) }}
-                            </ClientOnly>
+                            {{ $t('contactName') }}
                         </h3>
                         <div class="side-bor">
                             <div class="b-1px b-#ddd b-solid">
@@ -46,8 +44,22 @@
                     </div>
                 </el-col>
                 <el-col :xs="20" :sm="20" :md="19" :lg="18" :xl="18">
-                    <div class="co-main-bg-color px15px py10px text-14px font-bold c-white">
-                        {{ $t('contactName') }}
+                    <div class="co-main-bg-color flex items-center px15px py10px text-14px font-bold c-white">
+                        {{ $t('site') }}：
+                        <ClientOnly>
+                            <el-breadcrumb class="bread-box">
+                                <el-breadcrumb-item>
+                                    <NuxtLinkLocale to="/">
+                                        {{ $t('home') }}
+                                    </NuxtLinkLocale>
+                                </el-breadcrumb-item>
+                                <el-breadcrumb-item>
+                                    <NuxtLinkLocale :to="activeMenu?.href">
+                                        {{ $lang(activeMenu?.title, activeMenu?.title_en) }}
+                                    </NuxtLinkLocale>
+                                </el-breadcrumb-item>
+                            </el-breadcrumb>
+                        </ClientOnly>
                     </div>
                     <div class="side-bor min-h-300px">
                         <slot />
@@ -123,5 +135,12 @@ const setMenuLink = (row: IMenuListResponse) => {
             }
         }
     }
+}
+
+.bread-box {
+    --el-text-color-primary: var(--el-color-white);
+    --el-text-color-regular: var(--el-color-success-light-9);
+    --el-color-primary: var(--el-color-info-light-7);
+    --el-text-color-placeholder: var(--el-color-white);
 }
 </style>

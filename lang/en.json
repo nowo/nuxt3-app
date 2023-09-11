@@ -1,12 +1,14 @@
 {
     "hello": "Hello, {name}!",
     "welcome": "Welcome",
-    "serverPhone":"Service hotline",
-    "addressName":"Address",
-    "contactName":"Contact us",
-    "time":"Release time",
-    "author":"Author",
+    "serverPhone": "Service hotline",
+    "addressName": "Address",
+    "contactName": "Contact us",
+    "time": "Release time",
+    "author": "Author",
     "none": "none",
     "next": "Next",
-    "prev":"Prev"
+    "prev": "Prev",
+    "site": "Location",
+    "home": "Home"
 }

@@ -1,12 +1,14 @@
 {
     "hello": "你好, {name}!",
     "welcome": "欢迎",
-    "serverPhone":"服务热线",
-    "addressName":"总部地址",
-    "contactName":"联系我们",
-    "time":"发布时间",
-    "author":"作者",
+    "serverPhone": "服务热线",
+    "addressName": "总部地址",
+    "contactName": "联系我们",
+    "time": "发布时间",
+    "author": "作者",
     "none": "无",
     "next": "下一篇",
-    "prev":"上一篇"
+    "prev": "上一篇",
+    "site": "当前位置",
+    "home": "首页"
 }
