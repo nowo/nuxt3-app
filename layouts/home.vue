@@ -20,7 +20,7 @@
         <!-- <BaseTop />
         <BaseHeader /> -->
         <!-- <BaseMenu /> -->
-        <!-- <slot /> -->
+        <slot />
 
         <div class="mx-auto text-center text-sm opacity-25">
             [Home Layout]

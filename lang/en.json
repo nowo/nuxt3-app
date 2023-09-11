@@ -1,4 +1,7 @@
 {
     "hello": "Hello, {name}!",
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "serverPhone":"Service hotline",
+    "addressName":"Address",
+    "contactName":"Contact us"
 }

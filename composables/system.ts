@@ -24,6 +24,7 @@ export const useSystemState = () => {
 }
 
 export const useMenuState = () => {
+    const route = useRoute()
     const menuList = useState<IMenuListResponse[]>('menu', () => [])
 
     const getMenuList = async (update?: boolean) => {
@@ -41,7 +42,13 @@ export const useMenuState = () => {
         return menuList
     }
 
+    // 当前页菜单内容
+    const activeMenu = computed<IMenuListResponse | undefined>(() => {
+        return menuList.value.find(item => item.href === route.path || `/en${item.href}` === route.path)
+    })
+
     return {
+        activeMenu,
         menuList,
         getMenuList,
     }

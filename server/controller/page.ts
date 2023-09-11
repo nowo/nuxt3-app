@@ -46,9 +46,9 @@ export const getMenuList = async (event: H3Event) => {
         orderBy: {
             sort: 'asc', // 按id正序排序
         },
-        // include: {
-        //     children: true,
-        // },
+        include: {
+            children: true,
+        },
         // select: { // 只返回指定的字段
         //     username: true,
         //     account: true,
@@ -90,5 +90,22 @@ export const getBannerList = async (event: H3Event) => {
         // },
     })
 
+    return res
+}
+
+/**
+ * 获取关于我们、联系我们的内容
+ */
+export const getAboutInfo = async (event: H3Event) => {
+    // 获取参数
+    const param = await getEventParams<{ type: number }>(event)
+
+    if (!param?.type) return { msg: '不存在记录' }
+
+    const res = await event.context.prisma.other.findUnique({
+        where: {
+            type: Number(param.type),
+        },
+    })
     return res
 }

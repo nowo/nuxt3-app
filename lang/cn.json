@@ -1,4 +1,7 @@
 {
     "hello": "你好, {name}!",
-    "welcome": "欢迎"
+    "welcome": "欢迎",
+    "serverPhone":"服务热线",
+    "addressName":"总部地址",
+    "contactName":"联系我们"
 }
