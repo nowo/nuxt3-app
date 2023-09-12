@@ -1,14 +1,14 @@
 <template>
     <div>
         <ClientOnly>
-            <ul class="new-ul min-h250px">
+            <ul v-if="props.type === 1" class="new-ul min-h250px">
                 <li v-for="item in defData.listData" :key="item.id" class="flex">
                     <NuxtLinkLocale :to="setLinkPath(item)" class="link">
                         <co-image :src="item.img" class="h100% w140px block!" />
                     </NuxtLinkLocale>
                     <div class="flex-1 pl20px">
                         <h3 class="text-truncate pb5px font-bold">
-                            <NuxtLinkLocale :to="setLinkPath(item)" class="link">
+                            <NuxtLinkLocale :to="setLinkPath(item)" class="link-a">
                                 {{ $lang(item.title, item.title_en) }}
                             </NuxtLinkLocale>
                         </h3>
@@ -16,6 +16,19 @@
                             {{ $lang(item.describe, item.describe_en) }}
                         </div>
                     </div>
+                </li>
+            </ul>
+
+            <ul v-else class="news-grid">
+                <li v-for="item in defData.listData" :key="item.id" :span="8">
+                    <NuxtLinkLocale :to="setLinkPath(item)" class="link">
+                        <co-image :src="item.img" class="w100% b-1px b-#eee b-solid pb75% block!" />
+                    </NuxtLinkLocale>
+                    <h3 class="mt5px text-truncate text-center font-bold">
+                        <NuxtLinkLocale :to="setLinkPath(item)" class="link-a">
+                            {{ $lang(item.title, item.title_en) }}
+                        </NuxtLinkLocale>
+                    </h3>
                 </li>
             </ul>
             <el-pagination v-if="defData.pagination.total" v-model:current-page="defData.pagination.page"
@@ -39,7 +52,7 @@ const defData = reactive({
     pagination: {
         total: 0,
         page: 1,
-        page_size: 2,
+        page_size: props.type === 1 ? 10 : 12,
         page_sizes: [10],
     },
     listData: [] as INewsResponse[],
@@ -101,12 +114,6 @@ initTableData()
         }
     }
 
-    .link {
-        &:hover {
-            color: var(--co-main-color);
-        }
-    }
-
     .intro {
         line-height: 24px;
         color: var(--el-text-color-secondary);
@@ -116,5 +123,18 @@ initTableData()
         -webkit-line-clamp: 3;
         overflow: hidden;
     }
+}
+
+.link-a {
+    &:hover {
+        color: var(--co-main-color);
+    }
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 5px;
 }
 </style>
