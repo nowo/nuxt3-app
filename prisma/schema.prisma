@@ -103,12 +103,41 @@ model News {
 
     sort   Int?     @default(0) // 排序
     isHide Boolean? @default(false) // 是否首页显示
-    type   Int?     @default(0) // 类型 0:普通新闻 1:推荐新闻 2:热门新闻
+    type   Int      @default(0) // 类型 1:普通新闻 2:客户案例 3:公司动态 4:公司公告
+    read   Int?     @default(0) // 阅读量
 
     createdAt DateTime @default(now()) @map("created_at")
     updatedAt DateTime @updatedAt @map("updated_at")
 
     @@map("news")
+}
+
+// 产品表
+model Product {
+    id Int @id @default(autoincrement())
+
+    title    String? @db.VarChar(100) // 标题名称
+    title_en String? @db.VarChar(100) // 标题名称(英文)
+
+    author      String? @db.VarChar(100) // 作者
+    describe    String? @db.VarChar(200) // 描述
+    describe_en String? @db.VarChar(200) // 描述英文
+
+    content    String? @db.Text // 内容
+    content_en String? @db.Text // 内容英文
+
+    img String? @db.VarChar(255) // 封面图片
+
+    sort   Int?     @default(0) // 排序
+    isHide Boolean? @default(false) // 是否首页显示
+    type   Int      @default(0) // 类型 1:普通新闻 2:客户案例 3:公司动态 4:公司公告
+    read   Int?     @default(0) // 阅读量
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("product")
+    // @@comment("产品表")
 }
 
 // 友情链接，轮播图
