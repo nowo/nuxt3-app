@@ -1,6 +1,6 @@
 <template>
     <LayoutContent>
-        <LayoutContentNews :type="1" />
+        <LayoutContentNews :type="2" />
     </LayoutContent>
 </template>
 

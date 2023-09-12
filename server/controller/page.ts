@@ -133,13 +133,15 @@ export const getGoodsList = async (event: H3Event) => {
  */
 export const getNewsInfo = async (event: H3Event) => {
     // 获取参数
-    const param = await getEventParams<{ id: number }>(event)
+    const param = await getEventParams<{ id: number; type: number }>(event)
 
     if (!param?.id) return null
+    if (!param?.type) return null
 
     const res = await event.context.prisma.news.findUnique({
         where: {
             id: Number(param.id),
+            type: Number(param.type),
         },
     })
 
@@ -151,9 +153,10 @@ export const getNewsInfo = async (event: H3Event) => {
                 createdAt: {
                     lte: res.createdAt,
                 },
-                id: {
+                id: { // 排除
                     not: res.id,
                 },
+                type: res.type, // 类型相同
             },
             orderBy: {
                 createdAt: 'desc', // 倒序排序
@@ -167,6 +170,7 @@ export const getNewsInfo = async (event: H3Event) => {
                 id: {
                     not: res.id,
                 },
+                type: res.type,
             },
             orderBy: {
                 createdAt: 'asc', // 升序排序
