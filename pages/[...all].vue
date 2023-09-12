@@ -4,14 +4,23 @@
             <div i-carbon-warning inline-block />
         </div>
         <div>Not found</div>
-        <div>
-            <button text-sm btn m="3 t8" @click="router.back()">
+        <!-- <div>
+            <button btn text-sm m="3 t8" @click="router.back()">
                 Back
             </button>
-        </div>
+        </div> -->
     </main>
+
+    <!-- <NuxtErrorBoundary @error="someErrorLogger">
+        <template #error="{ error, clearError }">
+            You can display the error locally here: {{ error }}
+            <button @click="clearError">
+                This will clear the error.
+            </button>
+        </template>
+    </NuxtErrorBoundary> -->
 </template>
 
 <script setup lang="ts">
-const router = useRouter()
+showErrorPage()
 </script>
