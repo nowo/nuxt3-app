@@ -1,6 +1,6 @@
 
 // 系统信息
-declare interface ISystemEditParams{
+declare interface ISystemEditParams {
 
     title: string, // 公司名称
     address: string, // 公司地址
@@ -23,11 +23,13 @@ declare interface ISystemEditParams{
     copyright: string, // 版权信息
     filing_en: string, // 备案号
     copyright_en: string, // 版权信息
+
+    icon: string
 }
 
 
 // 公司信息
-declare interface ICompanyEditParams{
+declare interface ICompanyEditParams {
 
     company: string, // 公司名称
     address: string, // 公司地址

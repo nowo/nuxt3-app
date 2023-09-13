@@ -59,6 +59,7 @@ model System {
     description String? @db.VarChar(200) // 描述
     filing      String? @db.VarChar(100) // 备案号
     copyright   String? @db.VarChar(200) // 版权
+    icon        String? @db.VarChar(255) // 网站图标
 
     createdAt DateTime @default(now()) @map("created_at")
     updatedAt DateTime @updatedAt @map("updated_at")

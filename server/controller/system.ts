@@ -65,6 +65,7 @@ export const setSystemInfo = async (event: H3Event) => {
                 description: param.seo_description,
                 filing: param.filing,
                 copyright: param.copyright,
+                icon: param.icon,
             },
             where: { id: 1 },
         }),

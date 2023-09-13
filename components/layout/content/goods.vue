@@ -33,8 +33,8 @@ const defData = reactive({
     pagination: {
         total: 0,
         page: 1,
-        page_size: 2,
-        page_sizes: [10],
+        page_size: 12,
+        page_sizes: [12],
     },
     listData: [] as INewsResponse[],
 })

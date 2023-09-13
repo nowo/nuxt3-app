@@ -10,7 +10,6 @@
 <script setup lang="ts">
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import en from 'element-plus/dist/locale/en.mjs'
-import { appName } from '~/config/constant'
 
 import '~/assets/scss/default.scss'
 
@@ -18,6 +17,8 @@ import '~/assets/scss/default.scss'
 // import '~/assets/scss/app.scss'
 
 // const locale = ref(zhCn)
+const systemInfo = await useSystemState().getSystemInfo()
+console.log('🚀 ~ file: app.vue:22 ~ systemInfo:', systemInfo)
 
 const { locale: lo } = useI18n()
 
@@ -33,7 +34,18 @@ if (process.client) console.log(useRouter().getRoutes())
 // console.log('a :>> ', a);
 
 useHead({
-    title: appName,
+    title: systemInfo.value?.title,
+    meta: [
+        { name: 'description', content: systemInfo.value?.description },
+        { name: 'keywords', content: systemInfo.value?.keyword },
+    ],
+    link: [
+        { rel: 'icon', href: systemInfo.value?.icon },
+    ],
+    // bodyAttrs: {
+    //     class: 'test',
+    // },
+    // script: [{ innerHTML: 'console.log(\'Hello world\')' }],
 })
 </script>
 

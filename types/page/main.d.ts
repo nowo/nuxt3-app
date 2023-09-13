@@ -19,7 +19,8 @@ declare interface ISystemInfoResponse {
     "title_en": "Luotai Precision Instrument (Dongguan) Co., Ltd",
     "address_en": string,
     "filing_en": "",
-    "copyright_en": ""
+    "copyright_en": "",
+    icon:string,    // 网站图标
 }
 
 
