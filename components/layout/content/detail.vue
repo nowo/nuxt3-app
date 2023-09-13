@@ -5,7 +5,8 @@
         </h3>
         <div class="time text-center">
             <span class="mr10px">{{ $t('time') }}：{{ formatTime(new Date(news!.createdAt)) }}</span>
-            <span>{{ $t('author') }}：{{ news?.author }}</span>
+            <!-- <span>{{ $t('author') }}：{{ news?.author }}</span> -->
+            <span>{{ $t('read') }}：{{ news?.read }}</span>
         </div>
         <!-- <div class="intro">
                 {{ $lang(news?.describe, news?.describe_en) }}
@@ -18,7 +19,7 @@
             </NuxtLinkLocale>
             <span v-else>{{ $t('prev') }}：{{ $t('none') }} </span>
             <NuxtLinkLocale v-if="nextNews?.id" :to="setLinkPath(nextNews)">
-                下一篇： {{ $lang(nextNews?.title, nextNews?.title_en) }}
+                {{ $t('next') }}： {{ $lang(nextNews?.title, nextNews?.title_en) }}
             </NuxtLinkLocale>
             <span v-else>{{ $t('next') }}：{{ $t('none') }} </span>
         </div>
@@ -28,15 +29,18 @@
 <script lang="ts" setup>
 const props = defineProps<{
     type: 1 | 2 | 3 | 4 // 类型 1:普通新闻 2:客户案例 3:公司动态 4:公司公告
+    goods?: boolean // 是否为商品数据
 }>()
 
 const route = useRoute()
 
 const id = useRouteParam('id')
 
-const { data } = await useCustomFetch<Record<'nextNews' | 'prevNews' | 'data', INewsResponse>>('/api/page/news/detail', {
+const url = props.goods ? '/api/page/product/detail' : '/api/page/news/detail'
+
+const { data } = await useCustomFetch<Record<'nextNews' | 'prevNews' | 'data', INewsResponse>>(url, {
     params: {
-        id,
+        id: id.value,
         type: props.type,
     },
 })

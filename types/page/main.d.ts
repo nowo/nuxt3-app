@@ -85,7 +85,8 @@ declare interface INewsResponse {
     "isHide": false,
     "type": 1,
     "createdAt": "2023-08-31T06:59:35.000Z",
-    "updatedAt": "2023-08-31T06:59:35.000Z"
+    "updatedAt": "2023-08-31T06:59:35.000Z",
+    read:number,    // 阅读量
 }
 
 declare interface INewsResponseList{

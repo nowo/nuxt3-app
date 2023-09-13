@@ -146,7 +146,7 @@ export const getNewsInfo = async (event: H3Event) => {
     })
 
     if (!res) return null
-    // 取得上一条、下一条记录
+    // 取得上一条、下一条记录、更新阅读量
     const [res1, res2] = await Promise.all([
         event.context.prisma.news.findMany({ // lte 小于等于，使用倒序
             where: {
@@ -174,6 +174,78 @@ export const getNewsInfo = async (event: H3Event) => {
             },
             orderBy: {
                 createdAt: 'asc', // 升序排序
+            },
+        }),
+        event.context.prisma.news.update({
+            where: {
+                id: res.id,
+            },
+            data: {
+                read: (res.read || 0) + 1,
+            },
+        }),
+    ])
+
+    return {
+        data: res,
+        prevNews: res1[0],
+        nextNews: res2[0],
+    }
+}
+
+/**
+ * 获取商品详情
+ */
+export const getProductInfo = async (event: H3Event) => {
+    // 获取参数
+    const param = await getEventParams<{ id: number }>(event)
+
+    if (!param?.id) return null
+
+    const res = await event.context.prisma.product.findUnique({
+        where: {
+            id: Number(param.id),
+            // type: Number(param.type),
+        },
+    })
+
+    if (!res) return null
+    // 取得上一条、下一条记录、更新阅读量
+    const [res1, res2] = await Promise.all([
+        event.context.prisma.product.findMany({ // lte 小于等于，使用倒序
+            where: {
+                createdAt: {
+                    lte: res.createdAt,
+                },
+                id: { // 排除
+                    not: res.id,
+                },
+                type: res.type, // 类型相同
+            },
+            orderBy: {
+                createdAt: 'desc', // 倒序排序
+            },
+        }),
+        event.context.prisma.product.findMany({ // gte 大于等于，使用正序
+            where: {
+                createdAt: {
+                    gt: res.createdAt,
+                },
+                id: {
+                    not: res.id,
+                },
+                type: res.type,
+            },
+            orderBy: {
+                createdAt: 'asc', // 升序排序
+            },
+        }),
+        event.context.prisma.product.update({
+            where: {
+                id: res.id,
+            },
+            data: {
+                read: (res.read || 0) + 1,
             },
         }),
     ])
