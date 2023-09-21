@@ -96,6 +96,10 @@ export default defineNuxtConfig({
         authJs: {
             secret: process.env.NUXT_AUTH_SECRET, // You can generate one with `openssl rand -base64 32`
         },
+        upload: {
+            host: process.env.NUXT_UPLOAD_HOST,
+            dir: process.env.NUXT_UPLOAD_DIR,
+        },
         // public里的在服务端serve,客户端client皆可访问
         public: {
             baseUrl: process.env.VITE_BASE_URL || '/',
