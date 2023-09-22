@@ -1,4 +1,6 @@
-import { MD5 } from 'crypto-js'
+import Crypto from 'crypto-js'
+
+const { MD5 } = Crypto
 
 /**
  * 签名加密 加密规则： 密钥+拼接字符串进行MD5加密
