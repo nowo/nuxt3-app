@@ -1,7 +1,7 @@
 <template>
     <main>
-        <LayoutHomeHeader />
-        <LayoutHomeBanner />
+        <!-- <LayoutHomeHeader />
+        <LayoutHomeBanner /> -->
         <el-dropdown>
             <span class="color-primary flex items-center">
                 {{ localeProperties.name }}
@@ -17,16 +17,12 @@
             </template>
         </el-dropdown>
 
-        <!-- <BaseTop />
-        <BaseHeader /> -->
-        <!-- <BaseMenu /> -->
         <slot />
 
         <div class="mx-auto text-center text-sm opacity-25">
             [Home Layout]
         </div>
-        <!-- <BaseFooter /> -->
-        <LayoutHomeFooter />
+        <!-- <LayoutHomeFooter /> -->
     </main>
 </template>
 

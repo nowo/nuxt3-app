@@ -2,12 +2,11 @@
     <div class="index-box">
         <Suspense>
             <ClientOnly>
-                <!-- <PageView v-if="online" />
-        <div v-else text-gray:80>
-          You're offline
-        </div> -->
                 <!-- <HomeBanner /> -->
-                <HomeMain />
+                <!-- <HomeMain /> -->
+                <div class="min-h500px">
+                    index page
+                </div>
             </ClientOnly>
             <template #fallback>
                 <div italic op50>
