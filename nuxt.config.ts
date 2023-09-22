@@ -93,25 +93,17 @@ export default defineNuxtConfig({
     runtimeConfig: {
         // 仅在服务端serve可以访问
         appKey: 'abcd',
-        authJs: {
-            secret: process.env.NUXT_AUTH_SECRET, // You can generate one with `openssl rand -base64 32`
-        },
         upload: {
-            host: process.env.NUXT_UPLOAD_HOST,
-            dir: process.env.NUXT_UPLOAD_DIR,
+            host: process.env.NUXT_UPLOAD_HOST || '',
+            dir: process.env.NUXT_UPLOAD_DIR || '',
+        },
+        jwt: {
+            secret: process.env.NUXT_JWT_SECRET || '',
         },
         // public里的在服务端serve,客户端client皆可访问
         public: {
-            baseUrl: process.env.VITE_BASE_URL || '/',
             apiBase: process.env.VITE_API_BASE || '',
-            otherUrl: process.env.OTHER_URL || 'default_other_url',
-
             secret: process.env.NUXT_AUTH_SECRET, // You can generate one with `openssl rand -base64 32`
-
-            authJs: {
-                // baseUrl: process.env.NUXT_NEXTAUTH_URL, // The base URL is used for the Origin Check in prod only
-                verifyClientOnEveryRequest: true, // whether to hit the /auth/session endpoint on every client request
-            },
         },
     },
 
