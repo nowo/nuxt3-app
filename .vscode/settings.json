@@ -8,6 +8,35 @@
     "files.associations": {
         "*.css": "postcss"
     },
+    //指定哪些文件不参与搜索
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/*.log": true,
+        "**/*.log*": true,
+        "**/dist": true,
+        "**/.git": true,
+        "**/.gitignore": true,
+        "**/.svn": true,
+        "**/.DS_Store": true,
+        "**/.idea": true,
+        "**/.vscode": true,
+        "**/tmp": true,
+        "dist": true,
+        "node_modules": true,
+        "CHANGELOG.md": true,
+        "README.md": true,
+        "examples": true,
+        "**-lock.**": true,
+    },
+    // 指定哪些文件不被 VSCode 监听，预防启动 VSCode 时扫描的文件太多，导致 CPU 占用过高
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/.vscode/**": true,
+        "**/node_modules/**": true,
+        "**/tmp/**": true,
+        "**/dist/**": true,
+    },
     "cSpell.words": [
         "alipay",
         "antfu",
