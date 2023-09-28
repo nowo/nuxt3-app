@@ -8,6 +8,7 @@
     "lint": "eslint . --fix",
     "build": "nuxi build",
     "start": "node .output/server/index.mjs",
+    "preinstall": "npx only-allow pnpm",
     "postinstall": "nuxi prepare",
     "generate": "nuxi generate",
     "start:generate": "npx serve .output/public",
