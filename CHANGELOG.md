@@ -1,12 +1,13 @@
-# Changelog
 
+## v0.0.1
 
-## v0.0.2
-
-[compare changes](https://github.com/cooj/nuxt3-app/compare/0.0.1...v0.0.2)
 
 ### 🚀 Enhancements
 
+- **components:** 首页模块 ([1ff607d](https://github.com/cooj/nuxt3-app/commit/1ff607d))
+- **other:** WebStock测试 ([81677fb](https://github.com/cooj/nuxt3-app/commit/81677fb))
+- **other:** DefinePageMeta页面参数验证 ([1d4f944](https://github.com/cooj/nuxt3-app/commit/1d4f944))
+- **deps:** 项目依赖更新，增加prisma模块，连接数据库，做相应的CURD业务操作 ([59da40c](https://github.com/cooj/nuxt3-app/commit/59da40c))
 - **other:** 登录权鉴相关内容 ([91aab1c](https://github.com/cooj/nuxt3-app/commit/91aab1c))
 - **utils:** 添加crypto-js插件，增加MD5加密方法，用于后续接口加密使用 ([539d3ec](https://github.com/cooj/nuxt3-app/commit/539d3ec))
 - **other:** 添加i18n插件，为后续实现国际化准备 ([5bf1b37](https://github.com/cooj/nuxt3-app/commit/5bf1b37))
@@ -39,6 +40,8 @@
 
 ### 🩹 Fixes
 
+- 增加spell.words忽略单词 ([6ac4b3a](https://github.com/cooj/nuxt3-app/commit/6ac4b3a))
+- **config:** Css样式引入方式更改，解决配置里引入样式会造成项目启动非常慢的情况 ([1ac6743](https://github.com/cooj/nuxt3-app/commit/1ac6743))
 - **config:** 配置i18n国际化，增加中文、英文两个版本，默认使用中文版 ([00a3746](https://github.com/cooj/nuxt3-app/commit/00a3746))
 - **utils:** UseServerFetch方法options参数类型更新 ([e0d49d5](https://github.com/cooj/nuxt3-app/commit/e0d49d5))
 - **config:** 登录调用接口优化，用户密码加密，新增controller文件夹，配置接口跟执行方法进行分离 ([20582c0](https://github.com/cooj/nuxt3-app/commit/20582c0))
@@ -61,19 +64,48 @@
 - **other:** 删除多余路由页面 ([ada35b2](https://github.com/cooj/nuxt3-app/commit/ada35b2))
 - **config:** 文件保存主机和路径通过useRuntimeConfig()调用，防止出现生产环境获取不到的情况 ([adb5194](https://github.com/cooj/nuxt3-app/commit/adb5194))
 - **config:** 环境变量整理，配合nuxt.config文件配置使用 ([2a19a51](https://github.com/cooj/nuxt3-app/commit/2a19a51))
+- **other:** 删除部分接口代码，保留部分写法结构，用于后续开发使用 ([bf80235](https://github.com/cooj/nuxt3-app/commit/bf80235))
+- **config:** Import导入测试，设置包管理器为pnpm ([fb5d4bd](https://github.com/cooj/nuxt3-app/commit/fb5d4bd))
 
 ### 💅 Refactors
 
 - **other:** 代码风格改用4空格缩进；eslint规则配置增加；删除无用组件，auth登录权鉴配置 ([80c6664](https://github.com/cooj/nuxt3-app/commit/80c6664))
 
+### 📖 Documentation
+
+- **other:** Nuxt3项目修改端口号 ([f27ddbb](https://github.com/cooj/nuxt3-app/commit/f27ddbb))
+- **other:** 增加prisma使用方式文档，使用的数据库文件，model对应表 ([de57d7d](https://github.com/cooj/nuxt3-app/commit/de57d7d))
+
 ### 🏡 Chore
 
+- **config:** Git提交规范配置 ([c29a45a](https://github.com/cooj/nuxt3-app/commit/c29a45a))
+- **custom:** 简单更改 ([adba203](https://github.com/cooj/nuxt3-app/commit/adba203))
+- **config:** Eslint配置规则修改 ([99ac85c](https://github.com/cooj/nuxt3-app/commit/99ac85c))
+- **config:** Eslint代码格式 ([6e589e4](https://github.com/cooj/nuxt3-app/commit/6e589e4))
+- **custom:** 提交测试 ([109dc10](https://github.com/cooj/nuxt3-app/commit/109dc10))
+- **other:** 取消预渲染页面，提交测试 ([db9e2ea](https://github.com/cooj/nuxt3-app/commit/db9e2ea))
+- **config:** 启用路由页面书写提示 ([166151f](https://github.com/cooj/nuxt3-app/commit/166151f))
 - **config:** 去除unocss默认设置的按钮样式 ([efa8ebb](https://github.com/cooj/nuxt3-app/commit/efa8ebb))
 - **config:** Vscode使用i18n-ally插件，语言文件及设置使用大写命名，删除多余的语言配置文件 ([3d2fba1](https://github.com/cooj/nuxt3-app/commit/3d2fba1))
 - **config:** 增加.env.example环境变量文件，文件内容为.env内容的格式 ([fba44ca](https://github.com/cooj/nuxt3-app/commit/fba44ca))
 - **styles:** Css、scss文件导入方式修改，从配置导入 ([6bdfc14](https://github.com/cooj/nuxt3-app/commit/6bdfc14))
 - **other:** 设计公共页面布局结构，完成关于我们、联系我们页面 ([dc4f6ca](https://github.com/cooj/nuxt3-app/commit/dc4f6ca))
 - **other:** 删除无用的路由页面 ([4b77bcd](https://github.com/cooj/nuxt3-app/commit/4b77bcd))
+- **release:** V0.0.2 ([8babae2](https://github.com/cooj/nuxt3-app/commit/8babae2))
+- **other:** 设置vscode启动、搜索时排除不必要的文件、文件夹 ([6da76b7](https://github.com/cooj/nuxt3-app/commit/6da76b7))
+
+### ✅ Tests
+
+- 测试提交代码eslint修复格式是否生效 ([f02d9f3](https://github.com/cooj/nuxt3-app/commit/f02d9f3))
+- Eslint测试 ([a5f1547](https://github.com/cooj/nuxt3-app/commit/a5f1547))
+- 提交测试 ([9a933a4](https://github.com/cooj/nuxt3-app/commit/9a933a4))
+- **deps:** 增加版本号控制测试 ([8081f50](https://github.com/cooj/nuxt3-app/commit/8081f50))
+
+### 🤖 CI
+
+- **other:** 增加github打包工作流测试配置 ([d4912be](https://github.com/cooj/nuxt3-app/commit/d4912be))
+- **config:** Changelogithub写入内容配置，删除原有版本从头进行测试 ([7f779fa](https://github.com/cooj/nuxt3-app/commit/7f779fa))
+- **config:** 去除pnpm ([43474eb](https://github.com/cooj/nuxt3-app/commit/43474eb))
 
 ### ❤️ Contributors
 
