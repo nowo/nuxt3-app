@@ -73,63 +73,61 @@ const defData = reactive({
     show: false,
 })
 
-const showGoodsPane = () => {
-
-}
+const showGoodsPane = () => {}
 </script>
 
 <style lang="scss" scoped>
 .goods-class-tle {
-  width: 100%;
-  height: 100%;
-  background: var(--el-color-primary);
-  color: var(--el-color-white);
-  display: flex;
-  align-items: center;
-  padding: 5px 10px;
-
-  &:hover .goods-class-child {
-    display: block;
-  }
-}
-
-.goods-class-child {
-  width: 100%;
-  height: var(--banner-height);
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: var(--el-color-white);
-  color: #333;
-  display: none;
-
-  li>a {
+    width: 100%;
+    height: 100%;
+    background: var(--el-color-primary);
+    color: var(--el-color-white);
     display: flex;
     align-items: center;
     padding: 5px 10px;
-    font-size: 15px;
 
-    i {
-      margin-right: 5px;
+    &:hover .goods-class-child {
+        display: block;
     }
-  }
+}
 
-  li:hover {
-    background-color: var(--el-color-info-light-8);
+.goods-class-child {
+    width: 100%;
+    height: var(--banner-height);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--el-color-white);
+    color: #333;
+    display: none;
 
-    .goods-class-pane {
-      display: block;
+    li > a {
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        font-size: 15px;
+
+        i {
+            margin-right: 5px;
+        }
     }
-  }
+
+    li:hover {
+        background-color: var(--el-color-info-light-8);
+
+        .goods-class-pane {
+            display: block;
+        }
+    }
 }
 
 .goods-class-pane {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: var(--banner-width);
-  height: var(--banner-height);
-  background-color: #fff;
-  display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: var(--banner-width);
+    height: var(--banner-height);
+    background-color: #fff;
+    display: none;
 }
 </style>

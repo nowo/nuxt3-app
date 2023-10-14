@@ -29,7 +29,6 @@ const { $lang } = useNuxtApp()
 const id = useRouteQuery('id')
 
 const defData = reactive({
-
     pagination: {
         total: 0,
         page: 1,
@@ -107,7 +106,6 @@ initTableData()
 
         &:hover {
             transform: scale(1.08);
-
         }
     }
 }

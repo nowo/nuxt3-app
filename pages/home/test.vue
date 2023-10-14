@@ -11,8 +11,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
 import { useCloned } from '@vueuse/core'
+import type { LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
 import BaseFooter from '~/layouts/components/BaseFooter.vue'
 import BaseHeader from '~/layouts/components/BaseHeader.vue'
 

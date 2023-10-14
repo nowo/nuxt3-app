@@ -45,30 +45,30 @@ if (ruleForm.phone) {
 
 <style scoped>
 body {
-  margin: 0;
+    margin: 0;
 }
 
 .content {
-  margin-top: 100px;
-  height: 700px;
-  border: 1px solid #50585e;
+    margin-top: 100px;
+    height: 700px;
+    border: 1px solid #50585e;
 }
 
 .login {
-  width: 390px;
-  height: 400px;
-  border: 1px solid #50585e;
-  position: absolute;
-  top: 220px;
-  right: 400px;
-  color: #ffffff;
+    width: 390px;
+    height: 400px;
+    border: 1px solid #50585e;
+    position: absolute;
+    top: 220px;
+    right: 400px;
+    color: #ffffff;
 }
 
 .title {
-  font-size: x-large;
-  text-align: center;
-  height: 70px;
-  padding-top: 20px;
-  color: #000;
+    font-size: x-large;
+    text-align: center;
+    height: 70px;
+    padding-top: 20px;
+    color: #000;
 }
 </style>

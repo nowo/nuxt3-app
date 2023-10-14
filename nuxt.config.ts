@@ -19,10 +19,7 @@ export default defineNuxtConfig({
         inlineSSRStyles: false,
         typedPages: true,
     },
-    css: [
-        '@unocss/reset/tailwind.css',
-        '~/assets/scss/app.scss',
-    ],
+    css: ['@unocss/reset/tailwind.css', '~/assets/scss/app.scss'],
     colorMode: {
         classSuffix: '',
     },
@@ -52,7 +49,6 @@ export default defineNuxtConfig({
         //         base: './.data/db',
         //     },
         // },
-
     },
     app: {
         head: {
@@ -71,8 +67,7 @@ export default defineNuxtConfig({
     },
     // pwa,
     vite: {
-        plugins: [
-        ],
+        plugins: [],
         // css: {
         //     preprocessorOptions: {
         //         scss: {

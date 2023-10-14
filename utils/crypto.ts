@@ -17,7 +17,7 @@ export const setSignRule = (secret: string, str: string) => {
     const key = secret + str
     const s = MD5(key).toString()
     // 第二次加密 (加密一次后的密钥取前面20个字符+拼接字符串取前面10个字符)进行MD5加密
-    const key1 = s.substring(0, 20) + str.substring(0, 10)
+    const key1 = s.slice(0, 20) + str.slice(0, 10)
     const s1 = MD5(key1).toString()
 
     return s1

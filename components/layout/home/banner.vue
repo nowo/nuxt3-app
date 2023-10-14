@@ -29,7 +29,9 @@ const effect = {
     next: { translate: ['100%', 0, 0] },
 }
 
-const { data: banner } = await useCustomFetch<ISlideListResponse[]>('/api/page/get_banner')
+const { data: banner } = await useCustomFetch<ISlideListResponse[]>(
+    '/api/page/get_banner',
+)
 // console.log(banner)
 </script>
 

@@ -109,21 +109,13 @@ const ruleForm = reactive({
 })
 
 const rules = reactive<FormRules>({
-    username: [
-        { required: true, message: '必填项不能为空', trigger: 'blur' },
-    ],
-    password: [
-        { required: true, message: '必填项不能为空', trigger: 'blur' },
-    ],
-    code: [
-        { required: true, message: '必填项不能为空', trigger: 'blur' },
-    ],
+    username: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
+    password: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
+    code: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
 })
 
 // 获取验证码
-const getCode = async () => {
-
-}
+const getCode = async () => { }
 // 时间获取
 const currentTime = computed(() => {
     // return formatAxis(new Date())
@@ -145,7 +137,10 @@ const signInSuccess = () => {
     if (route.query?.redirect) {
         router.push({
             path: route.query?.redirect as string,
-            query: Object.keys(route.query?.params as string).length > 0 ? JSON.parse(route.query?.params as string) : '',
+            query:
+                Object.keys(route.query?.params as string).length > 0
+                    ? JSON.parse(route.query?.params as string)
+                    : '',
         })
     } else {
         router.push('/')
@@ -192,12 +187,10 @@ const testLogin = async () => {
     //         password: ruleForm.password,
     //     })
     //     console.log(res)
-
     //     // location.reload()
     // } catch (e) {
     //     console.log(e)
     // }
-
     // console.log('error, url :>> ', error, url);
     // setTimeout(() => {
     //     console.log(session, cookies)
@@ -226,7 +219,6 @@ onBeforeMount(() => {
 
 <style scoped lang="scss">
 .login-content-form {
-
     width: 400px;
     background-color: #fff;
     padding: 40px;

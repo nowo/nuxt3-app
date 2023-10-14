@@ -12,7 +12,9 @@
                         </div>
                         <div class="c-#005a7f">
                             全国咨询热线：<br>
-                            <span class="font-bold">{{ systemInfo?.phone }}</span>
+                            <span class="font-bold">{{
+                                systemInfo?.phone
+                            }}</span>
                         </div>
                     </div>
                 </div>
@@ -48,7 +50,7 @@ const menuList = await useMenuState().getMenuList()
 <style lang="scss" scoped>
 .header-menu {
     background-color: var(--co-main-color);
-    color: var(--co-white-color)
+    color: var(--co-white-color);
 }
 
 .phone {
@@ -72,7 +74,7 @@ const menuList = await useMenuState().getMenuList()
         position: relative;
 
         &::after {
-            content: '';
+            content: "";
             width: 1px;
             height: 60%;
             background-color: var(--co-white-color);

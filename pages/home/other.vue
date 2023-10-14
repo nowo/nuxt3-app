@@ -11,15 +11,11 @@
             </select>
             <p>{{ $t('welcome') }}</p>
         </form> -->
-        <p>
-            {{ $t('welcome') }}，{{ $t('hello', { name: $t('welcome') }) }}
-        </p>
+        <p> {{ $t('welcome') }}，{{ $t('hello', { name: $t('welcome') }) }}</p>
 
         <h3>
             <NuxtLink v-for="item in availableLocales" :key="item.code" :to="switchLocalePath(item.code)">
-                {{
-                    item.name
-                }}
+                {{ item.name }}
             </NuxtLink>
         </h3>
         <!-- <div>
@@ -51,7 +47,7 @@ const availableLocales = computed(() => {
 
 const runtimeConfig = useRuntimeConfig()
 const onTest = () => {
-    const _t = new Date().getTime()
+    const _t = Date.now()
 
     setSignRule(runtimeConfig.public.secret, _t.toString())
 

@@ -18,22 +18,27 @@ export default defineNuxtConfig({
 ```
 - 方式三：运行项目时的命令设置端口号
 ```json
-    // package.json
+// package.json
+{
+    // ...
     "scripts": {
         "dev": "nuxt dev --port 3001"
     }
+}
 ```
 > 优先级：未使用的端口（指定的端口被占用时）> 方式三 > 方式二 > NITRO_PORT > PORT
 
 
 ## 二、修改生产环境端口号
 修改生产环境端口号，目前只知道这一种方法，就是在node .output/server/index.mjs命令前面加上PORT=3001
-
 ```json
-    // package.json
+// package.json
+{
+    // ...
     "scripts": {
         "start": "PORT=3001 node .output/server/index.mjs"
     }
+}
 ```
 
 ## 相关连接

@@ -40,42 +40,41 @@ const isIndex = computed(() => {
 
 <style lang="scss" scoped>
 .nav-banner {
-  --banner-left-width: 230px;
-  --banner-right-width: 250px;
-  --banner-width: 700px;
-  --banner-height: 520px;
-  border-bottom: 1px solid var(--el-color-primary);
-  &.index {
-    border-bottom: 0;
-    :deep(.goods-class-child) {
-      display: block !important;
+    --banner-left-width: 230px;
+    --banner-right-width: 250px;
+    --banner-width: 700px;
+    --banner-height: 520px;
+    border-bottom: 1px solid var(--el-color-primary);
+    &.index {
+        border-bottom: 0;
+        :deep(.goods-class-child) {
+            display: block !important;
+        }
     }
 
-  }
+    .left-box {
+        width: var(--banner-left-width);
+        position: relative;
+    }
 
-  .left-box {
-    width: var(--banner-left-width);
-    position: relative;
-  }
+    .swp {
+        width: var(--banner-width);
+        height: 100%;
+    }
 
-  .swp {
-    width: var(--banner-width);
-    height: 100%;
-  }
+    .right {
+        width: var(--banner-right-width);
+        height: 100%;
+        background-color: var(--el-color-white);
+    }
 
-  .right {
-    width: var(--banner-right-width);
-    height: 100%;
-    background-color: var(--el-color-white);
-  }
+    .nav {
+        position: relative;
+        z-index: 10;
+    }
 
-  .nav {
-    position: relative;
-    z-index: 10;
-  }
-
-  .banner {
-    height: var(--banner-height);
-  }
+    .banner {
+        height: var(--banner-height);
+    }
 }
 </style>

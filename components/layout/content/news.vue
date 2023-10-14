@@ -48,7 +48,6 @@ const route = useRoute()
 const { $lang } = useNuxtApp()
 
 const defData = reactive({
-
     pagination: {
         total: 0,
         page: 1,

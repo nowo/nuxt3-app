@@ -1,12 +1,8 @@
-
-
-
 declare interface ListPage {
-    isPage?: 0 | 1, // 是否进行分页
-    page?: number,   // 当前页
-    pageSize?: number,   // 每页显示数量
+    isPage?: 0 | 1 // 是否进行分页
+    page?: number // 当前页
+    pageSize?: number // 每页显示数量
 }
-
 
 /**
  * useHttp 请求接口数据类型

@@ -1,7 +1,7 @@
-import type { H3Event } from 'h3'
 import { defu } from 'defu'
-import type { NitroFetchRequest } from 'nitropack'
 import Crypto from 'crypto-js'
+import type { NitroFetchRequest } from 'nitropack'
+import type { H3Event } from 'h3'
 import { verifyToken } from './token'
 
 // import { $fetch, FetchOptions } from 'ofetch'
@@ -9,6 +9,42 @@ import { verifyToken } from './token'
 const { MD5 } = Crypto
 
 // import type { FetchOptions } from '#app'
+
+/**
+ * 获取接口参数方法，整合get、post请求类型统一获取参数
+ * @param event defineEventHandler方法里的event参数
+ * @returns
+ */
+export const getEventParams = async <T = any>(event: H3Event) => {
+    const method = event.method
+
+    const contentType = getHeader(event, 'content-type')
+
+    // let param: any = {}
+    let param: any = {}
+
+    // 判断是否为formData类型的参数
+    if (contentType?.includes('multipart/form-data')) {
+        const formData = (await readMultipartFormData(event)) || []
+        formData.forEach((item) => {
+            if (item.type) {
+                param[item.name!] = item
+            } else {
+                param[item.name!] = Buffer.from(item.data).toString() // eslint-disable-line node/prefer-global/buffer
+            }
+        })
+    } else if (method === 'GET') {
+        param = getQuery(event) as unknown as T
+    } else {
+        param = await readBody<T>(event)
+    }
+
+    // const query = getQuery(event) as unknown as T
+    // const body = await readBody<T>(event)
+    // const param = method === 'GET' ? query : body
+
+    return param as T | undefined
+}
 
 /**
  * 密码设置
@@ -44,7 +80,7 @@ export const setSignRule = (secret: string, str: string) => {
     const key = secret + str
     const s = MD5(key).toString()
     // 第二次加密 (加密一次后的密钥取前面20个字符+拼接字符串取前面10个字符)进行MD5加密
-    const key1 = s.substring(0, 20) + str.substring(0, 10)
+    const key1 = s.slice(0, 20) + str.slice(0, 10)
     const s1 = MD5(key1).toString()
 
     return s1
@@ -94,42 +130,6 @@ export const useVerifyToken = (event: H3Event) => {
     const token = headers['x-token']
     if (!token) return false
     return verifyToken(token)
-}
-
-/**
- * 获取接口参数方法，整合get、post请求类型统一获取参数
- * @param event defineEventHandler方法里的event参数
- * @returns
- */
-export const getEventParams = async <T = any>(event: H3Event) => {
-    const method = event.method
-
-    const contentType = getHeader(event, 'content-type')
-
-    // let param: any = {}
-    let param: any = {}
-
-    // 判断是否为formData类型的参数
-    if (contentType?.includes('multipart/form-data')) {
-        const formData = (await readMultipartFormData(event)) || []
-        formData.forEach((item) => {
-            if (item.type) {
-                param[item.name!] = item
-            } else {
-                param[item.name!] = Buffer.from(item.data).toString() // eslint-disable-line n/prefer-global/buffer
-            }
-        })
-    } else if (method === 'GET') {
-        param = getQuery(event) as unknown as T
-    } else {
-        param = await readBody<T>(event)
-    }
-
-    // const query = getQuery(event) as unknown as T
-    // const body = await readBody<T>(event)
-    // const param = method === 'GET' ? query : body
-
-    return param as T | undefined
 }
 
 type $FetchType = typeof $fetch

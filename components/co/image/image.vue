@@ -23,7 +23,6 @@ const iconWid = computed(() => {
 
 <style lang="scss">
 .co-image {
-
     &-error {
         i {
             // font-size: 36px;

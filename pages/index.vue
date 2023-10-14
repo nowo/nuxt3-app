@@ -27,13 +27,16 @@
 
 const online = useOnline()
 const name = ref('张三')
+const route = useRoute<'index___cn'>()
+
+console.log(route.query)
 
 definePageMeta({
     layout: 'home',
 })
 </script>
 
-<style  lang="scss" scoped>
+<style lang="scss" scoped>
 .index-box {
     padding-top: 40px;
     background-color: #f3f3f3;

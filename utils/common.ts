@@ -1,7 +1,7 @@
 /**
  * waitUtil方法
  * @param ms 需要等待的时间，毫秒级
- * @returns
+ * @returns Promise<unknown>
  * @example
  * ```js
  * // 等待1秒后，再往后面运行
@@ -30,7 +30,7 @@ export const wait = (ms: number) => {
  */
 export const types = (o: any) => {
     const s = Object.prototype.toString.call(o)
-    return s.match(/\[object (.*?)\]/)?.[1].toLowerCase()
+    return s.match(/\[object (.*?)]/)?.[1].toLowerCase()
 }
 
 /**
@@ -44,9 +44,7 @@ export const types = (o: any) => {
  */
 export const formatTime = (num: number | string | Date = new Date().getTime(), format = '') => {
     format = format || 'YYYY-mm-dd HH:MM:SS' // 第一个参数不填时，使用默认格式
-    let ret,
-        date: Date,
-        reNum
+    let ret, date: Date, reNum
     if (types(num) === 'number') {
         // 处理时间戳，js一般获取的时间戳是13位，PHP一般是10位,根据实际情况做判断处理
         if (num.toString().length === 10) {
@@ -96,8 +94,9 @@ export const formatTime = (num: number | string | Date = new Date().getTime(), f
  */
 export const getUrlParams = (name = '', url: string = window.location.href): string | object => {
     let endVal = ''
-    if (url.includes('?')) { // 判断url中有没有出现?
-        let arrStr = url.substring(url.indexOf('?') + 1).split('&') // 截取字符串，获取到?后面的那部分内容;以&符号为准，分割成数组
+    if (url.includes('?')) {
+        // 判断url中有没有出现?
+        let arrStr = url.slice(Math.max(0, url.indexOf('?') + 1)).split('&') // 截取字符串，获取到?后面的那部分内容;以&符号为准，分割成数组
         arrStr = arrStr.filter(item => item) // 原有数组过滤为空的值
         const obj: any = {}
         for (let i = 0; i < arrStr.length; i++) {
@@ -110,7 +109,7 @@ export const getUrlParams = (name = '', url: string = window.location.href): str
         }
         if (arrStr.length > 0) { // 先判断数组是不是为空，在判断name是不是有值传过来
             // 有name就返回name对应的值，没有就返回obj对象
-            endVal = name ? (obj[name] || '') : obj
+            endVal = name ? obj[name] || '' : obj
         }
     }
     return endVal
@@ -167,7 +166,7 @@ export const strCutReplace = (str: string, start: number, len: number, rep = '')
         let repStr = ''
         let repLength = 0
         if (len) {
-            repLength = (str.length - start) > len ? len : (str.length - start) // 到最后能够替换字符的个数
+            repLength = str.length - start > len ? len : str.length - start // 到最后能够替换字符的个数
         } else {
             repLength = str.length - start
         }
@@ -190,7 +189,7 @@ export const strCutReplace = (str: string, start: number, len: number, rep = '')
  * @param list 需要改变的数组
  * @param nowIndex 需要移动项在当前数组里的下标
  * @param newIndex 移动到指定的位置（下标）
- * @returns
+ * @returns array
  * @example
  * ```js
  * // 将数组中2的那一项移动到最前面
@@ -253,11 +252,11 @@ export const getFileType = function (fileName: string) {
     let result: FileType | false = false
     try {
         if (fileName.includes('?')) { // 判断url中有没有出现?
-            fileName = fileName.substring(0, fileName.indexOf('?')) // 去除'?'后面部分
+            fileName = fileName.slice(0, Math.max(0, fileName.indexOf('?'))) // 去除'?'后面部分
         }
         const fileArr = fileName.split('.')
-        suffix = fileArr[fileArr.length - 1]
-    } catch (err) {
+        suffix = fileArr.at(-1) || ''
+    } catch {
         suffix = ''
     }
     // fileName无后缀返回 false

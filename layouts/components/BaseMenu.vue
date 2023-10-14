@@ -38,25 +38,24 @@ const goPage = (url: string) => {
 
 <style lang="scss" scoped>
 .menu-box {
-  background-color: var(--el-color-primary);
-  --el-menu-active-color: #f00;
-  --el-menu-text-color: var(--el-color-white);
-  --el-menu-hover-bg-color: transparent;
-  --el-menu-hover-text-color: #f00
+    background-color: var(--el-color-primary);
+    --el-menu-active-color: #f00;
+    --el-menu-text-color: var(--el-color-white);
+    --el-menu-hover-bg-color: transparent;
+    --el-menu-hover-text-color: #f00;
 }
 
 .el-menu {
-  background-color: var(--el-color-primary);
-  border-bottom: 0;
+    background-color: var(--el-color-primary);
+    border-bottom: 0;
 
-  .el-menu-item {
-    font-size: 16px;
-    border: 0 !important;
+    .el-menu-item {
+        font-size: 16px;
+        border: 0 !important;
 
-    &.is-active {
-      border: 0;
+        &.is-active {
+            border: 0;
+        }
     }
-  }
-
 }
 </style>

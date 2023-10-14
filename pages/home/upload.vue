@@ -32,7 +32,7 @@ async function handleImageUpload() {
             body: fd,
             // body: { username: username.value },
         })
-        console.log('data from backend is ', data)
+        console.log('data from backend is', data)
     } catch (error) {
         console.log(error)
     }

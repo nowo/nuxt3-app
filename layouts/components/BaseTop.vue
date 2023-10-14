@@ -31,14 +31,12 @@
     </section>
 </template>
 
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 .header-top {
-  .el-button {
-    --el-button-text-color: #fff;
-  }
+    .el-button {
+        --el-button-text-color: #fff;
+    }
 }
 </style>

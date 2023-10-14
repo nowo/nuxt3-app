@@ -2,11 +2,9 @@ import jwt from 'jsonwebtoken'
 
 // 生成token
 export const createToken = (data: any) => {
-    const token = jwt.sign(data, 'app.config.jwt.secret',
-        // {
-        //     expiresIn: app.config.jwt.sign.expiresIn,
-        // },
-    )
+    const token = jwt.sign(data, 'app.config.jwt.secret', {
+        // expiresIn: app.config.jwt.sign.expiresIn,
+    })
     return token
 }
 

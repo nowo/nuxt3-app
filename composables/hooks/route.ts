@@ -6,7 +6,7 @@
  */
 export function useRouteParam<T = string>(name: string, init = '' as T) {
     const route = useRoute()
-    return computed(() => (route.params as any)[name] as T ?? init)
+    return computed(() => ((route.params as any)[name] as T) ?? init)
 }
 /**
  * vue路由获取query参数（获取？后面的参数）   /goods/list?name=foo&price=10
@@ -16,5 +16,5 @@ export function useRouteParam<T = string>(name: string, init = '' as T) {
  */
 export function useRouteQuery<T = string>(name: string, init = '' as T) {
     const route = useRoute()
-    return computed(() => route.query[name] as T ?? init)
+    return computed(() => (route.query[name] as T) ?? init)
 }

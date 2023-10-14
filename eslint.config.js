@@ -43,10 +43,10 @@ export default antfu({}, unocss.configs.flat, {
         // ],
         'antfu/if-newline': 'off', // 允许if(a==1) return 1  这种单行的格式
         'antfu/top-level-function': 'off',
-        'vue/component-tags-order': [
-            'error',
-            { order: ['template', 'script', 'style'] },
-        ],
+        // 'vue/component-tags-order': [
+        //     'error',
+        //     { order: ['template', 'script', 'style'] },
+        // ],
         'vue/block-order': ['error', { order: ['template', 'script', 'style'] }],
         'vue/first-attribute-linebreak': [
             'warn',
@@ -80,6 +80,9 @@ export default antfu({}, unocss.configs.flat, {
                 argsIgnorePattern: '^',
             },
         ],
-        'max-statements-per-line': ['error', { max: 2 }],
+        // 'max-statements-per-line': ['error', { max: 2 }],
+        'node/prefer-global/process': ['error', 'always'],
+        'function-call-argument-newline': ['error', 'consistent'],
+
     },
 })

@@ -67,16 +67,16 @@ import 'swiper/css'
 
 <style lang="scss" scoped>
 .swp-banner {
-  // background-color: #fff;
-  width: 100%;
-  --swiper-pagination-bullet-inactive-color: var(--el-color-white);
-  --swiper-pagination-color: var(--el-color-primary);
-  --swiper-pagination-bullet-inactive-opacity: 0.7;
-
-  .im {
+    // background-color: #fff;
     width: 100%;
-    height: var(--banner-height);
-    object-fit: cover;
-  }
+    --swiper-pagination-bullet-inactive-color: var(--el-color-white);
+    --swiper-pagination-color: var(--el-color-primary);
+    --swiper-pagination-bullet-inactive-opacity: 0.7;
+
+    .im {
+        width: 100%;
+        height: var(--banner-height);
+        object-fit: cover;
+    }
 }
 </style>

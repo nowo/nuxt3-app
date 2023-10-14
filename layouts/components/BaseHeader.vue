@@ -45,28 +45,25 @@ const search = reactive({
 
 <style lang="scss" scoped>
 .header-box {
-
-  background-image: url('~/assets/images/banner-bg.png');
-  background-position: top center;
-
+    background-image: url("~/assets/images/banner-bg.png");
+    background-position: top center;
 }
 
 .search-box {
-
-  :deep(.el-input) {
-    --el-input-focus-border-color: transparent;
-    --el-input-border-radius: 10px;
-  }
-
-  // .el-input__wrapper,
-  // .el-input {
-  //   --el-input-border-radius: 10px;
-  // }
-
-  .el-input__wrapper {
-    &.is-focus {
-      box-shadow: none;
+    :deep(.el-input) {
+        --el-input-focus-border-color: transparent;
+        --el-input-border-radius: 10px;
     }
-  }
+
+    // .el-input__wrapper,
+    // .el-input {
+    //   --el-input-border-radius: 10px;
+    // }
+
+    .el-input__wrapper {
+        &.is-focus {
+            box-shadow: none;
+        }
+    }
 }
 </style>

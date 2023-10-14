@@ -39,9 +39,7 @@ useHead({
         { name: 'description', content: systemInfo.value?.description },
         { name: 'keywords', content: systemInfo.value?.keyword },
     ],
-    link: [
-        { rel: 'icon', href: systemInfo.value?.icon },
-    ],
+    link: [{ rel: 'icon', href: systemInfo.value?.icon }],
     // bodyAttrs: {
     //     class: 'test',
     // },
