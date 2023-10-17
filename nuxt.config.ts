@@ -12,6 +12,7 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
         'nuxt-swiper',
     ],
+
     experimental: {
         // when using generate, payload js assets included in sw precache manifest
         // but missing on offline, disabling extraction it until fixed
@@ -19,10 +20,13 @@ export default defineNuxtConfig({
         inlineSSRStyles: false,
         typedPages: true,
     },
+
     css: ['@unocss/reset/tailwind.css', '~/assets/scss/app.scss'],
+
     colorMode: {
         classSuffix: '',
     },
+
     nitro: {
         esbuild: {
             options: {
@@ -50,6 +54,7 @@ export default defineNuxtConfig({
         //     },
         // },
     },
+
     app: {
         head: {
             viewport: 'width=device-width,initial-scale=1',
@@ -65,6 +70,7 @@ export default defineNuxtConfig({
             ],
         },
     },
+
     // pwa,
     vite: {
         plugins: [],
@@ -85,6 +91,7 @@ export default defineNuxtConfig({
             },
         },
     },
+
     runtimeConfig: {
         // 仅在服务端serve可以访问
         appKey: 'abcd',
@@ -138,5 +145,11 @@ export default defineNuxtConfig({
         //         en: false,
         //     },
         // },
+    },
+
+    devtools: {
+        timeline: {
+            enabled: true,
+        },
     },
 })

@@ -1,3 +1,5 @@
+/** changelogithub.config.js */
+/** @type {import('changelogithub').ChangelogOptions} */
 export default {
     types: {
         feat: { title: '🚀 Features' },
