@@ -34,7 +34,7 @@ export const getEventParams = async <T = any>(event: H3Event) => {
             }
         })
     } else if (method === 'GET') {
-        param = getQuery(event) as unknown as T
+        param = getQuery<T>(event)
     } else {
         param = await readBody<T>(event)
     }
