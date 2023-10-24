@@ -3,29 +3,29 @@
 name: Create Release
 
 on:
-  push:
-    tags:
-      - '1/000/v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+    push:
+        tags:
+            - '1/000/v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 # on:
 #  push:
 #    branch: ['master']
 
 jobs:
-  build:
-    name: Create Release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Master
-        uses: actions/checkout@master
+    build:
+        name: Create Release
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Master
+                uses: actions/checkout@master
 
-      - name: Create Release for Tag
-        id: release_tag
-        uses: cooj/nuxt3-app@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
+            - name: Create Release for Tag
+                id: release_tag
+                uses: cooj/nuxt3-app@master
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                with:
+                    tag_name: ${{ github.ref }}
 
         #   # 拉取web前端dist的代码
         #   - name: Checkout Web Dist
