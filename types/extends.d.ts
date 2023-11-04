@@ -4,6 +4,14 @@
 
 import type { PrismaClient } from '@prisma/client'
 
+import type { GlobalComponents } from 'vue'
+
+declare global {
+    type ComponentInstance = {
+        [Property in keyof GlobalComponents]: InstanceType<GlobalComponents[Property]>
+    }
+}
+
 declare module 'h3' {
     interface H3EventContext {
         prisma: PrismaClient
@@ -22,4 +30,4 @@ declare module '@next-auth/core' {
     }
 }
 
-export {}
+export { }
