@@ -4,7 +4,7 @@
 
 import type { PrismaClient } from '@prisma/client'
 
-import type { GlobalComponents } from 'vue'
+import type { GlobalComponents } from '@vue/runtime-core'
 
 declare global {
     type ComponentInstance = {
