@@ -1,11 +1,14 @@
 // 获取系统信息
 export const useSystemState = () => {
-    const system = useState<ISystemInfoResponse | undefined>('system')
+    const system = useState<ISystemInfoResponse | undefined>('system', undefined)
 
     const getSystemInfo = async (update?: boolean) => {
+        return undefined
+        console.log('update :>> ', system.value)
+
         if (system.value) return system
         const { data, error } = await useCustomFetch<ISystemInfoResponse>('/api/page/get_system')
-        // console.log(data.value?.code)
+        console.log(data.value, error.value)
         // 接口发生错误时
         if (error.value) return system
         // await wait(800)

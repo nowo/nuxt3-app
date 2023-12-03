@@ -8,6 +8,7 @@ import type { H3Event } from 'h3'
 export const getSystemInfo = async (event: H3Event) => {
     // 接口校验
     // if (!event.context.user) return ResponseMessage.token
+    // console.log('event :>> ', event);
 
     const [res1, res2] = await Promise.all([
         event.context.prisma.system.findUnique({ where: { id: 1 } }),

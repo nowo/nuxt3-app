@@ -3,7 +3,6 @@
 export default defineNuxtConfig({
     modules: [
         '@nuxtjs/color-mode',
-        '@nuxt/devtools',
         '@unocss/nuxt',
         '@vueuse/nuxt',
         '@vite-pwa/nuxt',
